@@ -37,7 +37,7 @@ def fetchProblems(url, fileName, decodeFunc):
 	while True:
 		response = session.get(url + str(pageNumber))
 		
-		if response.status_code != 200:
+		if response.status_code != requests.codes.ok:
 			break;
 
 		print pageNumber
@@ -69,3 +69,4 @@ def getJudgeProblems():
 	fetchProblems(url, fileName, decodeJudgeProblem)
 
 getUserProblems('39764')
+getJudgeProblems()
