@@ -1,0 +1,20 @@
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="category in categories">
+		{{category.name}}
+		<div class="btn-group btn-group-xs pull-right" role="group" >
+			<button
+					ng-click="setCategory(category,-1)" 
+					type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-minus"></span>
+			</button>
+			<button type="button" class="btn btn-default">
+			{{category.value}}
+			</button>
+			<button 
+				ng-click="setCategory(category,1)"
+					type="button" class="btn btn-default">
+					<span class="glyphicon glyphicon-plus"></span>
+			</button>
+		</div>
+	</li>
+</ul>

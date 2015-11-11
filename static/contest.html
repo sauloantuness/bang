@@ -1,0 +1,26 @@
+<button 
+	ng-if="isContestStatus('waiting')"
+	type="button" class="btn btn-default center-block" ng-click="setContestStatus('loading')">
+		Create Contest
+</button>
+
+<div ng-if='isContestStatus("loading")' class="progress fixProgressBar">
+	<div class="progress-bar" style="width: {{contestProgress}}%;">
+		{{contestProgress}}%
+	</div>
+</div>
+
+<table ng-if="isContestStatus('done')" class="table">
+	<thead>
+		<tr>
+			<th>Code</th>
+			<th>Name</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="problem in problems">
+			<td>{{problem.code}}</td>
+			<td>{{problem.name}}</td>
+		</tr>
+	</tbody>
+</table>

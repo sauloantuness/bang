@@ -1,0 +1,48 @@
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="user in users">
+		{{user.name}}
+		<button ng-click="deleteUser(user)" type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</li>
+</ul>
+
+<button 
+	ng-if="!isAdding()"
+	ng-click="setAdding(true)"
+	class="btn btn-default" >
+	<span class="glyphicon glyphicon-plus"></span>
+	Adicionar
+</button>
+
+<div class="panel panel-default" ng-if="isAdding()">
+	<div class="panel-body">
+			<div class="form-group">
+				<label for="userName">Nome</label>
+				<input ng-model="user.name" type="text" class="form-control" id="userName" placeholder="Joao">
+			</div>
+			<div class="form-group">
+				<label for="userAccount">URI Account</label>
+				<input 
+					ng-model="user.uriId" 
+					type="text" 
+					class="form-control" 
+					id="userAccount" 
+					placeholder="12345">
+			</div>
+
+			<button 
+				ng-click="addUser(user)" 
+				ng-disabled="!user.name || !user.uriId" 
+				class="btn btn-success">
+				<span class="glyphicon glyphicon-ok"></span>
+				Adicionar
+			</button>
+			<button
+				ng-click="setAdding(false)" 
+				class="btn btn-danger">
+				<span class="glyphicon glyphicon-remove"></span>
+				Cancelar
+			</button>
+	</div>
+</div>
