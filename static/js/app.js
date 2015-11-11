@@ -58,6 +58,17 @@ myApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http){
 		});
 	};
 
+	$scope.categories = [
+		{code : 1, value : 0, name : "Beginner" },
+		{code : 2, value : 0, name : "Ad-Hoc" },
+		{code : 3, value : 0, name : "Strings" },
+		{code : 4, value : 0, name : "Data Structures" },
+		{code : 5, value : 0, name : "Mathematics" },
+		{code : 6, value : 0, name : "Paradigms" },
+		{code : 7, value : 0, name : "Graph" },
+		{code : 8, value : 0, name : "Computational Geometry" }
+	];
+
 	$scope.problems = [
 		{code : '1001', name : 'Extremely Basic'},
 		{code : '1002', name : 'Area of a Circle'},
