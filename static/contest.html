@@ -1,6 +1,6 @@
 <button 
 	ng-if="isContestStatus('waiting')"
-	type="button" class="btn btn-default center-block" ng-click="setContestStatus('loading')">
+	type="button" class="btn btn-default center-block" ng-click="createContest(categories,users)">
 		Create Contest
 </button>
 
@@ -19,7 +19,7 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="problem in problems">
-			<td>{{problem.code}}</td>
+			<td>{{problem.problemId}}</td>
 			<td>{{problem.name}}</td>
 		</tr>
 	</tbody>

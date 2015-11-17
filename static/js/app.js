@@ -1,7 +1,8 @@
-var myApp = angular.module('myApp', []);
+var app = angular.module('app', []);
 
-myApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http){ 
-	
+app.controller('mainCtrl', ['$scope', '$http', function($scope, $http){ 
+	$scope.saulo = 'Sualo'
+
 	// == TABS ==
 	$scope.tabs = [
 		{'name' : 'Users', 	'tabName' : 'users', 'tabPage' : '/static/users.html'},
@@ -69,11 +70,7 @@ myApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http){
 		{code : 8, value : 0, name : "Computational Geometry" }
 	];
 
-	$scope.problems = [
-		{code : '1001', name : 'Extremely Basic'},
-		{code : '1002', name : 'Area of a Circle'},
-		{code : '1003', name : 'Simple Sum'}
-	];
+	$scope.problems = []
 
 	$scope.setAdding = function setAdding(status){
 		$scope.adding = status;
@@ -98,7 +95,17 @@ myApp.controller('mainCtrl', ['$scope', '$http', function($scope, $http){
 			category.value = 0;
 	}
 
-	$scope.contestStatus = 'done'; //waiting, loading, done
+	$scope.createContest = function createContest(categories, users){
+		console.log(users)
+		$scope.setContestStatus('loading');
+		$http.post('/contest', {users:users, categories:categories}).success(function(response){
+			$scope.problems = response;
+			$scope.setContestStatus('done');
+		});
+
+	}
+
+	$scope.contestStatus = 'waiting'; //waiting, loading, done
 	$scope.contestProgress = 35;
 	$scope.adding = false;
 

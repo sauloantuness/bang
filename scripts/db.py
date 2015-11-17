@@ -1,25 +1,10 @@
 import sqlite3
+from user import User
+from problem import Problem
+from solved import Solved
+from uri import Uri
 
-DATABASE_FILE = "database.db"
-
-class User():
-	def __init__(self, uriId, name, userId=None):
-		self.uriId = uriId
-		self.name = name
-		self.userId = userId
-
-class Problem():
-	def __init__(self, problemId, name, category, level, solved):
-		self.problemId = problemId
-		self.name = name
-		self.category = category
-		self.level = level
-		self.solved = solved
-
-class Solved():
-	def __init__(self, userId, problemId, solvedId=None):
-		self.userId = userId
-		self.problemId = problemId
+DATABASE_FILE = "./../database.db"
 
 class DB():
 	def __init__(self):
@@ -83,7 +68,16 @@ class DB():
 	def insertProblem(self, problem):
 		conn = sqlite3.connect(DATABASE_FILE)
 		c = conn.cursor()
-		c.execute("""INSERT INTO problems (problemId, name, category, level, solved) VALUES (?,?,?,?,?)""", (problem.problemId, problem.name, problem.category, problem.level, problem.solved) )
+		c.execute("""INSERT OR REPLACE INTO problems (problemId, name, category, level, solved) VALUES (?,?,?,?,?)""", (problem.problemId, problem.name, problem.category, problem.level, problem.solved) )
+		conn.commit()
+		conn.close()
+		return problem
+
+	def insertProblems(self, problems):
+		conn = sqlite3.connect(DATABASE_FILE)
+		c = conn.cursor()
+		for problem in problems:
+			c.execute("""INSERT OR REPLACE INTO problems (problemId, name, category, level, solved) VALUES (?,?,?,?,?)""", (problem.problemId, problem.name, problem.category, problem.level, problem.solved) )
 		conn.commit()
 		conn.close()
 		return problem
@@ -99,23 +93,54 @@ class DB():
 	def insertSolved(self, solved):
 		conn = sqlite3.connect(DATABASE_FILE)
 		c = conn.cursor()
-		c.execute("""INSERT INTO solved (userId,problemId) VALUES (?,?)""", (solved.userId, solved.problemId) )
+		c.execute("""INSERT OR REPLACE INTO solved (userId,problemId) VALUES (?,?)""", (solved.userId, solved.problemId) )
 		solved.solvedId = c.lastrowid
 		conn.commit()
 		conn.close()
 		return solved
 
-if __name__ == '__main__':
+
+	#issue: return only those that have been inserted
+	def insertSolveds(self, solveds):
+		conn = sqlite3.connect(DATABASE_FILE)
+		c = conn.cursor()
+
+		for i,solved in enumerate(solveds):
+			c.execute("""INSERT OR REPLACE INTO solved (userId,problemId) VALUES (?,?)""", (solved.userId, solved.problemId) )
+			solveds[i] = c.lastrowid
+		conn.commit()
+		conn.close()
+		return solveds
+
+def updateJudge():
+	print 'updating judge'
 	db = DB()
 
-	joao  = User("12345", "joao")
-	maria = User("49876", "maria")
+	uri = Uri()
+	db.insertProblems(uri.getProblems())
 
-	joao = db.insertUser(joao)
-	maria = db.insertUser(maria)
+def updateUsers():
+	print 'updating users'
+	db = DB()
+	users = db.getUsers()
 
-	uri1001 = Problem(1001, "facil demais", "iniciante", 1, 24)
-	uri1001 = db.insertProblem(uri1001)
+	for user in users:
+		print 'updating user %s' % user.name
+	 	uri = Uri(user)
+	 	db.insertSolveds(uri.getProblems())		
 
-	for user in db.getUsers():
-		user.userId
+def teste():
+	conn = sqlite3.connect(DATABASE_FILE)
+	c = conn.cursor()
+	c.execute("""SELECT SUM(resolvidos) as total
+				from solved 
+				 """)
+	solved.solvedId = c.lastrowid
+	conn.commit()
+	conn.close()
+
+
+if __name__ == '__main__':
+	# updateJudge()
+	# updateUsers()
+
