@@ -1,10 +1,12 @@
+import os
 import sqlite3
 from user import User
 from problem import Problem
 from solved import Solved
 from uri import Uri
 
-DATABASE_FILE = "./../database.db"
+FILE_PATH = os.path.dirname(os.path.realpath(__file__))
+DATABASE_FILE = FILE_PATH + "/../database.db"
 
 class DB():
 	def __init__(self):
@@ -32,8 +34,6 @@ class DB():
 		conn.commit()
 		conn.close()
 
-		print 'Tables created with success.'
-
 	def insertUser(self, user):
 		conn = sqlite3.connect(DATABASE_FILE)
 		c = conn.cursor()
@@ -47,6 +47,7 @@ class DB():
 		conn = sqlite3.connect(DATABASE_FILE)
 		c = conn.cursor()
 		c.execute("""DELETE FROM users where userId=?""", (user.userId,))
+		c.execute("""DELETE FROM solved where userId=?""", (user.userId,))
 		conn.commit()
 		conn.close()
 		return user
@@ -112,35 +113,72 @@ class DB():
 		conn.close()
 		return solveds
 
-def updateJudge():
-	print 'updating judge'
-	db = DB()
+	def getContestProblems(self, users, categories):
+		conn = sqlite3.connect(DATABASE_FILE)
+		c = conn.cursor()
 
-	uri = Uri()
-	db.insertProblems(uri.getProblems())
+		if len(users) == 1:
+			users.append(users[0])
 
-def updateUsers():
-	print 'updating users'
-	db = DB()
-	users = db.getUsers()
+		c.execute("""DROP VIEW IF EXISTS getProblems""")
+		c.execute("""CREATE VIEW getProblems AS
+					 SELECT solved.problemId, COUNT(solved.problemId) AS usersSolved
+					 FROM solved 
+					 WHERE solved.userId IN %s
+					 GROUP BY (solved.problemId)""" % str(tuple(users)))
 
-	for user in users:
-		print 'updating user %s' % user.name
+		c.execute("""DROP VIEW IF EXISTS sortProblems""")
+		c.execute("""CREATE VIEW IF NOT EXISTS sortProblems AS
+					 SELECT problems.*, getProblems.usersSolved 
+					 FROM problems
+					 LEFT JOIN getProblems ON problems.problemId=getProblems.problemId
+					 ORDER BY category, usersSolved ASC, level ASC, solved DESC""")
+
+		problems = []
+		for category, quantity in categories:
+			q = c
+			print category
+			q.execute("""SELECT sortProblems.problemId, sortProblems.name
+						 FROM sortProblems
+						 WHERE sortProblems.category = '%s'""" % category)
+			
+			for problem in q.fetchmany(quantity):
+				problems.append({'problemId' : problem[0], 'name' : problem[1]})
+
+		conn.commit()
+		conn.close()
+
+		return problems
+
+	def updateJudge(self):
+		print 'Updating judge...'
+
+		uri = Uri()
+		problems = uri.getProblems()
+
+		print len(problems), " problems."
+
+		self.insertProblems(problems)
+
+	def updateUser(self,user):
+		print '\nUpdating user %s...' % user.name
+
 	 	uri = Uri(user)
-	 	db.insertSolveds(uri.getProblems())		
+	 	problems = uri.getProblems()
+	 	
+	 	print "%d problems." % len(problems)
+	 	
+	 	self.insertSolveds(problems)
 
-def teste():
-	conn = sqlite3.connect(DATABASE_FILE)
-	c = conn.cursor()
-	c.execute("""SELECT SUM(resolvidos) as total
-				from solved 
-				 """)
-	solved.solvedId = c.lastrowid
-	conn.commit()
-	conn.close()
+	def updateUsers(self):
+		print 'updating users'
 
+		users = self.getUsers()
+
+		for user in users:
+			self.updateUser(user)
 
 if __name__ == '__main__':
-	# updateJudge()
-	# updateUsers()
-
+	db = DB()
+	db.updateJudge()
+	# db.updateUsers()

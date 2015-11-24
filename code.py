@@ -1,8 +1,8 @@
 import web
 import json
 import time
-from db import DB
-from db import User
+from scripts.db import DB
+from scripts.user import User
 
 urls = (
 	'/', 'index',
@@ -33,6 +33,7 @@ class user_api():
 		user = User(name=data['name'], uriId=data['uriId'])
 		db = DB()
 		user = db.insertUser(user)
+		db.updateUser(user)
 		return json.dumps(user.__dict__)
 
 	def DELETE(self):
@@ -46,10 +47,20 @@ class user_api():
 class contest_api():
 	def POST(self):
 		data = json.loads(web.data())
-		print data['users']
-		print data['categories']
 
-		#getContestProblems(users, categories)
+		users = []
+		for user in data['users']:
+			users.append(user['userId'])
+
+		categories = []
+		for category in data['categories']:
+			if category['value']:
+				categories.append((category['name'],category['value']))
+
+		db = DB()
+		problems = db.getContestProblems(users, categories)
+
+		return json.dumps(problems)
 
 		return json.dumps([{'problemId' : '1001', 'name' : 'Extremely Basic'},
 						   {'problemId' : '1002', 'name' : 'Area of a Circle'},

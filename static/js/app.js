@@ -63,7 +63,7 @@ app.controller('mainCtrl', ['$scope', '$http', function($scope, $http){
 		{code : 1, value : 0, name : "Beginner" },
 		{code : 2, value : 0, name : "Ad-Hoc" },
 		{code : 3, value : 0, name : "Strings" },
-		{code : 4, value : 0, name : "Data Structures" },
+		{code : 4, value : 0, name : "Data Structures and Libraries" },
 		{code : 5, value : 0, name : "Mathematics" },
 		{code : 6, value : 0, name : "Paradigms" },
 		{code : 7, value : 0, name : "Graph" },
