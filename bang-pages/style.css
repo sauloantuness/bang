@@ -1,0 +1,109 @@
+/*card participantes*/
+.card:link{
+	text-decoration: none;
+}
+
+.card {
+	position: relative;
+}
+
+.card > img {
+	width: 58px;
+	height: 58px;
+	margin-left: 6px;
+	border-radius: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.card > div {
+	margin-left: 74px;
+}
+
+.card > div > h4{
+	color: #333;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+
+.card > div > h5{
+	color: #555;
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.card > div > h6{
+	color: #555;
+	margin-top: 0;
+}
+
+/*fim card participantes*/
+
+
+/*inicio perfil*/
+.perfil{
+	text-align: center;
+}
+
+.perfil > img {
+	height: 140px;
+}
+
+.perfil > a{
+	text-decoration: none;
+}
+
+.perfil a:link{
+	text-decoration: none;
+}
+
+.perfil strong{
+	display: block;
+}
+
+.perfil span{
+	color: #767676;
+}
+
+.perfil-time a{
+	text-decoration: none;
+}
+
+.perfil-time img{
+	display: block;
+	width: 58px;
+	text-align: center;
+}
+
+.perfil-time span{
+	color: #767676;
+	display: block;
+	text-align: center;
+}
+/*fim perfil*/
+
+/*inicio contests*/
+.contests-card > div{
+	display: block;
+	margin-bottom: 15px
+}
+
+.contests-card b{
+	margin-left: 4px;
+	margin-right: 4px;
+	font-weight: normal;
+}
+
+.contests-card i{
+	color: #CCC;
+	vertical-align: 2px;
+}
+/*fim contests*/
+
+/*inicio users-user-chart*/
+.chart{
+	width: 100%;
+	height:200px;
+}
+/*fim users-user-chart*/

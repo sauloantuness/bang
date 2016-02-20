@@ -19,7 +19,10 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="problem in problems">
-			<td>{{problem.problemId}}</td>
+			<td>
+				<a href="https://www.urionlinejudge.com.br/judge/en/problems/view/{{problem.problemId}}">
+					{{problem.problemId}}</td>
+				</a>
 			<td>{{problem.name}}</td>
 		</tr>
 	</tbody>
