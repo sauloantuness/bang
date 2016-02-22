@@ -107,3 +107,17 @@
 	height:200px;
 }
 /*fim users-user-chart*/
+
+/*inicio ranking*/
+.table-fix, th{
+	text-align: center; 
+}
+
+.table-fix td:nth-child(2), .table-fix th:nth-child(2) {
+	text-align: left;
+}
+
+.select-fix {
+	font-size: 14px;
+	padding: 6px 12px;
+}
