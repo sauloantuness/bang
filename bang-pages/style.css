@@ -121,3 +121,44 @@
 	font-size: 14px;
 	padding: 6px 12px;
 }
+/*fim ranking*/
+
+/*inicio home*/
+.event {
+	position: relative;
+}
+.event > .glyphicon {
+	position: absolute;
+	margin-top: -14px;
+	top: 50%;
+}
+
+.event > .glyphicon-menu-left {
+	float: left;
+	left: 0;
+}
+
+.event > .glyphicon-menu-right {
+	float: right;
+	right: 0;
+}
+
+.event-date {
+	border: 1px solid #ddd;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.event-date h1{
+    margin: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.event-date b {
+	border-bottom: 1px solid #ddd;
+	padding: 5px;
+	display: block;
+	width: 100%;
+}
+/*fim home*/
