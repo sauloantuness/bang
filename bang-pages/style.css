@@ -162,3 +162,9 @@
 	width: 100%;
 }
 /*fim home*/
+
+/*inicio problems-problem*/
+.table-fix-1 td:nth-child(1){
+	text-align: left;
+}
+/*inicio problems-problem*/
