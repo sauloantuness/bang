@@ -4,8 +4,6 @@
     }
 }
 
-
-
 /*navbar inicio*/
 
 .navbar-fix {
@@ -36,6 +34,18 @@
 	width: 120px;
 }
 
+#large-header{
+		top: 0;
+		left: 0;
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+	}
+
+	.logo > p {
+		background-color: rgba(255,255,255, 0.7);
+	}
 /*login fim*/
 
 /*card participantes*/
@@ -139,7 +149,73 @@
 	color: #CCC;
 	vertical-align: 2px;
 }
+
+.contests-card {
+	color: black;
+	position: relative;
+}
+
+.contests-card:link{
+	text-decoration: none;
+	color: black;
+}
+
+.contests-card > span {
+	display: inline-block;
+	border-radius: 3px;
+	padding: 5px 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	margin-bottom: 10px;
+}
+
+.running {
+	color: #1bc98e;
+	border: 1px solid #1bc98e;
+}
+.running:hover {
+	background-color: #1bc98e;
+	color: #FFF;
+}
+
+.ended {
+	color: #e64759;
+	border: 1px solid #e64759;
+}
+
+.ended:hover {
+	background-color: #e64759;
+	color: #FFF;
+}
+
+.waiting {
+	color: #1997c6;
+	border: 1px solid #1997c6;
+}
+.waiting:hover {
+	background-color: #1997c6;
+	color: #FFF;
+}
+
+.dl-fix {
+	margin-bottom: 0;
+}
+
+
 /*fim contests*/
+
+/*inicio contests-contest*/
+.thumbnail-fix {
+	margin-bottom: 0;
+	padding: 10px;
+}
+
+.thumbnail-fix > h4 {
+	margin-bottom: 0;
+}
+
+
+/*fim contests-contest*/
 
 /*inicio users-user-chart*/
 .chart{

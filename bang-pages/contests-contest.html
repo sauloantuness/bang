@@ -4,37 +4,46 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Contest</title>
-	<link 
-		rel="stylesheet" 
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
-		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" 
-		crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div class="container">
-		<div class="page-header">
-			<h1>Bang <small>Saulo Antunes</small></h1>
-		</div>
-		<div class="row">
-			<div class="col-sm-3">
-				<div class="list-group">
-					<a href="#" class="list-group-item">menu 1</a>
-					<a href="#" class="list-group-item">menu 1</a>
-					<a href="#" class="list-group-item">menu 1</a>
-					<a href="#" class="list-group-item">menu 1</a>
-				</div>
+	<nav class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand navbar-fix"  href="home.html">
+					<img class="pull-left" src="logo.png">
+				</a>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 			</div>
-			<div class="col-sm-9">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="home.html">Home</a></li>
+					<li><a href="contests.html">Contests</a></li>
+					<li><a href="problems.html">Problems</a></li>
+					<li><a href="ranking.html">Ranking</a></li>
+					<li><a href="users.html">Users</a></li>
+					<li><a href="settings.html">Settings</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="login.html">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 					    <a href="#" class="btn btn-default pull-right">Join</a>
 						<h5>Contest</h5>
 					</div>
 					<div class="panel-body">
-						<div class="">
-							
-						<dl class="dl-horizontal pull-left">
+						<dl class="dl-horizontal dl-fix pull-left">
 							<dt>Owner:</dt>
 							<dd><a href="#">Arley Ribeiro</a></dd>
 							<dt>Starts:</dt>
@@ -42,15 +51,14 @@
 							<dt>Duration:</dt>
 							<dd>2 hours</dd>
 						</dl>
-						</div>
-						<div class="thumbnail pull-right">
-							<div class="caption text-center">
+							<div class="thumbnail thumbnail-fix text-center pull-right">
 								<span>Starts in</span>
 								<!-- <small>Termina em</small> -->
 								<!-- <h4>Finalizado</h4> -->
 								<h4>04:10:30</h4>
 							</div>
-						</div>
+						<!-- {# <div class="thumbnail thumbnail-fix pull-right"> #} -->
+						<!-- {# </div> #} -->
 					</div>
 					<table class="table table-fix">
 						<thead>
