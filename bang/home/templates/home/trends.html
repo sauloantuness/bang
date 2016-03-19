@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>Trends</h5>
+	</div>
+	<table class="table">
+		<tbody>
+			{% for t in trends %}
+				<tr>
+					<td><a href="#">{{ t.name }}</a></td>
+				</tr>	
+			{% endfor %}
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>Recently solved</h5>
+	</div>
+	<table class="table text-center2">
+		<thead>
+			<tr>
+				<th>User</th>
+				<th>Problem</th>
+				<th>When</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for solved in recentlySolved %}
+				<tr>
+					<td><a href="#">{{ solved.name }}</a></td>
+					<td><a href="#">{{ solved.problem }}</a></td>
+					<td>{{ solved.date }}</td>
+				</tr>	
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
