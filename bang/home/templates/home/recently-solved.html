@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h5>Recently solved</h5>
@@ -11,11 +13,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for solved in recentlySolved %}
+			{% for solution in recentlySolved %}
 				<tr>
-					<td><a href="#">{{ solved.name }}</a></td>
-					<td><a href="#">{{ solved.problem }}</a></td>
-					<td>{{ solved.date }}</td>
+					<td><a href="/user/{{ solution.profile.id }}">{{ solution.profile.name }}</a></td>
+					<td><a href="/problems/{{ solution.problem.id }}">{{ solution.problem.judge | upper }} {{ solution.problem.code }} - {{ solution.problem.name }}</a></td>
+					<td>{{ solution.date | naturaltime }}</td>
 				</tr>	
 			{% endfor %}
 		</tbody>

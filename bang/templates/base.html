@@ -4,15 +4,15 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>{% block title %}{% endblock title %}</title>
-	<link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="static/assets/css/style.css">
+	<link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/assets/css/style.css">
 </head>
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand navbar-fix"  href="home.html">
-					<img class="pull-left" src="static/assets/img/logo.png">
+					<img class="pull-left" src="/static/assets/img/logo.png">
 				</a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 					<span class="icon-bar"></span>
@@ -22,14 +22,14 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="home.html">Home</a></li>
+					<li><a href="/">Home</a></li>
 					<li><a href="contests.html">Contests</a></li>
-					<li><a href="problems.html">Problems</a></li>
+					<li><a href="/problems">Problems</a></li>
 					<li><a href="ranking.html">Ranking</a></li>
 					<li><a href="users.html">Users</a></li>
-					<li><a href="settings.html">Settings</a></li>
+					<li><a href="/settings">Settings</a></li>
 					<li><a href="#">About</a></li>
-					<li><a href="login.html">Logout</a></li>
+					<li><a href="/logout">Logout</a></li>
 				</ul>
 			</div>
 		</div>
@@ -38,9 +38,9 @@
 		
 	{% endblock container %}
 
-	<script src="static/assets/js/jquery.min.js"></script>
-	<script src="static/assets/js/bootstrap.min.js"></script>
-	<script src="static/assets/js/highcharts.js"></script>
-	<script src="static/assets/js/script.js"></script>
+	<script src="/static/assets/js/jquery.min.js"></script>
+	<script src="/static/assets/js/bootstrap.min.js"></script>
+	<script src="/static/assets/js/highcharts.js"></script>
+	<script src="/static/assets/js/script.js"></script>
 </body>
 </html>

@@ -50,7 +50,7 @@ class Problem(models.Model):
         return "[{0}] {1}: {2}".format(self.judge, self.code, self.name)
 
 class Solution(models.Model):
-    date = models.DateField()
+    date = models.DateTimeField()
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
 

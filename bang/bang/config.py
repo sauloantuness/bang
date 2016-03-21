@@ -15,7 +15,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
-    'home.models.set_profile',  # <--- set the path to the function
+    'home.models.set_profile',
 )
 
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']

@@ -21,6 +21,8 @@ def group():
 	}
 
 def recentlySolved():
+	return Solution.objects.all().order_by('-date')[:5]
+
 	return [
 		{
 			'name' : 'Saulo Antunes',

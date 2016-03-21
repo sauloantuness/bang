@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Problems
+{% endblock title %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				{% include "problems/uri.html" %}
+				{% include "problems/uva.html" %}
+				{% include "problems/spoj.html" %}
+			</div>
+		</div>
+	</div>
+{% endblock container %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}
+	Problem
+{% endblock title %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>
+							<a href="https://www.urionlinejudge.com.br/judge/en/problems/view/{{problem.code}}" target="_blank">
+								{{problem.judge | upper}} {{problem.code}} - {{problem.name}}
+							</a>
+						</h5>
+					</div>
+					<table class="table text-center table-fix-1">
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for s in  solutions %}
+								<tr>
+									<td>
+										<a href="/user/{{ s.profile.id }}">{{ s.profile.name }}</a>
+									</td>
+									<td>{{ s.date | naturalday }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock container %}
