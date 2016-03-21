@@ -1,0 +1,29 @@
+{% load humanize %}
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>Recently solved</h5>
+	</div>
+	<table class="table text-center2">
+		<thead>
+			<tr>
+				<th>Problem</th>
+				<th>Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for solution in recentlySolved %}
+				<tr>
+					<td>
+						<a href="/problems/{{ solution.problem.id }}">
+							{{ solution.problem.judge | upper }} {{ solution.problem.code }} - {{ solution.problem.name }}
+						</a>
+					</td>
+					<td>
+						{{ solution.date | naturaltime }}
+					</td>
+				</tr>	
+			{% endfor %}
+		</tbody>
+	</table>
+</div>

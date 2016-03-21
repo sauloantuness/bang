@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>SPOJ</h5>
+	</div>
+	<div class="panel-body">
+		<ul class="list-inline">
+			{% for problem in spoj %}
+				<li>
+					<a href="problems/spoj/id" title="{{ problem.name }}">{{ problem.code }}</a>
+				</li>	
+			{% endfor %}
+		</ul>
+	</div>
+</div>

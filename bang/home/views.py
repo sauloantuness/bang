@@ -25,7 +25,7 @@ def group():
 def recentlySolved():
 	return Solution.objects.all().order_by('-date')[:5]
 
-def historic(user):
+def historic():
 	now = datetime.now()
 	begin = now - timedelta(days=7)
 
@@ -68,7 +68,7 @@ def home(request):
 	context = {
 		'group' : group(),
 		'recentlySolved' : recentlySolved(),
-		'historic' : historic(request.user),
+		'historic' : historic(),
 		'trends' : trends(),
 		'events' : events()
 	}

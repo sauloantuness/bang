@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>Profile</h5>
+	</div>
+	<div class="panel-body">
+		<div class="perfil">
+			<img src="{{ profile.picture }}?type=large&height=128&width=128" class="img-circle">
+			<h3>{{ profile.name }}<br><small>Eng Computação</small></h3>
+			<hr>
+		</div>
+
+		<div class="row perfil">
+			<div class="col-xs-4">
+				<a href="#">
+					<strong>{{ solutions.uri }}</strong>
+					<span>URI</span>
+				</a>
+			</div>
+			<div class="col-xs-4">
+				<a href="#">
+					<strong>{{ solutions.uva }}</strong>
+					<span>UVA</span>
+				</a>
+			</div>
+			<div class="col-xs-4">
+				<a href="#">
+					<strong>{{ solutions.spoj }}</strong>
+					<span>SPOJ</span>
+				</a>
+			</div>
+		</div>
+
+	</div>
+</div>

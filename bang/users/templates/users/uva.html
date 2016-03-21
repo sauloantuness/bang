@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>UVA</h5>
+	</div>
+	<div class="panel-body">
+		<ul class="list-inline">
+			{% for problem in uva %}
+				<li>
+					<a href="problems/uva/id" title="{{ problem.name }}">{{ problem.code }}</a>
+				</li>	
+			{% endfor %}
+		</ul>
+	</div>
+</div>

@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^logout/', views.logout, name='logout'),
     url(r'^settings/', include('settings.urls')),
     url(r'^problems/', include('problems.urls')),
+    url(r'^users/', include('users.urls')),
     url(r'', include('home.urls')),
 ]

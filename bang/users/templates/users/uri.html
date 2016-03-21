@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>URI</h5>
+	</div>
+	<div class="panel-body">
+		<ul class="list-inline">
+			{% for s in uri %}
+				<li>
+					<a href="{{ s.problem.id }}" title="{{ s.problem.name }}">{{ s.problem.code }}</a>
+				</li>	
+			{% endfor %}
+	</div>
+</div>

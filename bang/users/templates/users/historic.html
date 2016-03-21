@@ -1,0 +1,13 @@
+<script>
+	var problems_solved = {{ historic.problems_solved }};
+	var days = {{ historic.days | safe }}
+</script>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h5>Historic</h5>
+	</div>
+	<div class="panel-body">
+		<div id="myChart" class="chart"></div>
+	</div>
+</div>

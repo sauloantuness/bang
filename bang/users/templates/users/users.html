@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>Users</h5>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+
+							{% for user in users %}
+								<div class="col-xs-12 col-sm-6 col-md-4">
+									<a href="/users/{{user.profile.user.id}}" class="thumbnail card clearfix">
+										<img src="{{ user.profile.picture }}" alt="">
+										<div>
+											<h4>{{ user.profile.name }}</h4>
+											<h6><b>{{ user.solutions }}</b> Problems</h6>
+											<br>
+										</div>
+									</a>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock container %}

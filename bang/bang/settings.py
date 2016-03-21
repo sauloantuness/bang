@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'settings.apps.SettingsConfig',
     'problems.apps.ProblemsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE_CLASSES = [
