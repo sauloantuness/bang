@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.db.models import Count
 from .models import Profile, Solution
+from datetime import datetime, timedelta
 
 # Create your views here.
 
@@ -15,7 +17,7 @@ def logout(request):
 
 def group():
 	return {
-		'uri' : 150,
+		'uri' : Solution.objects.filter(problem__judge='uri').count(),
 		'uva' : 0,
 		'spoj' : 0,
 	}
@@ -23,27 +25,21 @@ def group():
 def recentlySolved():
 	return Solution.objects.all().order_by('-date')[:5]
 
-	return [
-		{
-			'name' : 'Saulo Antunes',
-			'profileId' : 1,
-			'problem' : 'URI 1001 - Extremely Basic',
-			'problemId' : 2,
-			'date' : '1 day ago'
-		},
-		{
-			'name' : 'Saulo Antunes',
-			'profileId' : 1,
-			'problem' : 'URI 1001 - Extremely Basic',
-			'problemId' : 2,
-			'date' : '1 day ago'
-		},
-	]
+def historic(user):
+	now = datetime.now()
+	begin = now - timedelta(days=7)
 
-def historic():
+	days = [begin + timedelta(days=x) for x in range(1, 8)]
+
+	problems_solved = []
+	for day in days:
+		problems_solved.append(Solution.objects.filter(date__range=[day, day + timedelta(days=1)]).count())
+
+	days = [ d.strftime('%d/%m') for d in days]
+	
 	return {
-		'problems_solved' : [6, 6, 6, 6, 5, 5, 10],
-		'days' : ['12/02', '13/02', '14/02', '15/02', '16/02', '17/02', '18/02'],
+		'problems_solved' : problems_solved,
+		'days' : days,
 	}
 
 def trends():
@@ -72,7 +68,7 @@ def home(request):
 	context = {
 		'group' : group(),
 		'recentlySolved' : recentlySolved(),
-		'historic' : historic(),
+		'historic' : historic(request.user),
 		'trends' : trends(),
 		'events' : events()
 	}
