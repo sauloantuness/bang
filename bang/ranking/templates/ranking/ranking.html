@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Ranking
+{% endblock title %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<!--<select class="select-fix pull-right">
+							<option>User</option>
+							<option>Team</option>
+						</select> -->
+						<h5>Ranking</h5>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-hover table-fix">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th><a href="/ranking/name">Name</a></th>
+									<th><a href="/ranking/uri">URI</a></th>
+									<th><a href="/ranking/uva">UVA</a></th>
+									<th><a href="/ranking/spoj">SPOJ</a></th>
+									<th><a href="/ranking/contests">Contests</a></th>
+									<th><a href="/ranking/all">All</a></th>
+									<th class="glyphicon glyphicon-sort"></th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for profile in profiles %}
+								<tr>
+									<th>{{ forloop.counter }}</th>
+									<td><a href="/users/{{ profile.id }}">{{ profile.name }}</a></td>
+									<td>{{ profile.uri }}</td>
+									<td>{{ profile.uva }}</td>
+									<td>{{ profile.spoj }}</td>
+									<td>{{ profile.contests }}</td>
+									<td>{{ profile.all }}</td>
+									<th style="color: #1bc98e">+1</th>
+								</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock container %}
