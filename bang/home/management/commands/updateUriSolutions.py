@@ -5,6 +5,7 @@ from .uri import Uri
 class Command(BaseCommand):
 	def handle(self, *args, **options):
 		for profile in Profile.objects.all():
+			print(profile.name)
 			u = Uri(profile.uriId)
 
 			for s in u.getSolutions():
@@ -18,3 +19,4 @@ class Command(BaseCommand):
 				solution.problem = problem
 				solution.profile = profile
 				solution.save()
+			print()

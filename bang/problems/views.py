@@ -4,13 +4,13 @@ from home.models import Solution, Problem
 # Create your views here.
 
 def uri():
-	return Solution.objects.filter(problem__judge='uri').order_by('problem__code')
+	return Solution.objects.filter(problem__judge='uri').order_by('problem__code').distinct('problem__code')
 
 def uva():
-	return Solution.objects.filter(problem__judge='uva').order_by('problem__code')
+	return Solution.objects.filter(problem__judge='uva').order_by('problem__code').distinct('problem__code')
 
 def spoj():
-	return Solution.objects.filter(problem__judge='spoj').order_by('problem__code')
+	return Solution.objects.filter(problem__judge='spoj').order_by('problem__code').distinct('problem__code')
 
 def problems(request):
 	context = {

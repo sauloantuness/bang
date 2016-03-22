@@ -17,7 +17,7 @@ def logout(request):
 
 def group():
 	return {
-		'uri' : Solution.objects.filter(problem__judge='uri').count(),
+		'uri' : Solution.objects.filter(problem__judge='uri').distinct('problem').count(),
 		'uva' : 0,
 		'spoj' : 0,
 	}
@@ -43,18 +43,16 @@ def historic():
 	}
 
 def trends():
-	return [
-		{
-			'name' : 'Saulo Antunes',
-			'profileId' : 1
-		},
-	]
+	d = datetime.now()
+	d = d - timedelta(days=7)
+
+	return Profile.objects.filter(solution__date__gt=d).annotate(num_solutions=Count('solution')).order_by('-num_solutions')[:5]
 
 def events():
 	return [
 		{
-			'date' : '01/09/1991',
-			'description' : 'lorem ipsum'	
+			'date' : '04/06/2016',
+			'description' : 'Maratona Mineira'	
 		},
 	]
 

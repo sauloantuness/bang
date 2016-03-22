@@ -6,9 +6,11 @@
 		<tbody>
 			{% for t in trends %}
 				<tr>
-					<td><a href="#">{{ t.name }}</a></td>
-				</tr>	
-			{% endfor %}
-		</tbody>
+					<td>
+						<a href="#">{{ t.name }}</a>
+						<span class="badge pull-right" title="Problems solved last week">{{ t.num_solutions }}</span>
+					</td>
+				</tr	
+			{% endfor %}		</tbody>
 	</table>
 </div>
