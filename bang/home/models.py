@@ -57,3 +57,28 @@ class Solution(models.Model):
     def __str__(self):
         return "{0}: {1}".format(self.profile.user.username, self.problem.code)
 
+class Contest(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateTimeField()
+    duration = models.IntegerField()
+    owner = models.ForeignKey(Profile)
+    users = models.ManyToManyField(Profile, related_name='contests')
+    problems = models.ManyToManyField(Problem)
+    B = models.IntegerField(default=0)
+    A = models.IntegerField(default=0)
+    S = models.IntegerField(default=0)
+    D = models.IntegerField(default=0)
+    M = models.IntegerField(default=0)
+    G = models.IntegerField(default=0)
+    P = models.IntegerField(default=0)
+    C = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+class Participate(models.Model):
+    profile = models.ForeignKey(Profile)
+    contest = models.ForeignKey(Contest)
+
+    def __str__(self):
+        return self.name

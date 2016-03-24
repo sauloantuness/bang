@@ -13,7 +13,7 @@ class Command(BaseCommand):
 
 			problem.code = p['code']
 			problem.name = p['name']
-			problem.category = p['category']
+			problem.category = p['category'][0]
 			problem.solved = p['solved']
 			problem.level = p['level']
 			problem.judge = 'uri'

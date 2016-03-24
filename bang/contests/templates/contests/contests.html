@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Contests
+{% endblock title %}
+
+{% block container %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="/contests/new" class="btn btn-default pull-right">New Contest</a>
+					<h5>Contests</h5>
+				</div>
+				<div class="panel-body text-center">
+					<div class="row">
+						{% for contest in contests %}
+							<div class="col-xs-12 col-sm-6 col-md-4">
+								<a href="/contests/{{ contest.contest.id }}" class="thumbnail contests-card">
+									<h3>{{ contest.contest.name }}</h3>
+									<div>
+										<span title="Users" class="pe-7s-users"></span><b>{{ contest.users }}</b><i>|</i>
+										<span title="Problems" class="pe-7s-flag"></span><b>{{ contest.problems }}</b><i>|</i>
+										<span title="Duration" class="pe-7s-clock"></span><b>{{ contest.contest.duration }}</b>
+									</div>
+									<span class="{{ contest.status }}"></span>
+								</a>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock container %}

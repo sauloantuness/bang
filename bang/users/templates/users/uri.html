@@ -6,7 +6,7 @@
 		<ul class="list-inline">
 			{% for s in uri %}
 				<li>
-					<a href="{{ s.problem.id }}" title="{{ s.problem.name }}">{{ s.problem.code }}</a>
+					<a href="/problems/{{ s.problem.id }}" title="{{ s.problem.name }}">{{ s.problem.code }}</a>
 				</li>	
 			{% endfor %}
 	</div>

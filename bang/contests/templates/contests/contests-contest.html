@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block title %}
+	Contest
+{% endblock title %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="btn-group pull-right">
+						{% if contest.owner == user.profile %}
+					    	<a href="/contests/edit/{{ contest.id }}" class="btn btn-default">Edit</a>
+						{% endif %}
+
+				    	{% if user.profile in contest.users.all %}
+				    		<a href="/contests/leave/{{ contest.id }}" class="btn btn-default">Leave</a>
+				    	{% else %}
+				    		<a href="/contests/join/{{ contest.id }}" class="btn btn-default">Join</a>
+				    	{% endif %}
+						</div>
+
+						<h5>{{ contest.name }}</h5>
+					</div>
+					<div class="panel-body">
+						<dl class="dl-horizontal dl-fix pull-left">
+							<dt>Owner:</dt>
+							<dd><a href="#">{{ contest.owner.name }}</a></dd>
+							<dt>Starts:</dt>
+							<dd>{{ contest.date }}</dd>
+							<dt>Duration:</dt>
+							<dd>{{ contest.duration }} minutes</dd>
+						</dl>
+							<div class="thumbnail thumbnail-fix text-center pull-right">
+								<span>Starts in</span>
+								<!-- <small>Termina em</small> -->
+								<!-- <h4>Finalizado</h4> -->
+								<h4>04:10:30</h4>
+							</div>
+						<!-- {# <div class="thumbnail thumbnail-fix pull-right"> #} -->
+						<!-- {# </div> #} -->
+					</div>
+					<table class="table table-fix">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>User</th>
+								<th>Solved</th>
+								<th>Time</th>
+								{% for problem in problems %}
+									<th title="{{ problem.judge | upper }} {{ problem.code }} - {{ problem.name }}">
+										<a target="_blank" href="https://www.urionlinejudge.com.br/judge/en/problems/view/{{ problem.code }}">{{ problem.code }}</a>
+									</th>
+								{% endfor %}
+							</tr>
+						</thead>
+						<tbody>
+
+							{% for score in scores %}
+								<tr>
+									<td>{{ forloop.counter }}</td>
+									<td>
+										<a href="/users/{{ score.profile.user.id }}">{{ score.profile.name }}</a>
+									</td>
+									<td>{{ score.solved }}</td>
+									<td>{{ score.time }}</td>
+									{% for solution in score.solutions %}
+										<td>{{ solution }}</td>
+									{% endfor %}
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock container %}

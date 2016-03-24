@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'problems.apps.ProblemsConfig',
     'users.apps.UsersConfig',
     'ranking.apps.RankingConfig',
+    'contests.apps.ContestsConfig',
 ]
 
 MIDDLEWARE_CLASSES = [

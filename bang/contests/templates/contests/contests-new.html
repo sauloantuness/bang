@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+	New Contest
+{% endblock title %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>New Contest</h5>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<form action="/contests/new/" method="POST" class="form-horizontal">
+								{% csrf_token %}
+								<div class="col-sm-6">
+									<div class="form-group">
+										<label class="col-xs-4 control-label">Contest Name</label>
+										<div class="col-xs-8">
+											<input type="text" autocomplete="off" class="form-control" placeholder="My Contest" name="name" required autofocus=>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-4 control-label">Date</label>
+										<div class="col-xs-8">
+											<input type="date" class="form-control" name="date" min="2016-03-01" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-4 control-label">Time</label>
+										<div class="col-xs-8">
+											<input type="time" class="form-control" name="time" required>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-4 control-label">Duration</label>
+										<div class="col-xs-8">
+											<input type="number" step=15 class="form-control" placeholder="120" name="duration" min=0 required>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<ul class="list-group">
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="B" value='0' min=0 required>
+											</div>
+											Beginner
+										</li>
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="A" value='0' min=0 required>
+											</div>
+											Ad-Hoc
+										</li>
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="S" value='0' min=0 required>
+											</div>
+											Strings
+										</li>
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="D" value='0' min=0 required>
+											</div>
+											Data Structures and Libraries
+										</li>
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="M" value='0' min=0 required>
+											</div>
+											Mathematics
+										</li>
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="P" value='0' min=0 required>
+											</div>
+											Paradigms
+										</li>
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="G" value='0' min=0 required>
+											</div>
+											Graph
+										</li>
+										<li class="list-group-item">
+											<div class="btn-group btn-group-xs pull-right" role="group" >
+												<input type="number" class="btn btn-default category" name="C" value='0' min=0 required>
+											</div>
+											Computational Geometry
+										</li>
+									</ul>
+								</div>
+								<div class="form-group">
+								    <div class="col-xs-offset-4 col-xs-4">
+								      <button type="submit" class="btn btn-default btn-block">Create</button>
+								    </div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock container %}

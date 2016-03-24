@@ -169,6 +169,10 @@
 	margin-bottom: 10px;
 }
 
+.running:before {
+	content: "Running";
+}
+
 .running {
 	color: #1bc98e;
 	border: 1px solid #1bc98e;
@@ -176,6 +180,10 @@
 .running:hover {
 	background-color: #1bc98e;
 	color: #FFF;
+}
+
+.ended:before {
+	content: "Ended";
 }
 
 .ended {
@@ -186,6 +194,10 @@
 .ended:hover {
 	background-color: #e64759;
 	color: #FFF;
+}
+
+.waiting:before {
+	content: "Waiting";
 }
 
 .waiting {
@@ -214,8 +226,13 @@
 	margin-bottom: 0;
 }
 
-
 /*fim contests-contest*/
+
+/*inicio contests-new*/
+.category {
+	width: 4em;
+}
+/*fim contests-new*/
 
 /*inicio users-user-chart*/
 .chart{
