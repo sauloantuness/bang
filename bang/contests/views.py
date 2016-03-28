@@ -4,6 +4,23 @@ from datetime import datetime, timedelta
 
 # Create your views here.
 
+def selectProblems(contest):
+	contest.problems.clear()
+	categories = ['A', 'B', 'S', 'D', 'M', 'G', 'P', 'C']
+	users = contest.users.all()
+	solutions = Solution.objects.filter(profile__in=users)
+	problems = Problem.objects.exclude(solution__in=solutions)
+
+	for category in categories:
+		amount = contest.__dict__[category]
+		for problem in problems.filter(category=category).order_by('-solved')[:amount]:
+			contest.problems.add(problem)
+			print(problem)
+
+def contestsDelete(request, contest_id):
+	c = Contest.objects.get(id=contest_id).delete()
+	return redirect('/contests/')
+
 def contestsLeave(request, contest_id):
 	c = Contest.objects.get(id=contest_id)
 	p = Profile.objects.get(user=request.user)
@@ -16,13 +33,14 @@ def contestsJoin(request, contest_id):
 	c.users.add(p)
 	c.save()
 
+	selectProblems(contest)
+
 	return redirect('/contests/' + contest_id + '/')
 
-
-from operator import itemgetter as i
-from functools import cmp_to_key
-
 def sortkeypicker(keynames):
+	from operator import itemgetter as i
+	from functools import cmp_to_key
+
 	negate = set()
 	for i, k in enumerate(keynames):
 		if k[:1] == '-':
@@ -37,6 +55,7 @@ def sortkeypicker(keynames):
 	return getit
 
 def contestsContest(request, contest_id):
+	
 	context = {
 		'contest' : Contest.objects.get(id=contest_id),
 		'problems' : Problem.objects.filter(contest__id=contest_id),
