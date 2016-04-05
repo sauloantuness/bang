@@ -1,7 +1,7 @@
 import requests
 import json
 from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timedelta
 import pprint
 class Uri():
 	def __init__(self, id=None):
@@ -36,6 +36,7 @@ class Uri():
 		code = tds[0].getText().strip()
 		date = tds[6].getText().strip()
 		date = datetime.strptime(date, '%m/%d/%y, %I:%M:%S %p')
+		date = date - timedelta(hours=4)
 
 		solution = {
 			'code': code,

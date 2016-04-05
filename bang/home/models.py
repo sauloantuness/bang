@@ -76,9 +76,16 @@ class Contest(models.Model):
     def __str__(self):
         return self.name
 
-class Participate(models.Model):
-    profile = models.ForeignKey(Profile)
-    contest = models.ForeignKey(Contest)
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    profiles = models.ManyToManyField(Profile)
 
     def __str__(self):
         return self.name
+
+class Invite(models.Model):
+    profile = models.ForeignKey(Profile)
+    team = models.ForeignKey(Team)
+
+    def __str__(self):
+        return self.team.name + ' - ' + self.profile.name

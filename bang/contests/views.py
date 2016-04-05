@@ -25,6 +25,9 @@ def contestsLeave(request, contest_id):
 	c = Contest.objects.get(id=contest_id)
 	p = Profile.objects.get(user=request.user)
 	c.users.remove(p)
+
+	selectProblems(c)
+
 	return redirect('/contests/' + contest_id + '/')
 
 def contestsJoin(request, contest_id):
@@ -33,7 +36,7 @@ def contestsJoin(request, contest_id):
 	c.users.add(p)
 	c.save()
 
-	selectProblems(contest)
+	selectProblems(c)
 
 	return redirect('/contests/' + contest_id + '/')
 
@@ -56,18 +59,17 @@ def sortkeypicker(keynames):
 
 def contestsContest(request, contest_id):
 	
-	context = {
-		'contest' : Contest.objects.get(id=contest_id),
-		'problems' : Problem.objects.filter(contest__id=contest_id),
-		'scores' : []
-	}
 	contest = Contest.objects.get(id=contest_id)
-	profiles = Profile.objects.filter(contests__id=contest_id)
 	problems = Problem.objects.filter(contest__id=contest_id)
-	solutions = Solution.objects.filter(problem__in=problems, profile__in=profiles)
+	context = {
+		'contest' : contest,
+		'problems' : problems,
+		'scores' : [],
+		'contestStatus' : status(contest),
+	}
 
-	if request.user.profile.contests.filter(id=contest_id):
-		print('esta aqui ')
+	profiles = Profile.objects.filter(contests__id=contest_id)
+	solutions = Solution.objects.filter(problem__in=problems, profile__in=profiles)
 
 	for profile in profiles:
 		score = {
@@ -76,6 +78,7 @@ def contestsContest(request, contest_id):
 			'solved' : 0,
 			'time' : 0
 		}
+
 		for problem in problems:
 			try:
 				solution = solutions.get(profile=profile, problem=problem)

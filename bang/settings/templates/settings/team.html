@@ -1,0 +1,46 @@
+{% for team in teams %}
+	<div class="row">
+		<div class="form-group col-sm-3">
+			<label>Team Name</label>
+			<input type="text" class="form-control" placeholder="My Team Name" value="{{ team.name }}">
+		</div>
+
+		<div class="form-group col-sm-3">
+			<label>User</label>
+			<select name="{{ team.id }}-profile-1" class="form-control">
+				<option disabled selected value="">Select the user</option>
+				{% for p in profiles %}
+					{% if p != profile %}
+						{% if p == team.profiles.all.0 %}
+							<option selected value="{{ p.id }}">{{ p.name }}</option>
+						{% else %}
+							<option value="{{ p.id }}">{{ p.name }}</option>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="form-group col-sm-3">
+			<label>User</label>
+			<select name="{{ team.id }}-profile-2" class="form-control">
+				<option disabled selected value="">Select the user</option>
+				{% for p in profiles %}
+					{% if p != profile %}
+						{% if p == team.profiles.all.1 or p == team.profiles.all.2 %}
+							<option selected value="{{ p.id }}">{{ p.name }}</option>
+						{% else %}
+							<option value="{{ p.id }}">{{ p.name }}</option>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div class="col-sm-3" style="margin-top:5px">
+			<br>
+			<a href="/teams/leave/{{ team.id }}" class="btn btn-default">Leave</a>
+			<a href="/teams/delete/{{ team.id }}" class="btn btn-danger">Delete</a>
+		</div>
+	</div>
+{% endfor %}
