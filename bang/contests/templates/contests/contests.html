@@ -15,16 +15,22 @@
 				</div>
 				<div class="panel-body text-center">
 					<div class="row">
-						{% for contest in contests %}
+						{% for c in contests %}
 							<div class="col-xs-12 col-sm-6 col-md-4">
-								<a href="/contests/{{ contest.contest.id }}" class="thumbnail contests-card">
-									<h3>{{ contest.contest.name }}</h3>
-									<div>
-										<span title="Users" class="pe-7s-users"></span><b>{{ contest.users }}</b><i>|</i>
-										<span title="Problems" class="pe-7s-flag"></span><b>{{ contest.problems }}</b><i>|</i>
-										<span title="Duration" class="pe-7s-clock"></span><b>{{ contest.contest.duration }}</b>
+								<a href="/contests/{{ c.contest.id }}" class="thumbnail contests-card">
+									<h3>{{ c.contest.name }}</h3>
+									<div class="contests-info">
+										<div title="Users">
+											<span class="pe-7s-users"></span><b>{{ c.num_profiles }}</b><i>|</i>
+										</div>
+										<div title="Problems">
+											<span class="pe-7s-flag"></span><b>{{ c.num_problems }}</b><i>|</i>
+										</div>
+										<div title="Duration">
+											<span class="pe-7s-clock"></span><b>{{ c.contest.duration }}</b>
+										</div>
 									</div>
-									<span class="{{ contest.status }}"></span>
+									<span class="{{ c.contest.getStatus }}"></span>
 								</a>
 							</div>
 						{% endfor %}

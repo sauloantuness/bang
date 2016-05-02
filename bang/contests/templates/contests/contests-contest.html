@@ -8,20 +8,20 @@
 
 {% block container %}
 	<script>
-		var duration = {{ contest.duration }};
+		var duration = {{ contest.duration }} * 60000;
 		var startTime = new Date("{{ contest.date.timestamp }}" * 1000);
-		var endTime = new Date(startTime.getTime() + duration * 60000)
+		var endTime = new Date(startTime.getTime() + duration)
 		var now = new Date()
-		var contestStatus;
+		var status;
 
 		if(now < startTime){
-			contestStatus = 'waiting';
+			status = 'waiting';
 			duration = (startTime - now) / 1000;
 		}
 		else if(now > endTime)
-			contestStatus = 'ended';
+			status = 'ended';
 		else{
-			contestStatus = 'running';
+			status = 'running';
 			duration = (endTime - now) / 1000;
 		}
 
@@ -48,7 +48,7 @@
 
 		window.onload = function () {
 		    var display = document.querySelector('#time');
-		    if(contestStatus == 'waiting' || contestStatus == 'running')
+		    if(status == 'waiting' || status == 'running')
 		    	startTimer(duration, display);
 		};
 	</script>
@@ -59,15 +59,17 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="btn-group pull-right">
-						{% if contest.owner == user.profile %}
-					    	<a href="/contests/edit/{{ contest.id }}" class="btn btn-default">Edit</a>
-						{% endif %}
+							{% if contest.owner == user.profile and contest.getStatus != 'ended' %}
+						    	<a href="/contests/edit/{{ contest.id }}" class="btn btn-default">Edit</a>
+							{% endif %}
 
-				    	{% if user.profile in contest.users.all %}
-				    		<a href="/contests/leave/{{ contest.id }}" class="btn btn-default">Leave</a>
-				    	{% else %}
-				    		<a href="/contests/join/{{ contest.id }}" class="btn btn-default">Join</a>
-				    	{% endif %}
+						{% if contest.getStatus != 'ended' %}
+					    	{% if user.profile in contest.profiles.all and contest.getStatus == 'waiting' %}
+					    		<a href="/contests/leave/{{ contest.id }}" class="btn btn-default">Leave</a>
+					    	{% elif contest.getStatus == 'waiting' %}
+					    		<a href="/contests/join/{{ contest.id }}" class="btn btn-default">Join</a>
+					    	{% endif %}
+						{% endif %}
 						</div>
 
 						<h5>{{ contest.name }}</h5>
@@ -75,16 +77,16 @@
 					<div class="panel-body">
 						<dl class="dl-horizontal dl-fix pull-left">
 							<dt>Owner:</dt>
-							<dd><a href="#">{{ contest.owner.name }}</a></dd>
+							<dd><a href="/users/profile/{{ contest.owner.id }}">{{ contest.owner.name }}</a></dd>
 							<dt>Starts:</dt>
 							<dd>{{ contest.date }}</dd>
 							<dt>Duration:</dt>
 							<dd>{{ contest.duration }} minutes</dd>
 						</dl>
 							<div class="thumbnail thumbnail-fix text-center pull-right">
-								{% if contestStatus == 'waiting' %}
+								{% if contest.getStatus == 'waiting' %}
 									<span>Starts in</span>
-								{% elif contestStatus == 'running' %}
+								{% elif contest.getStatus == 'running' %}
 									<span>Ends in</span>
 								{% else %}
 									<span>Ended</span>
@@ -99,17 +101,21 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>User</th>
+									{% if contest.team %}
+										<th>Team</th>
+									{% else %}
+										<th>User</th>
+									{% endif %}
 									<th>Solved</th>
 									<th>Time</th>
 									{% for problem in problems %}
-										{% if contestStatus == 'waiting' %}
+										{% if contest.getStatus == 'waiting' %}
 											<th title="URI 0000 - Comming">
 											<a target="_blank" href="#">????</a>
 										</th>
 										{% else %}
 										<th title="{{ problem.judge | upper }} {{ problem.code }} - {{ problem.name }}">
-											<a target="_blank" href="https://www.urionlinejudge.com.br/judge/en/problems/view/{{ problem.code }}">{{ problem.code }}</a>
+											<a target="_blank" href="{{ problem.getJudgeLink }}">{{ problem.code }}</a>
 										</th>
 										{% endif %}
 									{% endfor %}
@@ -121,7 +127,11 @@
 									<tr>
 										<td>{{ forloop.counter }}</td>
 										<td>
-											<a href="/users/{{ score.profile.user.id }}">{{ score.profile.name }}</a>
+											{% if contest.team %}
+												<a href="/teams/{{ score.team.id }}">{{ score.team.name }}</a>
+											{% else %}
+												<a href="/users/profile/{{ score.profile.id }}">{{ score.profile.name }}</a>
+											{% endif %}
 										</td>
 										<td>{{ score.solved }}</td>
 										<td>{{ score.time }}</td>

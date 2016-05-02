@@ -9,6 +9,9 @@ class Uri():
 		self.baseUrl = "https://www.urionlinejudge.com.br"
 		self.userUrl  = self.baseUrl + "/judge/en/profile/%s?sort=updatetime&direction=desc&page=" % id
 		self.judgeUrl = self.baseUrl + "/judge/en/problems/all?page=" 
+		self.page = 1
+		self.done = False
+		self.new = 0
 
 	# From a tr tag, get the content of the problem 
 	def decodeProblem(self, tr):
@@ -47,33 +50,33 @@ class Uri():
 
 	# Get the problems from a html page from uri.
 	def fetchProblems(self, url, decodeFunc):
-		pageNumber = 1
 		problems = []
+
 		session = requests.Session()
+		response = session.get(url + str(self.page))
+		if response.status_code != requests.codes.ok:
+			return problems
 
-		while True:
-			response = session.get(url + str(pageNumber))
-			if response.status_code != requests.codes.ok:
-				break;
-			print('Page: %d' % pageNumber)	
-			pageNumber += 1
+		print('Page: %d' % self.page)	
+		self.page += 1
 
-			html = BeautifulSoup(response.text, 'html5lib')
-			table = html.find('tbody')
+		html = BeautifulSoup(response.text, 'html5lib')
+		table = html.find('tbody')
 
-			for tr in table.findAll('tr'):
-				try:
-					problems.append(decodeFunc(tr))
+		for tr in table.findAll('tr'):
+			try:
+				problems.append(decodeFunc(tr))
 
-				# Last problem
-				except IndexError:
-					return problems
+			# Last problem
+			except IndexError:
+				return problems
 
 		return problems
 
 	def getSolutions(self):
 		if not self.id:
-			raise NameError("User not defined.")
+			print("User not defined.")
+			return []
 		else:
 			return self.fetchProblems(self.userUrl, self.decodeSolution)
 

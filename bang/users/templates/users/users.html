@@ -11,13 +11,13 @@
 					<div class="panel-body">
 						<div class="row">
 
-							{% for user in users %}
+							{% for p in profiles %}
 								<div class="col-xs-12 col-sm-6 col-md-4">
-									<a href="/users/{{user.profile.user.id}}" class="thumbnail card clearfix">
-										<img src="{{ user.profile.picture }}" alt="">
+									<a href="/users/profile/{{p.profile.id}}" class="thumbnail card clearfix">
+										<img src="{{ p.profile.picture }}" alt="">
 										<div>
-											<h4>{{ user.profile.name }}</h4>
-											<h6><b>{{ user.solutions }}</b> Problems</h6>
+											<h4>{{ p.profile.name }}</h4>
+											<h6><b>{{ p.solutions }}</b> Problems</h6>
 											<br>
 										</div>
 									</a>

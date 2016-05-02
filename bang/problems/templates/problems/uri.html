@@ -1,12 +1,15 @@
 <div class="panel panel-default">
-	<div class="panel-heading">
+	<div id="uri" class="panel-heading">
 		<h5>URI</h5>
 	</div>
 	<div class="panel-body">
-		<ul class="list-inline">
-			{% for s in uri %}
+		{% if not uri %}
+			No problems yet.
+		{% endif %}
+		<ul class="list-inline list-inline-fix">
+			{% for p in uri %}
 				<li>
-					<a href="{{ s.problem.id }}" title="{{ s.problem.name }}">{{ s.problem.code }}</a>
+					<a href="/problems/{{ p.problem.id }}" title="{{ p.problem.name }}">{{ p.problem.code }}</a>
 				</li>	
 			{% endfor %}
 	</div>

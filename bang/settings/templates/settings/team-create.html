@@ -1,0 +1,36 @@
+<h3>New Team</h3>
+<hr>
+<div class="row">
+	<form action="/settings/" method="POST">
+		{% csrf_token %}
+		<div class="form-group col-sm-3">
+			<label>Team Name</label>
+			<input type="text" class="form-control" name="name" placeholder="My Team Name">
+		</div>
+
+		<div class="form-group col-sm-3">
+			<label>User</label>
+			<select name="profile-id" class="form-control">
+				<option selected value=""></option>
+				{% for p in profiles %}
+					<option value="{{ p.id }}">{{ p.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+		
+		<div class="form-group col-sm-3">
+			<label>User</label>
+			<select name="profile-id" class="form-control">
+				<option selected value=""></option>
+				{% for p in profiles %}
+					<option value="{{ p.id }}">{{ p.name }}</option>
+				{% endfor %}
+			</select>
+		</div>
+
+		<div class="col-sm-3">
+			<br>
+			<button type="submit" class="btn btn-default btn-form-fix" name="team-create">Create</button>
+		</div>
+	</form>
+</div>

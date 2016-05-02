@@ -15,7 +15,7 @@
 		<tbody>
 			{% for solution in recentlySolved %}
 				<tr>
-					<td><a href="/users/{{ solution.profile.id }}">{{ solution.profile.name }}</a></td>
+					<td><a href="/users/profile/{{ solution.profile.id }}">{{ solution.profile.name }}</a></td>
 					<td><a href="/problems/{{ solution.problem.id }}">{{ solution.problem.judge | upper }} {{ solution.problem.code }} - {{ solution.problem.name }}</a></td>
 					<td>{{ solution.date | naturaltime }}</td>
 				</tr>	

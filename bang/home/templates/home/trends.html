@@ -4,13 +4,14 @@
 	</div>
 	<table class="table">
 		<tbody>
-			{% for t in trends %}
+			{% for profile in trends.profiles %}
 				<tr>
 					<td>
-						<a href="/users/{{ t.id }}">{{ t.name }}</a>
-						<span class="badge pull-right" title="Problems solved last week">{{ t.num_solutions }}</span>
+						<a href="/users/profile/{{ profile.id }}">{{ profile.name }}</a>
+						<span class="badge pull-right" title="Problems solved last week">{{ profile.num_solutions }}</span>
 					</td>
-				</tr	
-			{% endfor %}		</tbody>
+				</tr>
+			{% endfor %}
+		</tbody>
 	</table>
 </div>

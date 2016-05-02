@@ -1,0 +1,17 @@
+{% for team in teams %}
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h5>{{ team.name }}</h5>
+		</div>
+		<div class="panel-body">
+			<div class="row perfil-time">
+				{% for profile in team.profiles.all %}
+					<a href="/users/profile/{{ profile.id }}" class="col-xs-4">
+						<img src="{{ profile.picture }}" class="img-circle">
+						<span>{{ profile.user.first_name }}</span>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endfor %}

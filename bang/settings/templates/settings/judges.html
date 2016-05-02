@@ -1,0 +1,23 @@
+<h3>Judges</h3>
+<hr>
+<div class="row">
+	<form action="/settings/" method="POST">
+		{% csrf_token %}
+		<div class="form-group col-sm-3">
+			<label>URI</label>
+			<input type="text" class="form-control" placeholder="39764" name="uriId" value='{{ profile.uriId }}'>
+		</div>
+		<div class="form-group col-sm-3">
+			<label>UVA</label>
+			<input type="text" class="form-control" placeholder="703913" name="uvaId" value='{{ profile.uvaId }}'>
+		</div>
+		<div class="form-group col-sm-3">
+			<label>SPOJ</label>
+			<input type="text" class="form-control" placeholder="myusername" name="spojId" value='{{ profile.spojId }}'>
+		</div>
+		<div class="form-group col-sm-3">
+			<br>
+			<button type="submit" class="btn btn-default btn-form-fix" name="judges">Save</button>
+		</div>
+	</form>
+</div>

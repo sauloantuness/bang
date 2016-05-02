@@ -169,6 +169,10 @@
 	margin-bottom: 10px;
 }
 
+.contests-info > div {
+	display: inline;
+}
+
 .running:before {
 	content: "Running";
 }
@@ -296,8 +300,20 @@
 }
 /*fim home*/
 
+/*inicio problems*/
+.list-inline-fix > li{
+	min-width: 50px;
+}
+/*fim problems*/
+
 /*inicio problems-problem*/
 .table-fix-1 td:nth-child(1){
 	text-align: left;
 }
-/*inicio problems-problem*/
+/*fim problems-problem*/
+
+/*inicio settings*/
+.btn-form-fix {
+	margin-top: 5px;
+}
+/*fim settings*/

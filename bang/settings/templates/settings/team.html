@@ -1,46 +1,55 @@
+{% if teams %}
+	<h3>Teams</h3>
+	<hr>
+{% endif %}
+
 {% for team in teams %}
 	<div class="row">
-		<div class="form-group col-sm-3">
-			<label>Team Name</label>
-			<input type="text" class="form-control" placeholder="My Team Name" value="{{ team.name }}">
-		</div>
+		<form action="/settings/" method="POST">
+			{% csrf_token %}
+			<input type="hidden" name="id" value="{{ team.id }}">
+			<div class="form-group col-sm-3">
+				<label>Team Name</label>
+				<input type="text" class="form-control" name="name" placeholder="My Team Name" value="{{ team.name }}">
+			</div>
 
-		<div class="form-group col-sm-3">
-			<label>User</label>
-			<select name="{{ team.id }}-profile-1" class="form-control">
-				<option disabled selected value="">Select the user</option>
-				{% for p in profiles %}
-					{% if p != profile %}
-						{% if p == team.profiles.all.0 %}
+			<div class="form-group col-sm-3">
+				<label>User</label>
+				<select name="profile-id" class="form-control">
+					<option selected value=""></option>
+					{% for p in profiles %}
+						{% if p == team.profiles.0 %}
 							<option selected value="{{ p.id }}">{{ p.name }}</option>
+						{% elif p == team.invites.1.profile %}
+							<option selected value="{{ p.id }}">{{ p.name }} (invited)</option>
 						{% else %}
 							<option value="{{ p.id }}">{{ p.name }}</option>
 						{% endif %}
-					{% endif %}
-				{% endfor %}
-			</select>
-		</div>
+					{% endfor %}
+				</select>
+			</div>
 
-		<div class="form-group col-sm-3">
-			<label>User</label>
-			<select name="{{ team.id }}-profile-2" class="form-control">
-				<option disabled selected value="">Select the user</option>
-				{% for p in profiles %}
-					{% if p != profile %}
-						{% if p == team.profiles.all.1 or p == team.profiles.all.2 %}
+			<div class="form-group col-sm-3">
+				<label>User</label>
+				<select name="profile-id" class="form-control">
+					<option selected value=""></option>
+					{% for p in profiles %}
+						{% if p == team.profiles.1 %}
 							<option selected value="{{ p.id }}">{{ p.name }}</option>
+						{% elif p == team.invites.0.profile %}
+							<option selected value="{{ p.id }}">{{ p.name }} (invited)</option>
 						{% else %}
 							<option value="{{ p.id }}">{{ p.name }}</option>
 						{% endif %}
-					{% endif %}
-				{% endfor %}
-			</select>
-		</div>
-		
-		<div class="col-sm-3" style="margin-top:5px">
-			<br>
-			<a href="/teams/leave/{{ team.id }}" class="btn btn-default">Leave</a>
-			<a href="/teams/delete/{{ team.id }}" class="btn btn-danger">Delete</a>
-		</div>
+					{% endfor %}
+				</select>
+			</div>
+
+			<div class="col-sm-3">
+				<br>
+				<button type="submit" class="btn btn-default btn-form-fix" name="team-leave">Leave</button>
+				<button type="submit" class="btn btn-default btn-form-fix" name="team-update">Save</button>
+			</div>
+		</form>
 	</div>
 {% endfor %}

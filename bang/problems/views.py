@@ -7,7 +7,7 @@ def uri():
 	return Solution.objects.filter(problem__judge='uri').order_by('problem__code').distinct('problem__code')
 
 def uva():
-	return Solution.objects.filter(problem__judge='uva').order_by('problem__code').distinct('problem__code')
+	return Solution.objects.filter(problem__judge='uva').order_by('problem__number').distinct('problem__number')
 
 def spoj():
 	return Solution.objects.filter(problem__judge='spoj').order_by('problem__code').distinct('problem__code')
@@ -25,7 +25,7 @@ def problem(request, problem_id):
 	solutions = Solution.objects.filter(problem__id=problem_id)
 	problem = solutions[0].problem
 	context = {
-		'solutions' : solutions,
 		'problem' : problem,
+		'solutions' : solutions,
 	} 
 	return render(request, 'problems/problem.html', context)

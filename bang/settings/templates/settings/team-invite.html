@@ -1,3 +1,8 @@
+{% if invites %}
+	<h3>Invites</h3>
+	<hr>
+{% endif %}
+
 {% for invite in invites %}
 	<div class="alert alert-warning">
 		You are part of the <strong>{{ invite.team.name }}</strong> team? 

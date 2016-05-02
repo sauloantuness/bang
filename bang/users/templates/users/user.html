@@ -5,15 +5,15 @@
 		<div class="row">
 			<div class="col-md-4">
 				{% include "users/profile.html" %}
-				{# {% include "users/team.html" %} #}
+				{% include "users/teams.html" %}
 			</div>
 
 			<div class="col-md-8">
 				{% include "users/historic.html" %}
 				{% include "users/recentlySolved.html" %}
-				{% include "users/uri.html" %}
-				{% include "users/uva.html" %}
-				{% include "users/spoj.html" %}
+				{% include "problems/uri.html" %}
+				{% include "problems/uva.html" %}
+				{% include "problems/spoj.html" %}
 			</div>
 		</div>	
 	</div>

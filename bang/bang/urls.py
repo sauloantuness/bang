@@ -15,18 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from home import views
 
 urlpatterns = [
-	url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^admin/', admin.site.urls),
-	url(r'^login/$', views.login, name='login'),
-    url(r'^logout/', views.logout, name='logout'),
-    url(r'^settings/', include('settings.urls')),
-    url(r'^problems/', include('problems.urls')),
-    url(r'^users/', include('users.urls')),
-    url(r'^ranking/', include('ranking.urls')),
-    url(r'^teams/', include('teams.urls')),
-    url(r'^contests/', include('contests.urls')),
-    url(r'', include('home.urls')),
+    url(r'^admin/',     admin.site.urls),
+    url('',             include('social.apps.django_app.urls', namespace='social')),
+    
+    url(r'',            include('home.urls')),
+    url(r'^settings/',  include('settings.urls')),
+    url(r'^problems/',  include('problems.urls')),
+    url(r'^users/',     include('users.urls')),
+    url(r'^ranking/',   include('ranking.urls')),
+    url(r'^teams/',     include('teams.urls')),
+    url(r'^contests/',  include('contests.urls')),
 ]

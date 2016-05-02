@@ -27,20 +27,20 @@
 									<th><a href="/ranking/spoj">SPOJ</a></th>
 									<th><a href="/ranking/contests">Contests</a></th>
 									<th><a href="/ranking/all">All</a></th>
-									<th class="glyphicon glyphicon-sort"></th>
+									<!--<th class="glyphicon glyphicon-sort"></th>-->
 								</tr>
 							</thead>
 							<tbody>
-								{% for profile in profiles %}
+								{% for p in profiles %}
 								<tr>
 									<th>{{ forloop.counter }}</th>
-									<td><a href="/users/{{ profile.id }}">{{ profile.name }}</a></td>
-									<td>{{ profile.uri }}</td>
-									<td>{{ profile.uva }}</td>
-									<td>{{ profile.spoj }}</td>
-									<td>{{ profile.contests }}</td>
-									<td>{{ profile.all }}</td>
-									<th style="color: #1bc98e">+1</th>
+									<td><a href="/users/profile/{{ p.profile.id }}">{{ p.profile.name }}</a></td>
+									<td>{{ p.uri }}</td>
+									<td>{{ p.uva }}</td>
+									<td>{{ p.spoj }}</td>
+									<td>{{ p.contests }}</td>
+									<td>{{ p.all }}</td>
+									<!--<th style="color: #1bc98e">+1</th>-->
 								</tr>
 								{% endfor %}
 							</tbody>

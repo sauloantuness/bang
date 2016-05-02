@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from home.models import Contest, Profile, Problem, Solution
 from datetime import datetime, timedelta
+from home.models import *
+from home.utils import *
 
 # Create your views here.
 
@@ -18,25 +19,22 @@ def selectProblems(contest):
 			print(problem)
 
 def contestsDelete(request, contest_id):
-	c = Contest.objects.get(id=contest_id).delete()
+	Contest.objects.get(id=contest_id).delete()
 	return redirect('/contests/')
 
 def contestsLeave(request, contest_id):
 	c = Contest.objects.get(id=contest_id)
-	p = Profile.objects.get(user=request.user)
-	c.users.remove(p)
-
-	selectProblems(c)
+	c.profiles.remove(request.user.profile)
+	c.setProblems()
 
 	return redirect('/contests/' + contest_id + '/')
 
 def contestsJoin(request, contest_id):
-	p = Profile.objects.get(user=request.user)
 	c = Contest.objects.get(id=contest_id)
-	c.users.add(p)
+	c.profiles.add(request.user.profile)
 	c.save()
 
-	selectProblems(c)
+	c.setProblems()
 
 	return redirect('/contests/' + contest_id + '/')
 
@@ -57,53 +55,108 @@ def sortkeypicker(keynames):
 		return composite
 	return getit
 
-def contestsContest(request, contest_id):
+def evaluateSolution(contest, solution):
+	timeSolution = solution.date - contest.date
+	timeSolution = int(timeSolution.total_seconds()/60)
+	maxTimeToSolution = contest.date + timedelta(minutes=contest.duration)
+	maxTimeToSolution = maxTimeToSolution - contest.date
+	maxTimeToSolution = int(maxTimeToSolution.total_seconds()/60)
+
+	if timeSolution < 0:
+		return 'B'
+	elif timeSolution > maxTimeToSolution:
+		return 'A'
+	else:
+		return timeSolution
 	
+def getSolutionsOfContest(profile, contest):
+	solutions = []
+	for problem in contest.problems.all():
+		try:
+			solution = Solution.objects.get(profile=profile, problem=problem)
+			solutions.append(evaluateSolution(contest, solution))
+
+		except Solution.DoesNotExist:
+			solutions.append("")
+
+	return solutions
+
+def getBestSolutions(solutions, profileSolutions):
+	for i in range(0, len(solutions)):
+		if solutions[i] == "":
+			solutions[i] = profileSolutions[i]
+		
+		elif profileSolutions[i] == "":
+			pass
+
+		elif solutions[i] == "B":
+			pass
+		
+		elif profileSolutions[i] == "B":
+			solutions[i] = profileSolutions[i]
+
+		elif type(profileSolutions[i]) is int:
+			if type(solutions[i]) is int:
+				solutions[i] = min(solutions[i], profileSolutions[i])
+			else:
+				solutions[i] = profileSolutions[i]
+
+	return solutions
+
+
+def getSolutionsOfContestByTeam(team, contest):
+	num_problems = contest.problems.count()
+	solutions = [""] * num_problems
+
+	for profile in team.profiles.all():
+		profileSolutions = getSolutionsOfContest(profile, contest)
+		solutions = getBestSolutions(solutions, profileSolutions)
+
+	return solutions
+
+def countScore(score):
+	for solution in score['solutions']:
+		if type(solution) is int:
+			score['solved'] += 1
+			score['time'] += solution
+
+	return score
+
+def getContestScore(contest):
+	scores = []
+
+	if contest.team:
+		for team in contest.teams.all():
+			score = {
+				'team' : team,
+				'solutions' : getSolutionsOfContestByTeam(team, contest),
+				'solved' : 0,
+				'time' : 0
+			}
+
+			scores.append(countScore(score))
+
+	else:
+		for profile in contest.profiles.all():
+			score = {
+				'profile' : profile,
+				'solutions' : getSolutionsOfContest(profile, contest),
+				'solved' : 0,
+				'time' : 0
+			}
+
+			scores.append(countScore(score))
+
+	scores = sorted(scores, key=sortkeypicker(['-solved', 'time']))
+	return scores
+
+def contestsContest(request, contest_id):
 	contest = Contest.objects.get(id=contest_id)
-	problems = Problem.objects.filter(contest__id=contest_id)
 	context = {
-		'contest' : contest,
-		'problems' : problems,
-		'scores' : [],
-		'contestStatus' : status(contest),
+		'contest'  : contest,
+		'problems' : contest.problems.all(),
+		'scores'   : getContestScore(contest),
 	}
-
-	profiles = Profile.objects.filter(contests__id=contest_id)
-	solutions = Solution.objects.filter(problem__in=problems, profile__in=profiles)
-
-	for profile in profiles:
-		score = {
-			'profile' : profile,
-			'solutions' : [],
-			'solved' : 0,
-			'time' : 0
-		}
-
-		for problem in problems:
-			try:
-				solution = solutions.get(profile=profile, problem=problem)
-				timeSolution =  solution.date - contest.date
-				timeSolution = int(timeSolution.total_seconds()/60)
-				maxTimeToSolution = contest.date + timedelta(minutes=contest.duration)
-				maxTimeToSolution = maxTimeToSolution - contest.date
-				maxTimeToSolution = int(maxTimeToSolution.total_seconds()/60)
-
-				if timeSolution < 0:
-					score['solutions'].append('B')
-					score['solved'] += 1
-				elif timeSolution > maxTimeToSolution:
-					score['solutions'].append('A')
-				else:
-					score['solutions'].append(timeSolution)
-					score['solved'] += 1
-					score['time'] += timeSolution
-
-			except Solution.DoesNotExist:
-				score['solutions'].append("")
-
-		context['scores'].append(score)
-
-	context['scores'] = sorted(context['scores'], key=sortkeypicker(['-solved', 'time']))
 
 	return render(request, 'contests/contests-contest.html', context)
 
@@ -113,7 +166,7 @@ def contestsNew(request):
 		c.name = request.POST['name']
 		c.date = datetime.strptime(request.POST['date'] + ' ' + request.POST['time'], "%Y-%m-%d %H:%M")
 		c.duration = int(request.POST['duration'])
-		c.owner = Profile.objects.get(user=request.user)
+		c.owner = request.user.profile
 		c.B = int(request.POST['B'])
 		c.A = int(request.POST['A'])
 		c.S = int(request.POST['S'])
@@ -155,31 +208,9 @@ def contestsEdit(request, contest_id):
 
 		return render(request, 'contests/contests-edit.html', context)
 
-def status(contest):
-	now = datetime.now()
-
-	if now < contest.date:
-		return 'waiting'
-	elif now < contest.date + timedelta(minutes=contest.duration):
-		return 'running'
-	else:
-		return 'ended'
-
-
 def contests(request):
 	context = {
-		'contests' : [],
+		'contests' : getContests(),
 	}
-	
-	for c in Contest.objects.all().order_by('-date'):
-		contest = {
-			'contest': c,
-			'status' : status(c),
-			'users' : c.users.count(),
-			'problems' : c.problems.count(),
-		}
-
-		print(contest)
-		context['contests'].append(contest)
 
 	return render(request, 'contests/contests.html', context)

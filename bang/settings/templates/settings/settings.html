@@ -12,38 +12,16 @@
 					<h5>Settings</h5>
 				</div>
 				<div class="panel-body">
-					<form action="/settings/" method='POST'>
-						{% csrf_token %}
-						<h3>Judges</h3>
-						<hr>
-						<div class="row">
-							<div class="form-group col-sm-4">
-								<label>URI</label>
-								<input type="text" class="form-control" placeholder="23153" name="uriId" value='{{ profile.uriId }}'>
-							</div>
-							<div class="form-group col-sm-4">
-								<label>UVA</label>
-								<input type="text" class="form-control" placeholder="myusername" name="uvaId" value='{{ profile.uvaId }}'>
-							</div>
-							<div class="form-group col-sm-4">
-								<label>SPOJ</label>
-								<input type="text" class="form-control" placeholder="myusername" name="spojId" value='{{ profile.spojId }}'>
-							</div>
-						</div>
-
-						<h3>Team</h3>
-						<hr>
-						{% include "settings/team-invite.html" %}
-						{% include "settings/team.html" %}
-						{% include "settings/team-new.html" %}						
-						
-						<h3>Delete Account</h3>
-						<hr>
-						<button class="btn btn-danger">Delete my account</button>
-						
-						<br>
-						<button type="submit" class="btn btn-default pull-right">Save</button>
-					</form>
+					{% include "settings/judges.html" %}
+					{% include "settings/team-invite.html" %}
+					{% include "settings/team.html" %}
+					{% include "settings/team-create.html" %}
+					
+					<!--
+					<h3>Delete Account</h3>
+					<hr>
+					<button class="btn btn-danger">Delete my account</button>
+					-->
 				</div>
 			</div>
 		</div>
