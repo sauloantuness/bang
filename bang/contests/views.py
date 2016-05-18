@@ -156,6 +156,7 @@ def contestsContest(request, contest_id):
 		'contest'  : contest,
 		'problems' : contest.problems.all(),
 		'scores'   : getContestScore(contest),
+		'now' : datetime.now().timestamp() * 1000,
 	}
 
 	return render(request, 'contests/contests-contest.html', context)

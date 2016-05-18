@@ -1,5 +1,11 @@
 # Instalação
 
+## Git
+
+```
+sudo apt-get instal git
+```
+
 ## Apache
 
 ```
@@ -34,22 +40,21 @@ sudo touch /etc/apache2/sites-available/bang.conf
 <VirtualHost *:80>
     ServerName maratona.decom.cefetmg.br
 
-    Alias /static /home/saulo/Documents/code/env/bang/bang/staticRoot
+    Alias /static /home/admin/env/bang/bang/staticRoot
 
-    <Directory /home/saulo/Documents/code/env/bang/bang/staticRoot>
+    <Directory /home/admin/env/bang/bang/staticRoot>
         Require all granted
     </Directory>
     
-    <Directory /home/saulo/Documents/code/env/bang/bang>
+    <Directory /home/admin/env/bang/bang>
         <Files wsgi.py>
             Require all granted
         </Files>
     </Directory>
     
     WSGIProcessGroup bang
-    WSGIDaemonProcess bang python-path=/home/saulo/Documents/code/env/bang/bang:/home/saulo/Documents/code/env/lib/python3.4/site-packages
-    WSGIScriptAlias / /home/saulo/Documents/code/env/bang/bang/bang/wsgi.py
-
+    WSGIDaemonProcess bang python-path=/home/admin/env/bang/bang:/home/admin/env/lib/python3.4/site-packages
+    WSGIScriptAlias / /home/admin/env/bang/bang/bang/wsgi.py
 </VirtualHost>
 ```
 
@@ -57,6 +62,54 @@ sudo touch /etc/apache2/sites-available/bang.conf
 sudo a2ensite bang.conf
 sudo service apache2 restart
 ```
+
+
+
+# Cron
+
+```shell
+#!/bin/bash
+# substituir "/home/admin/env/bang/bang/" até o path do cron.sh
+# */5 * * * *  /home/admin/env/bang/bang/cron.sh >> /home/admin/env/bang/bang/log 2>&1
+
+BASEDIR=$(dirname "$0")
+PYTHONDIR=$BASEDIR"/../../bin/python"
+COMMAND1=$BASEDIR"/manage.py updateUriSolutions"
+COMMAND2=$BASEDIR"/manage.py updateUvaSolutions"
+
+echo -n "BEGIN: "
+date +"%D %T"
+
+$PYTHONDIR $COMMAND1
+$PYTHONDIR $COMMAND2
+
+echo -n "END: "
+date +"%D %T"
+echo "-----------------------------------------"
+```
+
+## Virtual Env
+
+```
+# pip install virtualenv
+$ virtualenv -p python3 env
+$ cd env
+$ source bin/activate
+```
+
+## PIP
+
+```
+$ pip install -r requirements.txt
+```
+
+## Git Clone
+
+```
+git clone https://github.com/sauloantuness/bang.git
+```
+
+## Create `bang/keys.py`
 
 ## PostgreSQL
 
@@ -74,27 +127,35 @@ ALTER ROLE admin SET default_transaction_isolation TO 'read committed';
 ALTER ROLE admin SET timezone TO 'UTC';
 ALTER USER admin CREATEDB;
 GRANT ALL PRIVILEGES ON DATABASE bang TO admin;
+
+\q
+exit
 ```
 
-# Cron
+## Django
 
-```shell
-#!/bin/bash
-# substituir /home/saulo/Documents/code/env/bang/bang/ até o path do cron.sh
-# */5 * * * * /usr/bin/time -f "Time: %Us" /home/saulo/Documents/code/env/bang/bang/cron.sh >> /home/saulo/Documents/code/env/bang/bang/log 2>&1
+```
+$ python manage.py makemigrations home
+$ python manage.py migrate
+```
 
-BASEDIR=$(dirname "$0")
-PYTHONDIR=$BASEDIR"/../../bin/python"
-COMMAND1=$BASEDIR"/manage.py updateUriSolutions"
-COMMAND2=$BASEDIR"/manage.py updateUvaSolutions"
+## Create Super User
 
-echo -n "BEGIN: "
-date +"%D %T"
+```
+# python manage.py createsuperuser
+admin
+saulo123
+```
 
-$PYTHONDIR $COMMAND1
-$PYTHONDIR $COMMAND2
+## Update Problems
 
-echo -n "END: "
-date +"%D %T"
-echo "-----------------------------------------"
+```
+$ python manage.py updateUriSolutions
+$ python manage.py updateUvaSolutions
+```
+
+# Log Cron
+
+```
+# cat /var/log/syslog | grep CRON
 ```

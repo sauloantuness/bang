@@ -1,5 +1,8 @@
 <h3>Judges</h3>
 <hr>
+
+{% include "settings/alert-judges.html" %}
+
 <div class="row">
 	<form action="/settings/" method="POST">
 		{% csrf_token %}

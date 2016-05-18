@@ -11,7 +11,7 @@
 		var duration = {{ contest.duration }} * 60000;
 		var startTime = new Date("{{ contest.date.timestamp }}" * 1000);
 		var endTime = new Date(startTime.getTime() + duration)
-		var now = new Date()
+		var now = new Date({{now}});
 		var status;
 
 		if(now < startTime){
@@ -54,6 +54,9 @@
 	</script>
 
 	<div class="container">
+		<h1>
+			{{now}}
+		</h1>
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-default">
