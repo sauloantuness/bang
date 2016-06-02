@@ -14,31 +14,31 @@
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<form action="/contests/edit/{{ contest.id }}/" method="POST" class="form-horizontal">
+							<form action="/contests/edit/{{ contest.id }}/" method="POST" id="contestForm" class="form-horizontal">
 								{% csrf_token %}
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Contest Name</label>
 										<div class="col-xs-8">
-											<input type="text" autocomplete="off" class="form-control" placeholder="My Contest" name="name" value="{{ contest.name }}" required autofocus=>
+											<input type="text" autocomplete="off" class="form-control" placeholder="My Contest" name="name" value="{{ contest.name }}" required autofocus>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Date</label>
 										<div class="col-xs-8">
-											<input type="date" class="form-control" name="date" min="2016-03-01" value="{{ contest.date | date:"Y-m-d"}}" required>
+											<input type="text" class="form-control" name="date" value="{{ contest.date | date:"m/d/Y"}}" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Time</label>
 										<div class="col-xs-8">
-											<input type="time" class="form-control" name="time" value="{{ contest.date | date:"H:i"}}" required>
+											<input type="text" class="form-control" name="time" value="{{ contest.date | date:"H:i"}}" placeholder="23:59" maxlength="5" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Duration</label>
 										<div class="col-xs-8">
-											<input type="number" step=15 class="form-control" placeholder="120" name="duration" min=0 value="{{ contest.duration }}" required>
+											<input type="number" class="form-control" placeholder="120" name="duration" min=0 value="{{ contest.duration }}" required>
 										</div>
 									</div>
 								</div>

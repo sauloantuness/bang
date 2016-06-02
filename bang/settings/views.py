@@ -10,19 +10,15 @@ def settings(request):
 	if request.method == 'POST':
 		if 'team-create' in request.POST:
 			teamCreate(request)
-			return redirect('/settings/')
 
 		elif 'team-update' in request.POST:
 			teamUpdate(request)
-			return redirect('/settings/')
 
 		elif 'team-leave' in request.POST:
 			teamLeave(request)
-			return redirect('/settings/')
 		
 		elif 'judges' in request.POST:
 			judgesUpdate(request)
-			return redirect('/settings/')
 
 	context = {
 		'profile' 	: Profile.objects.get(user=request.user),
@@ -31,6 +27,8 @@ def settings(request):
 		'teams'		: getTeams(request),
 		'alerts'	:
 			{
+				'userLeftTheTeam' : request.session.pop('userLeftTheTeam', False),
+				'theTeamWasCreated' : request.session.pop('theTeamWasCreated', False),
 				'usersRepeatedOnCreate' : request.session.pop('usersRepeatedOnCreate', False),
 				'usersRepeatedOnUpdate' : request.session.pop('usersRepeatedOnUpdate', False),
 				'teamNameAlreadyExists' : request.session.pop('teamNameAlreadyExists', False),

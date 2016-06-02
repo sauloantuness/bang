@@ -14,45 +14,36 @@
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<form action="/contests/new/" method="POST" class="form-horizontal">
+							<form action="/contests/new/" method="POST" class="form-horizontal" id="contestForm">
 								{% csrf_token %}
 								<div class="col-sm-6">
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Contest Name</label>
 										<div class="col-xs-8">
-											<input type="text" autocomplete="off" class="form-control" placeholder="My Contest" name="name" required autofocus=>
+											<input type="text" autocomplete="off" class="form-control" placeholder="My Contest" name="name" required autofocus>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Date</label>
 										<div class="col-xs-8">
-											<input type="date" class="form-control" name="date" min="2016-03-01" required>
+											<input type="text" class="form-control" name="date" placeholder="MM/DD/YYYY" maxlength="10" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Time</label>
 										<div class="col-xs-8">
-											<input type="time" class="form-control" name="time" required>
+											<input type="text" class="form-control" name="time" placeholder="23:59" maxlength="5" required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Duration</label>
 										<div class="col-xs-8">
-											<input type="number" step=15 class="form-control" placeholder="120" name="duration" min=0 required>
+											<input type="number" class="form-control" placeholder="120" name="duration" min=0 required>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="col-xs-4 control-label">Type</label>
-										<div class="col-xs-8">
-											<!--
-											<div class="checkbox">
-												<label for="team">
-													<input type="checkbox" id='team' name="team">
-													Yes
-												</label>
-											</div>
-											-->
-											
+										<div class="col-xs-8">											
 											<div class="radio">
 												 <label>
 												 	<input type="radio" name="type" value="0" checked>
@@ -63,7 +54,6 @@
 												 	Team
 												 </label>
 											</div>
-											
 										</div>
 									</div>
 								</div>

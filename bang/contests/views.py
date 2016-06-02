@@ -171,7 +171,7 @@ def contestsNew(request):
 	if request.method == 'POST':
 		c = Contest()
 		c.name = request.POST['name']
-		c.date = datetime.strptime(request.POST['date'] + ' ' + request.POST['time'], "%Y-%m-%d %H:%M")
+		c.date = datetime.strptime(request.POST['date'] + ' ' + request.POST['time'], "%m/%d/%Y %H:%M")
 		c.duration = int(request.POST['duration'])
 		c.owner = request.user.profile
 		c.B = int(request.POST['B'])
@@ -194,7 +194,7 @@ def contestsEdit(request, contest_id):
 	if request.method == 'POST':
 		c = Contest.objects.get(id=contest_id)
 		c.name = request.POST['name']
-		c.date = datetime.strptime(request.POST['date'] + ' ' + request.POST['time'], "%Y-%m-%d %H:%M")
+		c.date = datetime.strptime(request.POST['date'] + ' ' + request.POST['time'], "%m/%d/%Y %H:%M")
 		c.duration = int(request.POST['duration'])
 		c.B = int(request.POST['B'])
 		c.A = int(request.POST['A'])

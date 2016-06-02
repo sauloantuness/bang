@@ -27,6 +27,8 @@ def teamCreate(request):
 			p = Profile.objects.get(id=pid)
 			Invite.objects.create(team=t, profile=p)
 
+	request.session['theTeamWasCreated'] = True
+
 def teamUpdate(request):
 	if checkUsersAreRepeated(request, alert='usersRepeatedOnUpdate'):
 		return
@@ -59,6 +61,8 @@ def teamLeave(request):
 
 	if t.profiles.count() == 0:
 		t.delete()
+
+	request.session['userLeftTheTeam'] = True
 
 def getTeams(request):
 	teams = []
