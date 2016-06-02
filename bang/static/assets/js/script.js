@@ -22,7 +22,7 @@ $(function () {
         },
         tooltip: {
         	formatter: function(){
-        		return 'Resolvidos <b>' + this.y + '</b>';
+        		return 'Solved <b>' + this.y + '</b>';
         	}
         }
     });
@@ -73,5 +73,3 @@ document.getElementsByName('time')[0].addEventListener('keypress', filterNumber)
 document.getElementsByName('date')[0].addEventListener('keyup', maskDate);
 document.getElementsByName('time')[0].addEventListener('keyup', maskTime);
 document.getElementById('contestForm').addEventListener('submit', checkDateAndTime);
-
-
