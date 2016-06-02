@@ -4,7 +4,7 @@
 {% endif %}
 
 {% for invite in invites %}
-	<div class="alert alert-warning">
+	<div class="alert alert-info">
 		You are part of the <strong>{{ invite.team.name }}</strong> team? 
 		<a href="/teams/invite/yes/{{ invite.id }}" class="alert-link"><strong>Yes</strong></a> or <a href="/teams/invite/no/{{ invite.id }}" class="alert-link"><strong>No</strong></a>
 	</div>

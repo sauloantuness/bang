@@ -3,6 +3,9 @@
 	<hr>
 {% endif %}
 
+{% include "settings/usersRepeatedOnUpdate.html" %}
+{% include "settings/teamNameAlreadyExists.html" %}
+
 {% for team in teams %}
 	<div class="row">
 		<form action="/settings/" method="POST">
@@ -11,6 +14,7 @@
 			<div class="form-group col-sm-3">
 				<label>Team Name</label>
 				<input type="text" class="form-control" name="name" placeholder="My Team Name" value="{{ team.name }}">
+				<input hidden name="id" value="{{ team.id }}">
 			</div>
 
 			<div class="form-group col-sm-3">
@@ -18,10 +22,8 @@
 				<select name="profile-id" class="form-control">
 					<option selected value=""></option>
 					{% for p in profiles %}
-						{% if p == team.profiles.0 %}
-							<option selected value="{{ p.id }}">{{ p.name }}</option>
-						{% elif p == team.invites.1.profile %}
-							<option selected value="{{ p.id }}">{{ p.name }} (invited)</option>
+						{% if p == team.members.0.profile %}
+							<option selected value="{{ p.id }}">{{ p.name }}{{ team.members.0.invite|yesno:" (invited)," }}</option>
 						{% else %}
 							<option value="{{ p.id }}">{{ p.name }}</option>
 						{% endif %}
@@ -34,10 +36,8 @@
 				<select name="profile-id" class="form-control">
 					<option selected value=""></option>
 					{% for p in profiles %}
-						{% if p == team.profiles.1 %}
-							<option selected value="{{ p.id }}">{{ p.name }}</option>
-						{% elif p == team.invites.0.profile %}
-							<option selected value="{{ p.id }}">{{ p.name }} (invited)</option>
+						{% if p == team.members.1.profile %}
+							<option selected value="{{ p.id }}">{{ p.name }}{{ team.members.1.invite|yesno:" (invited)," }}</option>
 						{% else %}
 							<option value="{{ p.id }}">{{ p.name }}</option>
 						{% endif %}

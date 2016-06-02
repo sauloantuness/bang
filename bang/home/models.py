@@ -79,7 +79,7 @@ class Team(models.Model):
         return self.name
 
 class Invite(models.Model):
-    team = models.ForeignKey(Team)
+    team = models.ForeignKey(Team, related_name='invites')
     profile = models.ForeignKey(Profile)
 
     def __str__(self):
