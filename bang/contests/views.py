@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from datetime import datetime, timedelta
+from django.contrib.auth.decorators import login_required
 from home.models import *
 from home.utils import *
 
@@ -18,10 +19,12 @@ def selectProblems(contest):
 			contest.problems.add(problem)
 			print(problem)
 
+@login_required
 def contestsDelete(request, contest_id):
 	Contest.objects.get(id=contest_id).delete()
 	return redirect('/contests/')
 
+@login_required
 def contestsLeave(request, contest_id):
 	c = Contest.objects.get(id=contest_id)
 	c.profiles.remove(request.user.profile)
@@ -29,6 +32,7 @@ def contestsLeave(request, contest_id):
 
 	return redirect('/contests/' + contest_id + '/')
 
+@login_required
 def contestsJoin(request, contest_id):
 	c = Contest.objects.get(id=contest_id)
 	c.profiles.add(request.user.profile)
@@ -150,6 +154,7 @@ def getContestScore(contest):
 	scores = sorted(scores, key=sortkeypicker(['-solved', 'time']))
 	return scores
 
+@login_required
 def contestsContest(request, contest_id):
 	contest = Contest.objects.get(id=contest_id)
 	context = {
@@ -161,6 +166,7 @@ def contestsContest(request, contest_id):
 
 	return render(request, 'contests/contests-contest.html', context)
 
+@login_required
 def contestsNew(request):
 	if request.method == 'POST':
 		c = Contest()
@@ -183,6 +189,7 @@ def contestsNew(request):
 	else:
 		return render(request, 'contests/contests-new.html')
 
+@login_required
 def contestsEdit(request, contest_id):
 	if request.method == 'POST':
 		c = Contest.objects.get(id=contest_id)
@@ -209,6 +216,7 @@ def contestsEdit(request, contest_id):
 
 		return render(request, 'contests/contests-edit.html', context)
 
+@login_required
 def contests(request):
 	context = {
 		'contests' : getContests(),

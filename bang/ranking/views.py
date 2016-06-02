@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from home.models import Profile, Solution
 from django.contrib.auth.models import User
 # Create your views here.
 
+@login_required
 def ranking(request, order='all'):
 	profiles = []
 

@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from home.models import *
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
+from home.models import *
 # Create your views here.
 
+@login_required
 def users(request):
 	profiles = []
 	for p in Profile.objects.all().order_by('name'):
@@ -44,6 +46,7 @@ def uva(profile_id):
 def spoj(profile_id):
 	return Solution.objects.filter(problem__judge='spoj', profile__id=profile_id).order_by('problem__code')
 
+@login_required
 def profile(request, profile_id):
 	context = {
 		'profile' : Profile.objects.get(id=profile_id),

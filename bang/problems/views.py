@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from home.models import Solution, Problem
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def uri():
@@ -12,6 +12,7 @@ def uva():
 def spoj():
 	return Solution.objects.filter(problem__judge='spoj').order_by('problem__code').distinct('problem__code')
 
+@login_required
 def problems(request):
 	context = {
 		'uri' : uri(),
@@ -21,6 +22,7 @@ def problems(request):
 
 	return render(request, 'problems/problems.html', context)
 
+@login_required
 def problem(request, problem_id):
 	solutions = Solution.objects.filter(problem__id=problem_id)
 	problem = solutions[0].problem
