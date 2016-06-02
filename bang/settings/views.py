@@ -24,8 +24,7 @@ def settings(request):
 			context = {
 				'judgeAlert' : judgesUpdate(request),
 			}
-
-			return render(request, 'settings/settings.html', context)
+			return redirect('/settings', judgeAlert=judgesUpdate(request))
 
 	context = {
 		'profile' 	: Profile.objects.get(user=request.user),
