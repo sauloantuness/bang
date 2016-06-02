@@ -137,7 +137,13 @@
 /*fim perfil*/
 
 /*inicio contests*/
-.contests-card > div{
+.contests-card > h3 {
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+.contests-card > div {
 	display: block;
 	margin-bottom: 15px
 }
