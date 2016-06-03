@@ -18,7 +18,7 @@
 						{% for c in contests %}
 							<div class="col-xs-12 col-sm-6 col-md-4">
 								<a href="/contests/{{ c.contest.id }}" class="thumbnail contests-card">
-									<h3>{{ c.contest.name }}</h3>
+									<h3 title="{{ c.contest.name }}">{{ c.contest.name }}</h3>
 									<div class="contests-info">
 										<div title="Users">
 											<span class="pe-7s-users"></span><b>{{ c.num_profiles }}</b><i>|</i>
