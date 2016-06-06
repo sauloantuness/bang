@@ -22,7 +22,7 @@ def settings(request):
 
 	context = {
 		'profile' 	: Profile.objects.get(user=request.user),
-		'profiles' 	: Profile.objects.all().exclude(user=request.user),
+		'profiles' 	: Profile.objects.order_by('name').exclude(user=request.user),
 		'invites' 	: Invite.objects.filter(profile=request.user.profile),
 		'teams'		: getTeams(request),
 		'alerts'	:
