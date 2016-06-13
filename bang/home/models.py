@@ -60,6 +60,9 @@ class Problem(models.Model):
             return '#'
 
     def __str__(self):
+        if self.judge == 'uva':
+            return "[{0}] {1}: {2}".format(self.judge, self.number, self.name)
+            
         return "[{0}] {1}: {2}".format(self.judge, self.code, self.name)
 
 class Solution(models.Model):
