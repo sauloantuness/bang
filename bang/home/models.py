@@ -97,6 +97,11 @@ class Contest(models.Model):
     profiles = models.ManyToManyField(Profile, related_name='contests')
     teams = models.ManyToManyField(Team, related_name='contests')
     team = models.BooleanField(default=False)
+    judge_choices = (('all', 'All'),
+                     ('uri', 'URI'),
+                     ('uva', 'UVa'),
+                     ('spoj', 'SPOJ'))
+    judge = models.CharField(max_length=4, choices=judge_choices, default='all')
 
     B = models.IntegerField(default=0) # Beginner
     A = models.IntegerField(default=0) # Ad-Hoc
@@ -124,6 +129,8 @@ class Contest(models.Model):
         profiles = self.profiles.all()
         solutions = Solution.objects.filter(profile__in=profiles)
         problems = Problem.objects.exclude(solution__in=solutions)
+        if self.judge != 'all':
+            problems = problems.filter(judge=self.judge)
 
         categories = ['B', 'A', 'S', 'D', 'M', 'P', 'G', 'C']
         for category in categories:

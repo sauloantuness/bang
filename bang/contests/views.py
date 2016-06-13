@@ -174,6 +174,8 @@ def contestsNew(request):
 		c.date = datetime.strptime(request.POST['date'] + ' ' + request.POST['time'], "%m/%d/%Y %H:%M")
 		c.duration = int(request.POST['duration'])
 		c.owner = request.user.profile
+		c.team = bool(int(request.POST['team']))
+		c.judge = request.POST['judge']
 		c.B = int(request.POST['B'])
 		c.A = int(request.POST['A'])
 		c.S = int(request.POST['S'])
@@ -196,6 +198,8 @@ def contestsEdit(request, contest_id):
 		c.name = request.POST['name']
 		c.date = datetime.strptime(request.POST['date'] + ' ' + request.POST['time'], "%m/%d/%Y %H:%M")
 		c.duration = int(request.POST['duration'])
+		c.team = bool(int(request.POST['team']))
+		c.judge = request.POST['judge']
 		c.B = int(request.POST['B'])
 		c.A = int(request.POST['A'])
 		c.S = int(request.POST['S'])

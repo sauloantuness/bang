@@ -110,13 +110,19 @@
 									<th>Time</th>
 									{% for problem in problems %}
 										{% if contest.getStatus == 'waiting' %}
-											<th title="URI 0000 - Comming">
-											<a target="_blank" href="#">????</a>
-										</th>
+											<th title="*** 0000 - Comming">
+												<a target="_blank" href="#">????</a>
+											</th>
 										{% else %}
-										<th title="{{ problem.judge | upper }} {{ problem.code }} - {{ problem.name }}">
-											<a target="_blank" href="{{ problem.getJudgeLink }}">{{ problem.code }}</a>
-										</th>
+											{% if problem.judge == 'uva' %}
+												<th title="UVa {{ problem.number }} - {{ problem.name }}">
+													<a target="_blank" href="{{ problem.getJudgeLink }}">{{ problem.number }}</a>
+												</th>
+											{% else %}
+												<th title="{{ problem.judge | upper }} {{ problem.code }} - {{ problem.name }}">
+													<a target="_blank" href="{{ problem.getJudgeLink }}">{{ problem.code }}</a>
+												</th>
+											{% endif %}
 										{% endif %}
 									{% endfor %}
 								</tr>
