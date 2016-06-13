@@ -28,7 +28,10 @@ class Command(BaseCommand):
 				for subsubchapter in subchapter['arr']:
 					for problem in subsubchapter[1:]:
 						try:
-							category = categories[chapter['title']]
+							if subchapter['title'] == 'Getting Started: The Easy Problems':
+								category = categories[subchapter['title']]
+							else:
+								category = categories[chapter['title']]
 						except KeyError:
 							continue
 						number = str(abs(problem))
