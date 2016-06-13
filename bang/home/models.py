@@ -55,7 +55,9 @@ class Problem(models.Model):
         if self.judge == 'uri':
             return 'https://www.urionlinejudge.com.br/judge/en/problems/view/' + self.code
         if self.judge == 'uva':
-            return 'https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=' + self.code
+            volume = int(self.number/100)
+            return "https://uva.onlinejudge.org/external/{0}/{1}.pdf".format(volume, self.number)
+
         if self.judge == 'spoj':
             return '#'
 
