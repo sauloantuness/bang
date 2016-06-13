@@ -13,7 +13,11 @@
 					<div class="panel-heading">
 						<h5>
 							<a href="{{ problem.getJudgeLink }}" target="_blank">
-								{{problem.judge | upper}} {{problem.code}} - {{problem.name}}
+								{% if problem.judge == 'uva' %}
+									{{problem.judge | upper}} {{problem.number}} - {{problem.name}}
+								{% else %}
+									{{problem.judge | upper}} {{problem.code}} - {{problem.name}}
+								{% endif %}
 							</a>
 						</h5>
 					</div>
