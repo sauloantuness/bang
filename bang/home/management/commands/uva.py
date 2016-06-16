@@ -18,7 +18,7 @@ class Uva():
 			solutions = {}
 			for sub in subs:
 				if solutions.get(sub[1], False):
-					if solutions[sub[1]] < sub[4]:
+					if solutions[sub[1]] > sub[4]:
 						solutions[sub[1]] = sub[4]
 				else:
 					solutions[sub[1]] = sub[4]
