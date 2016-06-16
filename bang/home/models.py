@@ -73,7 +73,10 @@ class Solution(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "{0}: {1}".format(self.profile.name, self.problem.code)
+        if self.problem.judge == 'uva':
+            return "{0}: {1}".format(self.profile.name, self.problem.number)
+        else:
+            return "{0}: {1}".format(self.profile.name, self.problem.code)
 
 
 class Team(models.Model):
