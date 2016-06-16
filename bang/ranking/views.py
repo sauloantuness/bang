@@ -11,6 +11,7 @@ def ranking(request, order='all'):
 	for p in Profile.objects.all():
 		profile = {
 			'profile' : p,
+			'name' : p.name,
 			'uri'  : Solution.objects.filter(problem__judge='uri', profile=p).count(),
 			'uva'  : Solution.objects.filter(problem__judge='uva', profile=p).count(),
 			'spoj' : Solution.objects.filter(problem__judge='spoj', profile=p).count(),
