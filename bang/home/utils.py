@@ -39,7 +39,7 @@ def getSolutionsAmount(profile=None, team=None):
 	return {
 		'uri' : Solution.objects.filter(problem__judge='uri').distinct('problem').count(),
 		'uva' : Solution.objects.filter(problem__judge='uva').distinct('problem').count(),
-		'spoj' : 0,
+		'spoj' : Solution.objects.filter(problem__judge='spoj').distinct('problem').count(),
 	}
 
 def getLastSolutions():
