@@ -59,7 +59,7 @@ class Problem(models.Model):
             return "https://uva.onlinejudge.org/external/{0}/{1}.pdf".format(volume, self.number)
 
         if self.judge == 'spoj':
-            return '#'
+            return 'http://br.spoj.com/problems/' + self.code
 
     def __str__(self):
         if self.judge == 'uva':
