@@ -5,8 +5,9 @@ from .spoj import Spoj
 class Command(BaseCommand):
 	def handle(self, *args, **options):
 		s = Spoj()
+		problems = s.getProblems()
 
-		for p in s.getProblems():
+		for p in problems:
 			try:
 				problem = Problem.objects.get(code=p['code'], judge='spoj')
 			except Problem.DoesNotExist:
@@ -20,5 +21,6 @@ class Command(BaseCommand):
 			problem.category = 'U'
 			problem.level = 0
 			problem.judge = 'spoj'
-			print(problem)
 			problem.save()
+
+		print('%d problems.' % len(problems))

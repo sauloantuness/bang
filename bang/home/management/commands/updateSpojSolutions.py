@@ -26,7 +26,7 @@ class Command(BaseCommand):
 				except Solution.DoesNotExist:
 					solution = Solution()
 
-				if not solution.date or s['date'] > solution.date:
+				if not solution.date or s['date'] < solution.date:
 					solution.date = s['date']
 				solution.problem = problem
 				solution.profile = profile

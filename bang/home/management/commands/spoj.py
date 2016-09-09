@@ -57,6 +57,7 @@ class Spoj():
 	def getContestPages(self):
 		links = []
 
+		print('Contest Pages')
 		for contest in self.contests:
 			url = self.baseUrl + 'problems/' + contest
 			response = requests.get(url)
@@ -70,9 +71,12 @@ class Spoj():
 			if table:
 				num_pages = len(table.findAll('td')[1:-1])
 				for i in range(num_pages):
-					links.append(self.baseUrl + 'problems/' + contest + '/start=' + str(i * 50))
+					url = self.baseUrl + 'problems/' + contest + '/start=' + str(i * 50)
+					links.append(url)
+					print(url)
 			else:
 				links.append(url)
+				print(url)
 
 		return links
 
@@ -94,19 +98,20 @@ class Spoj():
 			if m:
 				link = 'http://br.spoj.com/status/%s,%s/' % (m.group(1), self.username)
 				links.append(link)
-				print(link)
 		
 		return links
 
 
 	def getProblems(self):
 		problems = []
+		pages = self.getContestPages()
 
-		for page in self.getContestPages():
+		print("Problems")
+		for page in pages:
 			response = requests.get(page)
 
 			if response.status_code != requests.codes.ok:
-				print('Erro ao acessar spoj')
+				print('Fail in attempt to access spoj page')
 				continue
 
 			html = BeautifulSoup(response.text, 'html5lib')
@@ -115,7 +120,7 @@ class Spoj():
 			for tr in table.findAll(class_='problemrow'):
 				problem = self.decodeProblem(tr)
 				problems.append(problem)
-				pprint.pprint(problem)
+				print(problem)
 
 		return problems
 
@@ -131,7 +136,7 @@ class Spoj():
 			response = requests.get(page)
 
 			if response.status_code != requests.codes.ok:
-				print('Erro ao acessar spoj')
+				print('Fail in attempt to access spoj page')
 				continue
 
 			html = BeautifulSoup(response.text, 'html5lib')
@@ -139,10 +144,11 @@ class Spoj():
 
 			for tr in table.findAll('tr')[1:]:
 				solution = self.decodeSolution(tr)
-				solutions.append(solution)
-				pprint.pprint(solution)
-
-		solutions = list(filter(lambda x: x, solutions))
+				if solution:
+					solutions.append(solution)
+					print(solution['date'], solution['code'])
+				else:
+					print("------------------- FAIL")
 
 		return solutions
 
