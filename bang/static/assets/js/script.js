@@ -12,7 +12,11 @@ $(function () {
             }
         },
         series: [{
-            data: problems_solved
+            data: problems_solved,
+            type: 'spline',
+            marker: {
+                enabled: false
+            }
         }],
         legend: {
         	enabled: false

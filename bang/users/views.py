@@ -48,19 +48,24 @@ def spoj(profile_id):
 
 @login_required
 def profile(request, profile_id):
+	profile = Profile.objects.get(id=profile_id)
+	uri_solutions =  Solution.objects.filter(profile__id=profile_id, problem__judge='uri')
+	uva_solutions =  Solution.objects.filter(profile__id=profile_id, problem__judge='uva')
+	spoj_solutions =  Solution.objects.filter(profile__id=profile_id, problem__judge='spoj')
 	context = {
-		'profile' : Profile.objects.get(id=profile_id),
+		'profile' : profile,
 		'solutions' : {
-			'uri' : Solution.objects.filter(profile__id=profile_id, problem__judge='uri').count(),
-			'uva' : Solution.objects.filter(profile__id=profile_id, problem__judge='uva').count(),
-			'spoj' : Solution.objects.filter(profile__id=profile_id, problem__judge='spoj').count(),
+			'uri' : uri_solutions.count(),
+			'uva' : uva_solutions.count(),
+			'spoj' : spoj_solutions.count(),
 		},
+		'skills' : [profile.getSkills()],
 		'recentlySolved' : Solution.objects.filter(profile__id=profile_id).order_by('-date')[:5],
 		'historic' : historic(profile_id),
-		'uri' : uri(profile_id),
-		'uva' : uva(profile_id),
-		'spoj' : spoj(profile_id),
-		'teams' : Profile.objects.get(id=profile_id).teams.all(),
+		'uri' : uri_solutions,
+		'uva' : uva_solutions,
+		'spoj' : spoj_solutions,
+		'teams' : profile.teams.all(),
 	}
 
 	return render(request, 'users/user.html', context)

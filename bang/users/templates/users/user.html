@@ -10,6 +10,7 @@
 
 			<div class="col-md-8">
 				{% include "users/historic.html" %}
+				{% include "users/skills.html" %}
 				{% include "users/recentlySolved.html" %}
 				{% include "problems/uri.html" %}
 				{% include "problems/uva.html" %}
@@ -18,3 +19,7 @@
 		</div>	
 	</div>
 {% endblock container %}
+
+{% block scripts %}
+	<script src="/static/assets/js/skills-chart.js"></script>
+{% endblock scripts %}

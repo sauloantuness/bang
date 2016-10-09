@@ -29,6 +29,24 @@ class Profile(models.Model):
             return 'http://br.spoj.com/users/' + self.spojId
         return '#'
 
+    def getSkills(self):
+        data = [
+            self.solution_set.filter(problem__category="B").count(),
+            self.solution_set.filter(problem__category="A").count(),
+            self.solution_set.filter(problem__category="S").count(),
+            self.solution_set.filter(problem__category="D").count(),
+            self.solution_set.filter(problem__category="M").count(),
+            self.solution_set.filter(problem__category="P").count(),
+            self.solution_set.filter(problem__category="G").count(),
+            self.solution_set.filter(problem__category="C").count(),
+            self.solution_set.filter(problem__category="U").count(),
+        ]
+
+        return {
+            'name': self.user.first_name,
+            'data': data,
+            'pointPlacement': 'on',
+        }
 
 class Problem(models.Model):
     code = models.CharField(max_length=50)
@@ -85,6 +103,48 @@ class Team(models.Model):
 
     def __str__(self):
         return self.name
+
+    def getHistoric(self, num_days=30):
+        now = datetime.now().date()
+        begin = now - timedelta(days=num_days)
+
+        days = [begin + timedelta(days=x) for x in range(1, num_days + 1)]
+
+        problems_solved = []
+        for day in days:
+            problems_solved.append(Solution.objects.filter(profile__in=self.profiles.all(), date__range=[day, day + timedelta(days=1)]).count())
+
+        days = [ d.strftime('%d/%m') for d in days]
+        
+        return {
+            'problems_solved' : problems_solved,
+            'days' : days
+        }
+
+    def getSkills(self):
+        skills = []
+
+        for profile in self.profiles.all():
+            skills.append(profile.getSkills())
+
+        data = [
+            Solution.objects.filter(problem__category="B", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="A", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="S", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="D", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="M", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="P", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="G", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="C", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+            Solution.objects.filter(problem__category="U", profile__in=self.profiles.all()).order_by("problem").distinct('problem').count(),
+        ]
+
+        skills.append({
+                'name': "Team",
+                'data': data
+            })
+
+        return skills
 
 class Invite(models.Model):
     team = models.ForeignKey(Team, related_name='invites')

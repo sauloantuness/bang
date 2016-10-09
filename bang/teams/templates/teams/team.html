@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="panel panel-default" data-spy="affix">
+					<div class="panel-heading">
+						<h5>{{ team.name }}</h5>
+					</div>
+					<div class="panel-body">
+						<div class="row perfil-time">
+							{% for profile in team.profiles.all %}
+								<a href="/users/profile/{{ profile.id }}" class="col-xs-4">
+									<img src="{{ profile.picture }}" class="img-circle">
+									<span>{{ profile.user.first_name }}</span>
+								</a>
+							{% endfor %}
+						</div>
+						<hr>
+						<div class="row perfil">
+							<div class="col-xs-4">
+								<a href="#uri">
+									<strong>{{ solutions.uri }}</strong>
+									<span>URI</span>
+								</a>
+							</div>
+							<div class="col-xs-4">
+								<a href="#uva">
+									<strong>{{ solutions.uva }}</strong>
+									<span>UVA</span>
+								</a>
+							</div>
+							<div class="col-xs-4">
+								<a href="#spoj">
+									<strong>{{ solutions.spoj }}</strong>
+									<span>SPOJ</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8">
+				{% include "users/historic.html" %}
+				{% include "users/skills.html" %}
+				{% include "users/recentlySolved.html" %}
+				{% include "problems/uri.html" %}
+				{% include "problems/uva.html" %}
+				{% include "problems/spoj.html" %}
+			</div>
+		</div>	
+	</div>
+{% endblock container %}
+
+{% block scripts %}
+	<script src="/static/assets/js/skills-chart.js"></script>
+{% endblock scripts %}

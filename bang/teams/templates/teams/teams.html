@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>Teams</h5>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							{% for team in teams %}
+								<div class="col-xs-12 col-sm-6 col-md-4">
+									<div class="thumbnail" style="padding: 8px">
+										<a href="/teams/{{ team.id }}" title="{{ team.name }}"><b>{{ team.name }}</b></a>
+										<p>
+											{% for profile in team.profiles.all %}
+												{% if forloop.counter0 > 0 %}
+													&#8226
+												{% endif %}
+
+												<a href="/users/profile/{{ profile.id }}" title="{{ profile.name }}" style="color:#767676">{{ profile.user.first_name }}</a>
+											{% endfor %}
+										</p>
+										<div class="sparkline" data-sparkline="{{ team.getHistoric.problems_solved }}"></div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock container %}
+
+{% block scripts %}
+<script src="/static/assets/js/sparkline-chart.js" type="text/javascript" charset="utf-8"></script>
+{% endblock scripts %}
+

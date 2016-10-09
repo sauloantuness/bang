@@ -30,6 +30,7 @@
 					<li><a href="/problems">Problems</a></li>
 					<li><a href="/ranking">Ranking</a></li>
 					<li><a href="/users">Users</a></li>
+					<li><a href="/teams">Teams</a></li>
 					<li><a href="/settings">Settings</a></li>
 					<li><a href="/about">About</a></li>
 					<li><a href="/logout">Logout</a></li>
@@ -38,12 +39,16 @@
 		</div>
 	</nav>
 	{% block container %}
-		
 	{% endblock container %}
 
-	<script src="/static/assets/js/jquery.min.js"></script>
+	<script src="/static/assets/js/jquery-3.1.1.min.js"></script>
 	<script src="/static/assets/js/bootstrap.min.js"></script>
-	<script src="/static/assets/js/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
 	<script src="/static/assets/js/script.js"></script>
+
+	{% block scripts %}
+	{% endblock scripts %}
+
 </body>
 </html>

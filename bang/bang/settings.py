@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'django.contrib.humanize',
     'home.apps.HomeConfig',
-    'settings.apps.SettingsConfig',
-    'problems.apps.ProblemsConfig',
+    'teams.apps.TeamsConfig',
     'users.apps.UsersConfig',
     'ranking.apps.RankingConfig',
+    'settings.apps.SettingsConfig',
+    'problems.apps.ProblemsConfig',
     'contests.apps.ContestsConfig',
 ]
 
