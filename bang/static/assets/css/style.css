@@ -4,6 +4,13 @@
     }
 }
 
+@media (max-width: 992px) {
+    .affix {
+        position: static;
+        min-width: 100%;
+    }
+}
+
 /*navbar inicio*/
 
 .navbar-fix {
@@ -127,6 +134,7 @@
 	display: block;
 	width: 58px;
 	text-align: center;
+	margin: 0 auto;
 }
 
 .perfil-time span{

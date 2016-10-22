@@ -11,8 +11,11 @@ class Profile(models.Model):
     uvaId = models.CharField(max_length=50, blank=True)
     spojId = models.CharField(max_length=50, blank=True)
 
+    class Meta:
+        ordering = ['name']
+
     def __str__(self):
-        return self.user.username
+        return self.name
 
     def getUriLink(self):
         if self.uriId:
@@ -98,8 +101,11 @@ class Solution(models.Model):
 
 
 class Team(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     profiles = models.ManyToManyField(Profile, related_name='teams')
+
+    class Meta:
+        ordering = ['name']
 
     def __str__(self):
         return self.name

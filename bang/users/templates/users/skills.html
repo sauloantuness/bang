@@ -1,7 +1,3 @@
-<script type="text/javascript" charset="utf-8">
-	var series = {{ skills | safe }};
-</script>
-
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h5>Skills</h5>
@@ -10,3 +6,7 @@
 		<div id="skills-chart" class="chart" style="min-width: 400px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 	</div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+	var series = {{ series | safe }};
+</script>

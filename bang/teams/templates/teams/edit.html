@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Edit Team
+{% endblock title %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>Edit Team</h5>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<form action="/teams/update/{{ team.id }}/" method="POST" class="form-horizontal" id="contestForm">
+								{% csrf_token %}
+								<div class="col-sm-5">
+									<div class="form-group">
+										<label class="col-xs-4 control-label">Team Name</label>
+										<div class="col-xs-8">
+											{{ form.name }}
+											{% for error in form.name.errors %}
+												<span class="help-block">{{ error|escape }}</span>
+										    {% endfor %}
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="col-xs-4 control-label">Members</label>
+										<div class="col-xs-8">
+											{{ form.profiles }}
+											{% for error in form.profiles.errors %}
+												<span class="help-block">{{ error|escape }}</span>
+										    {% endfor %}
+										</div>
+									</div>
+									<div class="form-group">
+									    <div class="col-xs-offset-4 col-xs-8">
+									      	<button type="submit" class="btn btn-default btn-block">Save</button>
+									    </div>
+									</div>
+								</div>
+								<div class="col-sm-7">
+									<div class="panel-body">
+										<div id="skills-chart" class="chart" style="min-width: 300px; max-width: 600px; height: 300px; margin: 0 auto"></div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock container %}
+
+{% block scripts %}
+	<script src="/static/assets/js/teams.js"></script>
+	<script src="/static/assets/js/skills-chart.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var series = {{ skills | safe }};
+	</script>
+{% endblock scripts %}
