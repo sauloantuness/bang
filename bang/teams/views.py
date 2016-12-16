@@ -89,9 +89,10 @@ def update(request, team_id):
 
     context = {
         'form': form,
-        'team': team
+        'team': team,
+        'series': team.getSkills(),
     }
-    
+
     if request.method == "POST" and form.is_valid():
         form.save()
         return redirect('/teams/' + str(team_id))

@@ -74,7 +74,7 @@ def profile(request, profile_id):
             'uva': uva_solutions.count(),
             'spoj': spoj_solutions.count(),
         },
-        'skills': [profile.getSkills()],
+        'series': [profile.getSkills()],
         'recentlySolved': Solution.objects.filter(
             profile__id=profile_id
         ).order_by('-date')[:5],

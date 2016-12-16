@@ -3,16 +3,16 @@
 	var days = {{ historic.days | safe }}
 </script>
 
-<div class="panel panel-default animated fadeInRight">
+<div class="panel panel-default animated fadeInRight" id="historic-panel">
 	<div class="panel-heading">
 		<div class="btn-group pull-right">
-			<button type="button" class="btn btn-default active">Week</button>
-			<button type="button" class="btn btn-default">Month</button>
-			<button type="button" class="btn btn-default">Year</button>
+			<button type="button" class="btn btn-default active" data-period='week'>Week</button>
+			<button type="button" class="btn btn-default" data-period='month'>Month</button>
+			<button type="button" class="btn btn-default" data-period='year'>Year</button>
 		</div>
 		<h5>Historic</h5>
 	</div>
 	<div class="panel-body">
-		<div id="myChart" class="chart"></div>
+		<div id="historic-chart" class="chart"></div>
 	</div>
 </div>

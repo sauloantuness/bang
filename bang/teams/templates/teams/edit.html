@@ -56,9 +56,9 @@
 {% endblock container %}
 
 {% block scripts %}
+	<script type="text/javascript" charset="utf-8">
+		var series = {{ series | safe }};
+	</script>
 	<script src="/static/assets/js/teams.js"></script>
 	<script src="/static/assets/js/skills-chart.js"></script>
-	<script type="text/javascript" charset="utf-8">
-		var series = {{ skills | safe }};
-	</script>
 {% endblock scripts %}
