@@ -158,10 +158,11 @@ def getContestScore(contest):
 def contestsContest(request, contest_id):
 	contest = Contest.objects.get(id=contest_id)
 	context = {
-		'contest'  : contest,
-		'problems' : contest.problems.all(),
-		'scores'   : getContestScore(contest),
-		'now' : datetime.now().timestamp() * 1000,
+		'contest': contest,
+		'duration': formatTime(contest.duration),
+		'problems': contest.problems.all(),
+		'scores': getContestScore(contest),
+		'now': datetime.now().timestamp() * 1000,
 	}
 
 	return render(request, 'contests/contests-contest.html', context)

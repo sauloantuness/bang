@@ -5,7 +5,7 @@
 {% endblock title %}
 
 {% block container %}
-<div class="container">
+<div class="container animated fadeIn">
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
@@ -27,7 +27,7 @@
 											<span class="pe-7s-flag"></span><b>{{ c.num_problems }}</b><i>|</i>
 										</div>
 										<div title="Duration">
-											<span class="pe-7s-clock"></span><b>{{ c.contest.duration }}</b>
+											<span class="pe-7s-clock"></span><b>{{ c.duration }}</b>
 										</div>
 									</div>
 									<span class="{{ c.contest.getStatus }}"></span>

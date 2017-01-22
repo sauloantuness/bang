@@ -16,6 +16,15 @@ def set_profile(backend, response, user, is_new=False, *args, **kwargs):
         p.facebookId = response['id']
         p.save()
 
+def formatTime(minutes):
+    if minutes < 60:
+        return "%d min" % minutes
+
+    if minutes % 60 == 0:
+        return "%d h" % int(minutes / 60)
+
+    return "%d h %d min" % (minutes / 60, minutes % 60)
+
 
 def getContests(orderBy='-date'):
     '''
@@ -26,6 +35,7 @@ def getContests(orderBy='-date'):
     for c in Contest.objects.all().order_by(orderBy):
         contest = {
             'contest': c,
+            'duration': formatTime(c.duration),
             'num_profiles': c.profiles.count(),
             'num_problems': c.problems.count(),
         }
