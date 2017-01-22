@@ -3,7 +3,7 @@ from home.models import Profile, Team, Invite, Solution
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .forms import TeamForm
-
+from functools import reduce
 
 def teamsInvite(request, answer, invite_id):
     invite = Invite.objects.get(id=invite_id)
@@ -122,12 +122,15 @@ def skills(request):
     categories = ["B", "A", "S", "D", "M", "P", "G", "C", "U"]
     data = []
 
+
     for category in categories:
         data.append(
-            Solution.objects.filter(
-                problem__category=category,
-                profile_id__in=profiles
-            ).order_by("problem").distinct('problem').count()
+            reduce(lambda acc, s: s.problem.level + acc,
+                Solution.objects.filter(
+                    problem__category=category,
+                    profile_id__in=profiles
+                ).order_by("problem").distinct('problem'),
+                0)
         )
 
     print(profiles)
@@ -137,3 +140,48 @@ def skills(request):
     })
 
     return JsonResponse(skills, safe=False)
+
+
+def get_score(profiles):
+    problems = set()
+
+    for profile in profiles:
+        problems = problems | set(profile['problems'])
+
+    score = reduce(lambda acc, p: p.level + acc, problems, 0)
+    return score
+
+
+@login_required
+def best_team(request):
+    profiles = []
+
+    for profile in Profile.objects.all():
+        profiles.append({
+            'id': profile.id,
+            'problems': [s.problem for s in profile.solution_set.all()]
+        })
+
+    team = []
+    max_score = 0
+
+    i = len(profiles) ** 2
+
+    p3 = {
+        'id': request.user.profile.id,
+        'problems': [s.problem for s in profile.solution_set.all()]
+    }
+
+    for p1 in profiles:
+        for p2 in profiles:
+            if p1 != p2 != p3:
+                score = get_score([p1, p2, p3])
+
+                if score >= max_score:
+                    max_score = score
+                    team = [p1['id'], p2['id'], p3['id']]
+
+                print(team, i)
+                i = i - 1
+
+    return JsonResponse(team, safe=False)

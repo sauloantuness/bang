@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
+from functools import reduce
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -26,7 +28,7 @@ class Profile(models.Model):
         if self.uvaId:
             return 'https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_authorstats&userid=' + self.uvaId
         return '#'
-        
+
     def getSpojLink(self):
         if self.spojId:
             return 'http://br.spoj.com/users/' + self.spojId
@@ -34,15 +36,15 @@ class Profile(models.Model):
 
     def getSkills(self):
         data = [
-            self.solution_set.filter(problem__category="B").count(),
-            self.solution_set.filter(problem__category="A").count(),
-            self.solution_set.filter(problem__category="S").count(),
-            self.solution_set.filter(problem__category="D").count(),
-            self.solution_set.filter(problem__category="M").count(),
-            self.solution_set.filter(problem__category="P").count(),
-            self.solution_set.filter(problem__category="G").count(),
-            self.solution_set.filter(problem__category="C").count(),
-            self.solution_set.filter(problem__category="U").count(),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="B"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="A"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="S"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="D"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="M"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="P"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="G"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="C"), 0),
+            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="U"), 0),
         ]
 
         return {
@@ -50,6 +52,7 @@ class Profile(models.Model):
             'data': data,
             'pointPlacement': 'on',
         }
+
 
 class Problem(models.Model):
     code = models.CharField(max_length=50)
@@ -85,8 +88,9 @@ class Problem(models.Model):
     def __str__(self):
         if self.judge == 'uva':
             return "[{0}] {1}: {2}".format(self.judge, self.number, self.name)
-            
+
         return "[{0}] {1}: {2}".format(self.judge, self.code, self.name)
+
 
 class Solution(models.Model):
     date = models.DateTimeField()
@@ -152,12 +156,14 @@ class Team(models.Model):
 
         return skills
 
+
 class Invite(models.Model):
     team = models.ForeignKey(Team, related_name='invites')
     profile = models.ForeignKey(Profile)
 
     def __str__(self):
         return self.team.name + ' - ' + self.profile.name
+
 
 class Contest(models.Model):
     name = models.CharField(max_length=100)

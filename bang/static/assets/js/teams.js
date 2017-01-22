@@ -15,6 +15,25 @@ var getSkills = function(){
 		});
 	};
 
+var selectBestTeam = function(){
+		$('.fa-star').removeClass('fa-star').addClass('fa-circle-o-notch fa-spin');
+		$('#best-team').prop('disabled', true);
+
+		$.ajax({
+			type: 'GET',
+			url: '/teams/best_team',
+			success: function(profiles) {
+				$('#id_profiles').selectpicker('deselectAll');
+				$('#id_profiles').val(profiles);
+				$('#id_profiles').selectpicker('render');
+				$('#id_profiles').trigger('change');
+				$('.fa-circle-o-notch').removeClass('fa-circle-o-notch fa-spin').addClass('fa-star');
+				$('#best-team').prop('disabled', false);
+			}
+		});
+	};
+
+
 $(document).ready(function(){
 	$(".selectpicker").change(getSkills);
 	getSkills();
