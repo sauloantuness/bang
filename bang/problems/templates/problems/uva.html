@@ -1,12 +1,13 @@
-<div class="panel panel-default">
-	<div id="uva" class="panel-heading">
+<div class="panel panel-default" id="uva">
+	<div class="panel-heading">
+		<input type="text" class="pull-right" placeholder="search" style="margin-top: 2px; padding-left: 8px; border: 1px solid #ddd; border-radius: 3px; outline: none; height: 30px">
 		<h5>UVa</h5>
 	</div>
 	<div class="panel-body">
 		{% if not uva %}
 			No problems yet.
 		{% endif %}
-		<ul class="list-inline list-inline-fix">
+		<ul class="list-inline">
 			{% for s in uva %}
 				<li>
 					<a href="/problems/{{ s.problem.id }}" title="{{ s.problem.name }}">{{ s.problem.number }}</a>
