@@ -25,8 +25,8 @@
 									<th><a href="/ranking/uri">URI</a></th>
 									<th><a href="/ranking/uva">UVA</a></th>
 									<th><a href="/ranking/spoj">SPOJ</a></th>
-									<th><a href="/ranking/contests">Contests</a></th>
-									<th><a href="/ranking/all">All</a></th>
+									<th title="The total of problems solved"><a href="/ranking/total">Total</a></th>
+									<th title="The sum of levels of the problems solved"><a href="/ranking/score">Score</a></th>
 									<!--<th class="glyphicon glyphicon-sort"></th>-->
 								</tr>
 							</thead>
@@ -38,8 +38,8 @@
 									<td>{{ p.uri }}</td>
 									<td>{{ p.uva }}</td>
 									<td>{{ p.spoj }}</td>
-									<td>{{ p.contests }}</td>
-									<td>{{ p.all }}</td>
+									<td>{{ p.total }}</td>
+									<td>{{ p.score }}</td>
 									<!--<th style="color: #1bc98e">+1</th>-->
 								</tr>
 								{% endfor %}
