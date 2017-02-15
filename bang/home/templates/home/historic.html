@@ -3,7 +3,15 @@
 	var days = {{ historic.days | safe }}
 </script>
 
-<div class="panel panel-default animated fadeIn" id="historic-panel">
+<div class="panel panel-default animated fadeIn" id="historic-panel"
+	{% if profile %}
+		data-type="profile" data-id="{{profile.id}}"
+	{% elif team %}
+		data-type="team" data-id="{{team.id}}"
+	{% else %}
+		data-type="group" data-id="0"
+	{% endif %}
+>
 	<div class="panel-heading">
 		<div class="btn-group pull-right">
 			<button type="button" class="btn btn-default active" data-period='week'>Week</button>

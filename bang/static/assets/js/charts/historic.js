@@ -16,7 +16,7 @@ var Historic = function(){
 			$(btn).addClass('active');
 			document.activeElement.blur();
 
-			var period = $(el.target).data('period');
+			var period = $(btn).data('period');
 			updateChart(period);
 		});
 	}
@@ -57,8 +57,11 @@ var Historic = function(){
 		chart = $('#historic-chart').highcharts();
 	}
 
-	var updateChart = function(period, id){
-		$.getJSON('/api/historic/' + period + '/' + (id || ''), function(response){
+	var updateChart = function(period){
+		var type = $('#historic-panel').data('type');
+		var id = $('#historic-panel').data('id');
+
+		$.getJSON('/api/historic/' + period + '/' + type + '/' + id, function(response){
 			chart.xAxis[0].update({
 				categories: response.xAxis
 			})
@@ -74,8 +77,4 @@ var Historic = function(){
 		setupChart: setupChart,
 		updateChart: updateChart
 	};
-
-
-
 }
-

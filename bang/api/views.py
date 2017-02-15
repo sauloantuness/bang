@@ -1,9 +1,9 @@
 from django.http import JsonResponse
 from datetime import datetime, timedelta
-from home.models import Solution
+from home.models import Solution, Team, Profile
 
 
-def historic(request, period):
+def historic(request, period, type, id):
     now = datetime.now().date()
 
     if period == 'week':
@@ -28,10 +28,16 @@ def historic(request, period):
 
     problems_solved = []
     for day in days:
-        problems_solved.append(
-            Solution.objects.filter(
-                date__range=[day, day + timedelta(days=interval)]
-            ).count())
+        if type == 'group':
+            problems_solved.append(Solution.objects.filter(date__range=[day, day + timedelta(days=interval)]).count())
+        elif type == 'team':
+            problems_solved.append(Solution.objects.filter(
+                date__range=[day, day + timedelta(days=interval)],
+                profile__in=Team.objects.get(pk=id).profiles.all()).count())
+        elif type == 'profile':
+            problems_solved.append(Solution.objects.filter(
+                date__range=[day, day + timedelta(days=interval)],
+                profile__id=id).count())
 
     days = [d.strftime(mask) for d in days]
 

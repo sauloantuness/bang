@@ -114,7 +114,7 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
-    def getHistoric(self, num_days=30):
+    def getHistoric(self, num_days=7):
         now = datetime.now().date()
         begin = now - timedelta(days=num_days)
 
