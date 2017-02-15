@@ -5,7 +5,11 @@
 	<div class="panel-body">
 		<div class="perfil">
 			<img src="{{ profile.picture }}?type=large&height=128&width=128" class="img-circle">
-			<h3>{{ profile.name }}<br><small>Eng Computação</small></h3>
+			{% if profile.id == 71 %}
+				<h3>{{ profile.name }}<br><small>High School</small></h3>
+			{% else %}
+				<h3>{{ profile.name }}<br><small>Computer Engineering</small></h3>
+			{% endif %}
 			<hr>
 		</div>
 
