@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'settings.apps.SettingsConfig',
     'problems.apps.ProblemsConfig',
     'contests.apps.ContestsConfig',
+    'aamas.apps.AamasConfig',
 ]
 
 MIDDLEWARE_CLASSES = [

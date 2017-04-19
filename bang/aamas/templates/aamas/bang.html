@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+	AAMAS
+{% endblock title %}
+
+{% block container %}
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>AAMAS</h5>
+					</div>
+					<div class="panel-body">
+						<h5>Demo Paper</h5>
+						<a href="/static/files/bang-demo.pdf">Bang: A System for Training and Visualization in Multi-agent Team Formation</a>
+
+						<br>
+						<br>
+
+						<h5>Video demonstration</h5>
+						<div class="embed-responsive embed-responsive-16by9">
+							<video src="/static/video/bang-demo.mp4" controls></video>
+						</div>
+						
+<!--  						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/prw3NQWaUXA" frameborder="0" allowfullscreen></iframe>
+						</div> -->
+					</div>
+				</div>
+			</div>
+	</div>
+{% endblock container %}
