@@ -1,0 +1,1 @@
+psql bang < bang.dump

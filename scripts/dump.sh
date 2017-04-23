@@ -1,0 +1,1 @@
+pg_dump bang --clean > bang.dump

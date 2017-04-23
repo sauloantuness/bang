@@ -2,3 +2,4 @@
 *.pyo
 keys.py
 bang/log
+staticRoot
