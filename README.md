@@ -1,2 +1,2 @@
-# bang
-Ambiente para estímulo e acompanhamento de treinamento para equipes de Competição de Programação no CEFET-MG
+# Bang
+Bang is a set of tools designed to assist student training and team formation for programming competitions
