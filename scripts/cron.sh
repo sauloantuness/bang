@@ -3,7 +3,7 @@
 # */5 * * * *  /home/admin/env/bang/bang/cron.sh >> /home/admin/env/bang/bang/log 2>&1
 
 BASEDIR=$(dirname "$0")
-PYTHONDIR=$BASEDIR"/../../bin/python"
+PYTHONDIR="/home/saulo/.virtualenvs/bang/bin/python"
 COMMAND1=$BASEDIR"/manage.py updateUriSolutions"
 COMMAND2=$BASEDIR"/manage.py updateUvaSolutions"
 
