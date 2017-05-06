@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Group
+{% endblock title %}
+
+{% block container %}
+	<div class="container animated fadeIn">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<a 
+							href="#"
+							data-toggle="modal"
+							data-target="#new-group-modal" 
+							class="btn btn-default pull-right">New Group</a>
+						<h5>Groups</h5>
+					</div>
+					<div class="panel-body text-center">
+						<div class="row">
+							<div class="col-xs-12">
+								<p>Welcome to BANG! Now you need to select your group:</p>
+
+								<hr>
+							</div>
+						</div>
+						<div class="row">
+							{% for group in groups %}
+								<div class="col-xs-12 col-sm-6 col-md-4">
+									<div class="thumbnail" style="padding: 8px">
+										<img
+											style="padding: 15px"
+											padding="15px"
+											width="128px" 
+											height="128px"
+											src="{{ group.picture }}"
+											alt="{{ group.name }}">
+										<a 
+											data-toggle="modal"
+											data-target="#group-confirmation-modal"
+											data-group-name="{{ group.name }}"
+											data-group-id="{{ group.id }}"
+											href="#"
+											title="{{ group.name }}"><b>{{ group.name }}</b></a>
+										<p>{{ group.institution.name }}</p>
+										<div class="contests-info">
+											<div title="Users">
+												<span class="pe-7s-users"></span> <b>123</b> <i>&nbsp</i>
+											</div>
+											<div title="Problems solved">
+												<span class="pe-7s-flag"></span> <b>123</b> <i>&nbsp</i>
+											</div>
+											<div title="Ranking position">
+												<span class="pe-7s-medal"></span> <b>2º</b> 
+											</div>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{% include "groups/modal.html" %}
+
+{% endblock container %}
+
+{% block scripts %}
+	<script src="/static/assets/js/groups.js"></script>
+{% endblock scripts %}
+

@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from datetime import datetime, timedelta
-from home.models import Solution, Team, Profile
+from home.models import *
 
 
 def historic(request, period, type, id):
@@ -45,3 +45,24 @@ def historic(request, period, type, id):
         'xAxis': days,
         'series': problems_solved
     })
+
+
+def confirm_secret_key(request):
+    if request.method == 'POST':
+        secret_key = request.POST['secret_key']
+        group_id = request.POST['group_id']
+
+        group = Group.objects.filter(id=group_id, secret_key=secret_key).first()
+
+        if group:
+            request.user.profile.group = group
+            request.user.profile.save()
+
+            return JsonResponse({
+                'success': True
+            })
+        else:
+            return JsonResponse({
+                'success': False
+            })
+

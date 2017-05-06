@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'settings.apps.SettingsConfig',
     'problems.apps.ProblemsConfig',
     'contests.apps.ContestsConfig',
+    'groups.apps.GroupsConfig',
     'aamas.apps.AamasConfig',
 ]
 

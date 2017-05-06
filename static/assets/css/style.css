@@ -334,3 +334,16 @@
 	margin-top: 5px;
 }
 /*fim settings*/
+
+
+.help-block {
+	display: none;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+}
+
+.form-group.has-error .help-block {
+	display: block;
+	opacity: 1;
+	transition: opacity 1s ease-in-out;
+}

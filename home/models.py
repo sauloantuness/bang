@@ -4,14 +4,40 @@ from datetime import datetime, timedelta
 from functools import reduce
 
 
+class Institution(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+
+
+class Group(models.Model):
+    name = models.CharField(max_length=100)
+    picture = models.CharField(max_length=500)
+    secret_key = models.CharField(max_length=100)
+    institution = models.ForeignKey(Institution, related_name='groups')
+
+    def __str__(self):
+        return self.name
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+
+    def __str__(self):
+        return self.name
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     picture = models.CharField(max_length=500)
+    email = models.CharField(max_length=500, blank=True)
     facebookId = models.CharField(max_length=100)
     uriId = models.CharField(max_length=50, blank=True)
     uvaId = models.CharField(max_length=50, blank=True)
     spojId = models.CharField(max_length=50, blank=True)
+    group = models.ForeignKey(Group, null=True, related_name='profiles')
 
     class Meta:
         ordering = ['name']

@@ -1,0 +1,46 @@
+<div class="modal fade" tabindex="-1" role="dialog" id="group-confirmation-modal">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">GCC</h4>
+      </div>
+      <div class="modal-body">
+        <p>To be part of this group, you need to insert the secret key</p>
+        <form action="/confirm_secret_key" method="POST">
+        	<dl class="form-group">
+        		<dt>
+        			<label class="control-label">Secret Key</label>
+        		</dt>
+        		<dd>
+        			{% csrf_token %}
+        			<input type="hidden" name="group_id">
+        			<input type="text" class="form-control" name="secret_key" autocomplete="off">
+    			    <p class="help-block">Invalid secret key</p>
+        		</dd>
+
+        	</dl>
+        	<dl class="form-group">
+        		<button type="submit" class="btn btn-block" disabled>Continue</button>
+        	</dl>
+        </form>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="new-group-modal">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">New Group</h4>
+      </div>
+      <div class="modal-body">
+        <p>If you are interested to use BANG in your group university, just send a e-mail to <a href="#">sauloantuness@gmail.com</a> and we will contact you.</p>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
