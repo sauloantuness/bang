@@ -3,18 +3,34 @@ from datetime import datetime, timedelta
 from home.models import *
 
 
-def set_profile(backend, response, user, is_new=False, *args, **kwargs):
+def email(backend, response):
     if backend.name == 'facebook':
-        try:
-            p = Profile.objects.get(user=user)
-        except Profile.DoesNotExist:
-            p = Profile()
-            p.user = user
+        return response['email']
 
-        p.name = response['name']
-        p.picture = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
-        p.facebookId = response['id']
-        p.save()
+    elif backend.name == 'google-oauth2':
+        return response['emails'][0]['value']
+
+
+def set_profile(backend, response, user, is_new=False, *args, **kwargs):    
+    profile = Profile.objects.filter(email=email(backend, response)).first()
+
+    if not profile:
+        profile = Profile()
+
+    if backend.name == 'facebook':
+            profile.name = response['name']
+            profile.picture = 'http://graph.facebook.com/{0}/picture'.format(response['id'])
+            profile.facebookId = response['id']
+            profile.email = response['email']
+
+    elif backend.name == 'google-oauth2':
+        profile.name = response['displayName']
+        profile.picture = response['image']['url'].split('?')[0]
+        profile.email = response['emails'][0]['value']
+
+    profile.user = user
+    profile.save()
+
 
 def formatTime(minutes):
     if minutes < 60:
@@ -107,3 +123,6 @@ def getEvents():
             'description': 'Maratona Mineira'  
         },
     ]
+
+def group_check(user):
+    return user.profile.group
