@@ -14,9 +14,24 @@
 			<img src="/static/assets/img/logo-big.png" alt="">
 			<p>Bang is a set of tools designed to assist student training and team formation for programming competitions.</p>
 			<br>
-			<a href="/login/facebook/" class="btn btn-default btn-block">Login with Facebook</a>
-			<br>
-			<a href="{% url "social:begin" "google-oauth2" %}" class="btn btn-default btn-block">Login with Google</a>
+
+			<hr>
+			<p>Connect with a social account to continue:</p>
+
+			<div class="row">
+				<div class="col-md-6 col-sm-12">
+					<a href="/login/facebook/" class="btn btn-default btn-block">
+						<img class="icon icons8-Google" width="16" height="16" src="/static/assets/img/facebook-icon.png">
+						 Facebook</a>		
+					<br>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<a href="{% url "social:begin" "google-oauth2" %}" class="btn btn-default btn-block">
+						<img class="icon icons8-Google" width="16" height="16" src="/static/assets/img/google-icon.png">
+						 Google
+					</a>
+				</div>
+			</div>
 		</div>		
 	</div>
 	<div id="large-header">
