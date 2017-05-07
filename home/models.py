@@ -14,7 +14,7 @@ class Institution(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=100)
     picture = models.CharField(max_length=500)
-    secret_key = models.CharField(max_length=100)
+    secret_key_user = models.CharField(max_length=100)
     secret_key_coach = models.CharField(max_length=100, blank=True)
     secret_key_visitor = models.CharField(max_length=100, blank=True)
     institution = models.ForeignKey(Institution, related_name='groups')
@@ -41,6 +41,14 @@ class Profile(models.Model):
     spojId = models.CharField(max_length=50, blank=True)
     group = models.ForeignKey(Group, null=True, related_name='profiles')
 
+    role_choices = [
+        ('user', 'User'),
+        ('coach', 'Coach'),
+        ('visitor', 'Visitor'),
+    ]
+
+    role = models.CharField(max_length=7, choices=role_choices, default='user')
+
     class Meta:
         ordering = ['name']
 
@@ -48,6 +56,9 @@ class Profile(models.Model):
         return self.name
 
     def is_judges_filled(self):
+        if self.role in ('visitor', 'coach'):
+            return True
+
         return self.uriId and self.uvaId and self.spojId
 
     def getUriLink(self):

@@ -51,18 +51,34 @@ def confirm_secret_key(request):
     if request.method == 'POST':
         secret_key = request.POST['secret_key']
         group_id = request.POST['group_id']
+        success = False
 
-        group = Group.objects.filter(id=group_id, secret_key=secret_key).first()
+        group = Group.objects.filter(id=group_id, secret_key_user=secret_key).first()
 
         if group:
+            success = True
+            request.user.profile.role = 'user'
             request.user.profile.group = group
             request.user.profile.save()
 
-            return JsonResponse({
-                'success': True
-            })
-        else:
-            return JsonResponse({
-                'success': False
-            })
+        group = Group.objects.filter(id=group_id, secret_key_coach=secret_key).first()
+
+        if group:
+            success = True
+            request.user.profile.role = 'coach'
+            request.user.profile.group = group
+            request.user.profile.save()
+
+        group = Group.objects.filter(id=group_id, secret_key_visitor=secret_key).first()
+
+        if group:
+            success = True
+            request.user.profile.role = 'visitor'
+            request.user.profile.group = group
+            request.user.profile.save()
+
+
+        return JsonResponse({
+            'success': success
+        })
 
