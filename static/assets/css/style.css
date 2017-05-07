@@ -278,21 +278,22 @@
 /*fim ranking*/
 
 /*inicio home*/
-.event {
+.events {
 	position: relative;
+	overflow: hidden;
 }
-.event > .glyphicon {
+.events > .glyphicon {
 	position: absolute;
 	margin-top: -14px;
 	top: 50%;
 }
 
-.event > .glyphicon-menu-left {
+.events > .glyphicon-menu-left {
 	float: left;
 	left: 0;
 }
 
-.event > .glyphicon-menu-right {
+.events > .glyphicon-menu-right {
 	float: right;
 	right: 0;
 }

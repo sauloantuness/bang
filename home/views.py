@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from home.utils import *
-
+from home.models import *
 
 def login(request):
     return render(request, 'home/login.html')
@@ -28,11 +28,11 @@ def home(request):
 
     context = {
         'group': getSolutionsAmount(),
-        'events': getEvents(),
+        'events': Event.objects.all(),
+        'closest_event': Event.closest(),
         'trends': getTrends(),
         'historic': getHistoric(),
         'recentlySolved': getLastSolutions(),
     }
 
     return render(request, 'home/home.html', context)
-''

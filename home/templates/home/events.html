@@ -1,16 +1,24 @@
-<div class="panel panel-default">
+<div class="panel panel-default" id="events">
 	<div class="panel-heading">
 		<h5>Next Events</h5>
 	</div>
 	<div class="panel-body">
-		<div class="event text-center">
-			<div class="event-date">
-				<b>May</b>
-				<h1>27</h1>
-			</div>
-			<h3>Mineira</h3>
-			<span class="glyphicon glyphicon-menu-left"></span>
-			<span class="glyphicon glyphicon-menu-right"></span>
+		<div class="events">
+			{% for event in events %}
+				<div class="event text-center animated fadeIn"
+					{% if event != closest_event %}
+						style="display: none"
+					{% endif %}
+				>
+					<div class="event-date">
+						<b>{{ event.date|date:"F" }}</b>
+						<h1>{{ event.date|date:"d" }}</h1>
+					</div>
+					<h3>{{ event.name }}</h3>
+				</div>
+			{% endfor %}
+			<span class="glyphicon glyphicon-menu-left" id="event-left"></span>
+			<span class="glyphicon glyphicon-menu-right" id="event-rigth"></span>
 		</div>
 	</div>
 </div>

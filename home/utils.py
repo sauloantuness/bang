@@ -116,13 +116,6 @@ def getTrends():
         'profiles': Profile.objects.filter(solution__date__gt=d).annotate(num_solutions=Count('solution')).order_by('-num_solutions')[:5]
     }
 
-def getEvents():
-    return [
-        {
-            'date': '04/06/2016',
-            'description': 'Maratona Mineira'  
-        },
-    ]
 
 def group_check(user):
     return user.profile.group

@@ -27,6 +27,20 @@ class Event(models.Model):
     name = models.CharField(max_length=100)
     date = models.DateField()
 
+    class Meta:
+        ordering = ['date']
+
+    @classmethod
+    def closest(cls):
+        now = datetime.now()
+        closest_event = cls.objects.filter(date__gte=now).order_by('date').first()
+
+        if not closest_event:
+            closest_event = cls.objects.order_by('date').first()
+
+        return closest_event
+
+
     def __str__(self):
         return self.name
 
