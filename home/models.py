@@ -15,6 +15,8 @@ class Group(models.Model):
     name = models.CharField(max_length=100)
     picture = models.CharField(max_length=500)
     secret_key = models.CharField(max_length=100)
+    secret_key_coach = models.CharField(max_length=100, blank=True)
+    secret_key_visitor = models.CharField(max_length=100, blank=True)
     institution = models.ForeignKey(Institution, related_name='groups')
 
     def __str__(self):
@@ -44,6 +46,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
+
+    def is_judges_filled(self):
+        return self.uriId and self.uvaId and self.spojId
 
     def getUriLink(self):
         if self.uriId:

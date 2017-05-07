@@ -3,19 +3,35 @@
 
 {% include "settings/judgesInformationsUpdated.html" %}
 
+{% if not user.profile.is_judges_filled %}
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="alert alert-warning">To better use BANG, you need to fill the information below with the IDs of the respective judges.</p>
+		</div>
+	</div>
+{% endif %}
 <div class="row">
 	<form action="/settings/" method="POST">
 		{% csrf_token %}
 		<div class="form-group col-sm-3">
 			<label>URI</label>
+			<i class="fa fa-question-circle pop" aria-hidden="true"
+				title="URI"
+				data-content="Access your <a target='blank' target='blank' href='https://www.urionlinejudge.com.br/judge/pt/account'>URI settings page</a> and copy the <b>identification</b>."></i>
 			<input type="text" class="form-control" placeholder="39764" name="uriId" value='{{ profile.uriId }}'>
 		</div>
 		<div class="form-group col-sm-3">
 			<label>UVA</label>
+			<i class="fa fa-question-circle pop" aria-hidden="true"
+				title="UVa"
+				data-content="Access your <a target='blank' href='https://uva.onlinejudge.org/index.php?option=com_comprofiler'>UVa account page</a> and copy the <b>Online Judge ID</b>."></i>
 			<input type="text" class="form-control" placeholder="703913" name="uvaId" value='{{ profile.uvaId }}'>
 		</div>
 		<div class="form-group col-sm-3">
 			<label>SPOJ</label>
+			<i class="fa fa-question-circle pop" aria-hidden="true"
+				title="SPOJ"
+				data-content="Access your <a target='blank' href='http://www.spoj.com/myaccount/'>SPOJ account page</a> and copy the <b>username</b>."></i>
 			<input type="text" class="form-control" placeholder="myusername" name="spojId" value='{{ profile.spojId }}'>
 		</div>
 		<div class="form-group col-sm-3">
