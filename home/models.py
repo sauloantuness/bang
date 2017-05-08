@@ -54,6 +54,7 @@ class Profile(models.Model):
     uvaId = models.CharField(max_length=50, blank=True)
     spojId = models.CharField(max_length=50, blank=True)
     group = models.ForeignKey(Group, null=True, related_name='profiles')
+    uri_authorization = models.BooleanField(default=False)
 
     role_choices = [
         ('user', 'User'),

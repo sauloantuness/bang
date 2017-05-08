@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'problems.apps.ProblemsConfig',
     'contests.apps.ContestsConfig',
     'groups.apps.GroupsConfig',
+    'uri.apps.UriConfig',
     'aamas.apps.AamasConfig',
 ]
 

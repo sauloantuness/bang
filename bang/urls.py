@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^contests/',  include('contests.urls')),
     url(r'^api/',       include('api.urls')),
     url(r'^groups/',    include('groups.urls')),
+    url(r'^uri/',       include('uri.urls')),
     url(r'^aamas2017/', include('aamas.urls')),
 ]
