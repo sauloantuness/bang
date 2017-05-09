@@ -1,0 +1,42 @@
+<div class="panel panel-default chart-container animated fadeIn"
+	id="histogram-panel"
+	data-type="{{ histogram.type }}"
+	data-id="{{ histogram.type_id }}">
+	<div class="panel-heading">
+		<div class="btn-toolbar pull-right">
+			<div class="btn-group" role="group">
+				<button type="button" class="btn btn-default" id="histogram-prev">
+					<span class="glyphicon glyphicon-menu-left"></span>
+				</button>
+				<button type="button" class="btn btn-default" data-month="{{ histogram.month }}" data-year="{{ histogram.year }}" id="histogram-date">{{ histogram.date }}</button>
+				<button type="button" class="btn btn-default" id="histogram-next">
+					<span class="glyphicon glyphicon-menu-right"></span>
+				</button>
+			</div>
+			<div class="btn-group" role="group">
+				<div class="dropdown" id="histogram-category" data-category="{{ histogram.category }}">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+						<span>All</span>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">Category</li>
+						<li><a href="#" data-category="all">All</a></li>
+						<li><a href="#" data-category="B">Beginner</a></li>
+						<li><a href="#" data-category="A">Ad-Hoc</a></li>
+						<li><a href="#" data-category="S">Strings</a></li>
+						<li><a href="#" data-category="D">Data Structures and Libraries</a></li>
+						<li><a href="#" data-category="M">Mathematics</a></li>
+						<li><a href="#" data-category="P">Paradigms</a></li>
+						<li><a href="#" data-category="G">Graph</a></li>
+						<li><a href="#" data-category="C">Computational Geometry</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<h5>Histogram</h5>
+	</div>
+	<div class="panel-body">
+		<div id="histogram-chart" class="chart"></div>
+	</div>
+</div>

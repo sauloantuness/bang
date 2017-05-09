@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth.decorators import login_required, user_passes_test
+from datetime import datetime
 from home.utils import *
 from home.models import *
 
@@ -33,6 +34,14 @@ def home(request):
         'trends': getTrends(),
         'historic': getHistoric(),
         'recentlySolved': getLastSolutions(),
+        'histogram': {
+            'type': 'group',
+            'type_id': request.user.profile.group_id,
+            'month': datetime.now().month,
+            'year': datetime.now().year,
+            'date': datetime.now().strftime('%b/%y'),
+            'category': 'all'
+        }
     }
 
     return render(request, 'home/home.html', context)

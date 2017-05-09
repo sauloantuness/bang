@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.db.models import Count
 from datetime import datetime, timedelta
 from home.models import *
 
@@ -82,3 +83,34 @@ def confirm_secret_key(request):
             'success': success
         })
 
+
+def histogram(request, type, type_id, year, month, category):    
+    if type == 'group':
+        profiles = Profile.objects.filter(group_id=type_id)
+    elif type == 'team':
+        profiles = Profile.objects.get(id=type_id).profiles
+    elif type == 'profile':
+        profiles = [Profile.objects.get(id=type_id)]
+
+    filters = {
+        'profile__in': profiles,
+        'date__month': month,
+        'date__year': year,
+    }
+
+    if category != 'all':
+        filters['problem__category'] = category
+
+    results = Solution.objects.values('problem__level')\
+                    .annotate(count=Count('problem__level'))\
+                    .filter(**filters)\
+                    .order_by('problem__level')
+
+    series = [0] * 10
+
+    for result in results:
+        series[result['problem__level']] = result['count']
+
+    return JsonResponse({
+        'series': series
+    })
