@@ -37,7 +37,7 @@ def home(request):
         'histogram': {
             'type': 'group',
             'type_id': request.user.profile.group_id,
-            'month': datetime.now().month,
+            'month': datetime.now().month - 1,
             'year': datetime.now().year,
             'date': datetime.now().strftime('%b/%y'),
             'category': 'all'

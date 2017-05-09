@@ -48,13 +48,13 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     picture = models.CharField(max_length=500)
-    email = models.CharField(max_length=500, blank=True)
+    email = models.CharField(max_length=500, blank=True, null=True)
     facebookId = models.CharField(max_length=100)
     uriId = models.CharField(max_length=50, blank=True)
     uvaId = models.CharField(max_length=50, blank=True)
     spojId = models.CharField(max_length=50, blank=True)
-    group = models.ForeignKey(Group, null=True, related_name='profiles')
-    uri_authorization = models.BooleanField(default=False)
+    group = models.ForeignKey(Group, null=True, blank=True, related_name='profiles')
+    uri_authorization = models.NullBooleanField(default=False, blank=True, null=True)
 
     role_choices = [
         ('user', 'User'),
@@ -62,7 +62,7 @@ class Profile(models.Model):
         ('visitor', 'Visitor'),
     ]
 
-    role = models.CharField(max_length=7, choices=role_choices, default='user')
+    role = models.CharField(max_length=7, choices=role_choices, default='user', blank=True, null=True)
 
     class Meta:
         ordering = ['name']
