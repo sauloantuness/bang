@@ -3,7 +3,7 @@
 	var days = {{ historic.days | safe }}
 </script>
 
-<div class="panel panel-default animated fadeIn" id="historic-panel"
+<div class="panel panel-default chart-container animated fadeIn" id="historic-panel"
 	{% if profile %}
 		data-type="profile" data-id="{{profile.id}}"
 	{% elif team %}

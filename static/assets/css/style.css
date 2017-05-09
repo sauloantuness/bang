@@ -348,3 +348,8 @@
 	opacity: 1;
 	transition: opacity 1s ease-in-out;
 }
+
+.chart-container .panel-body {
+	padding-left: 0;
+	padding-bottom: 0;
+}
