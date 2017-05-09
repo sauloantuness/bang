@@ -27,7 +27,7 @@
 									<th><a href="/ranking/spoj">SPOJ</a></th>
 									<th title="The total of problems solved"><a href="/ranking/total">Total</a></th>
 									<th title="The sum of levels of the problems solved"><a href="/ranking/score">Score</a></th>
-									<!--<th class="glyphicon glyphicon-sort"></th>-->
+									<th class="glyphicon glyphicon-sort"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -40,7 +40,13 @@
 									<td>{{ p.spoj }}</td>
 									<td>{{ p.total }}</td>
 									<td>{{ p.score }}</td>
-									<!--<th style="color: #1bc98e">+1</th>-->
+									{% if p.profile.id == 11 or p.profile.id == 64 %}
+										<th style="color: #1bc98e">+1</th>
+									{% elif p.profile.id == 28 or p.profile.id == 27 %}
+										<th style="color: #ff0000">-1</th>
+									{% else %}
+										<th >-</th>
+									{% endif %}
 								</tr>
 								{% endfor %}
 							</tbody>
