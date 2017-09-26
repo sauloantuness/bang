@@ -92,6 +92,9 @@ def histogram(request, type, type_id, year, month, category):
     elif type == 'profile':
         profiles = [Profile.objects.get(id=type_id)]
 
+    # todo fix this
+    profiles = Profile.objects.all()
+
     filters = {
         'profile__in': profiles,
         'date__month': month,

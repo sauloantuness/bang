@@ -1,0 +1,42 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: home_team; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY home_team (id, name) FROM stdin;
+2	W.I.P.
+6	Girls++
+7	Stall Wars
+10	Verilov
+14	Monty Py! 
+19	!SLEEP
+3	Master PRO
+17	NULL
+20	Ceferberus
+21	2&a(men/2)
+\.
+
+
+--
+-- Name: home_team_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('home_team_id_seq', 21, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

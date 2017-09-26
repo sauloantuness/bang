@@ -1,0 +1,72 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: home_contest; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (27, 'Quinzao11', '2016-06-01 15:05:00+00', 15, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (19, 'Quinzao6', '2016-05-23 19:48:00+00', 15, 0, 1, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (28, 'Quinzao12', '2016-06-02 17:10:00+00', 15, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (39, 'Cincao1', '2016-06-10 19:03:00+00', 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (29, 'Quinzao13', '2016-06-02 18:29:00+00', 15, 1, 1, 0, 0, 1, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (20, '2Horao', '2016-05-23 21:57:00+00', 120, 0, 2, 1, 1, 0, 1, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (21, '2Horao2', '2016-05-23 22:00:00+00', 120, 2, 2, 1, 1, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (22, 'Quinzao7', '2016-05-24 17:15:00+00', 15, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (10, '1o Contest', '2016-05-09 23:15:00+00', 30, 1, 2, 0, 0, 0, 0, 0, 0, 0, 1, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (23, 'Quinzao8', '2016-05-30 15:40:00+00', 15, 0, 1, 1, 1, 1, 0, 0, 0, 0, 27, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (12, 'Quinzao1', '2016-05-11 15:34:00+00', 15, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (24, 'Quinzao9', '2016-05-30 17:30:00+00', 15, 0, 1, 0, 1, 0, 0, 0, 1, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (13, 'Quinzao2', '2016-05-11 17:42:00+00', 15, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (15, 'Quinzao3', '2016-05-18 17:42:00+00', 15, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (16, 'Quinzao4', '2016-05-18 18:32:00+00', 15, 0, 2, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (37, 'Quinzao14', '2016-06-03 10:48:00+00', 15, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (25, '1Horao', '2016-05-30 22:30:00+00', 60, 0, 2, 1, 1, 0, 1, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (26, 'Quinzao10', '2016-05-31 18:36:00+00', 15, 0, 3, 0, 0, 0, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (18, 'Quinzao5', '2016-05-23 19:18:00+00', 15, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (67, '2º Constest Semanal - Intermediário', '2016-08-22 20:00:00+00', 8640, 1, 3, 2, 3, 2, 1, 2, 1, 0, 17, false, 'uva');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (46, 'Contest do Boss 2', '2016-06-20 21:45:00+00', 120, 2, 2, 1, 1, 1, 1, 1, 1, 0, 19, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (48, 'Trintao', '2016-06-21 15:25:00+00', 30, 1, 1, 1, 1, 1, 1, 1, 1, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (66, '2º Constest Semanal - Iniciante', '2016-08-23 20:00:00+00', 8640, 6, 2, 2, 1, 1, 1, 1, 1, 0, 17, false, 'uva');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (49, 'Trintao2', '2016-06-22 19:12:00+00', 30, 0, 4, 0, 0, 0, 1, 1, 0, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (68, '2º Constest Semanal - Avançado', '2016-08-23 12:56:00+00', 7200, 0, 2, 3, 3, 1, 2, 3, 1, 0, 17, false, 'uva');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (50, 'Contest do Boss 3', '2016-06-27 21:45:00+00', 120, 0, 0, 2, 2, 1, 2, 2, 1, 0, 19, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (64, 'Nome Maneiro', '2016-08-17 15:23:00+00', 144000, 5, 5, 5, 5, 2, 2, 3, 2, 0, 7, false, 'uri');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (69, '3º Constest Semanal - Avançado', '2016-08-30 21:00:00+00', 7200, 0, 1, 1, 2, 1, 1, 2, 1, 0, 17, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (51, 'treino de ferias', '2016-07-11 19:28:00+00', 152, 0, 4, 2, 2, 2, 0, 0, 2, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (38, 'Contest do Boss 1', '2016-06-13 21:45:00+00', 120, 2, 2, 1, 1, 1, 1, 1, 1, 0, 19, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (70, '3º Constest Semanal - Intermediário', '2016-08-30 21:00:00+00', 7200, 0, 1, 1, 2, 1, 1, 2, 1, 0, 17, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (65, 'Simulado Boladao Parte 2', '2016-08-20 12:00:00+00', 241, 1, 2, 1, 3, 1, 3, 3, 1, 0, 17, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (57, 'semana1', '2016-08-10 01:20:00+00', 7200, 1, 1, 1, 1, 0, 0, 1, 0, 0, 6, false, 'uri');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (47, '3horao', '2016-06-16 17:12:00+00', 180, 0, 4, 2, 2, 2, 2, 2, 1, 0, 2, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (60, '1º Constest Semanal - Iniciante', '2016-08-16 21:55:00+00', 7200, 3, 6, 3, 1, 1, 0, 1, 0, 0, 17, false, 'uri');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (63, 'Semanal Noturno 1', '2016-08-16 22:00:00+00', 120, 2, 2, 1, 1, 1, 1, 1, 1, 0, 2, false, 'uri');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (58, 'Sabado_1', '2016-08-13 12:32:00+00', 240, 3, 2, 2, 2, 1, 3, 3, 1, 0, 17, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (62, '1º Constest Semanal - Avançado', '2016-08-16 19:00:00+00', 7200, 0, 3, 2, 3, 1, 2, 3, 1, 0, 17, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (61, '1º Constest Semanal - Intermediário', '2016-08-16 19:00:00+00', 7200, 0, 4, 3, 3, 1, 2, 1, 1, 0, 17, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (59, 'Sabado_2', '2016-08-13 16:00:00+00', 240, 3, 2, 2, 2, 1, 3, 3, 1, 0, 17, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (75, 'AAMAS', '2017-02-16 13:00:00+00', 60, 0, 0, 0, 0, 0, 0, 0, 0, 3, 19, false, 'all');
+INSERT INTO home_contest (id, name, date, duration, "B", "A", "S", "D", "M", "P", "G", "C", "R", owner_id, team, judge) VALUES (76, 'sandro', '2017-04-19 16:00:00+00', 120, 1, 2, 1, 1, 0, 0, 0, 0, 0, 19, false, 'uri');
+
+
+--
+-- Name: home_contest_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('home_contest_id_seq', 76, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

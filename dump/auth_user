@@ -1,0 +1,89 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+7	!hxjw0hxQ5XjTAPIgWbihteHA3SS88LrD20ILsxGf	2016-08-31 01:24:31.028434+00	f	GilmarAlcântara	Gilmar	Alcântara	gilmar_palc@live.com	f	t	2016-05-09 22:58:11.675357+00
+26	!smdVsJtiMEChyvoWszrNVoxGYrHbBp6nyUrPq0oY	2016-09-29 01:09:26.447677+00	f	JulianeGuedes	Juliane	Guedes	julianegp@hotmail.com	f	t	2016-05-23 22:16:32.525494+00
+63	!PG780LAVKtk5Iec9uDmSK4LGJSN6Pg5jN9dY1nHz	2016-08-16 21:45:47.675526+00	f	VictorHugo	Victor	Hugo	victorhugosantos84@live.com	f	t	2016-08-16 21:45:47.508191+00
+24	!6WzBtXl2qcT5kqgdnao5VZUFLpI9H8y8ys7NVMJv	2016-08-20 13:05:14.975329+00	f	BárbaraPolianaJaber	Bárbara	Poliana Jaber	aby.lee@hotmail.com	f	t	2016-05-23 21:55:08.732687+00
+36	!ECFWHz5N85ISTblZFyI6MFLBlSY8DvDHkpvr3x8A	2016-06-20 21:12:56.639548+00	f	YuriBrunoFernandes	Yuri	Bruno Fernandes	yuribruno@msn.com	f	t	2016-06-20 21:12:56.535199+00
+35	!DOJSq6haMAii6haSUU5yguJmt3j7qmlIMjkoaIek	2016-06-17 13:29:08.525906+00	f	JonathanCandido	Jonathan	Candido	jon06071997@hotmail.com	f	t	2016-06-17 13:29:08.44231+00
+25	!duYXERROuLx2yvNvaO5iE2iyrP0J6YxduJDtfOsv	2016-05-23 21:55:14.601227+00	f	TomazGomes	Tomaz	Gomes	tomgm1502@gmail.com	f	t	2016-05-23 21:55:14.53133+00
+11	!WX6KJAdTKLeW4TpxSd3DKo4xfWZbPDPYWzXpH2JD	2016-08-16 18:12:50.82731+00	f	SamuelCury	Samuel	Cury	samuca1994@hotmail.com	f	t	2016-05-09 23:00:00.838191+00
+27	!FYH1spHOEsTtma5TET7NWG7wM18HDTFYDdtVDu1w	2017-02-11 13:37:00.347775+00	f	LuizaDosAnjos	Luiza	Dos Anjos	luizza1997@yahoo.com.br	f	t	2016-05-23 22:16:43.978072+00
+33	!9r9KkEl4htprRprxK43vg9OBuXwfVnhy8fcYo06d	2016-09-01 14:06:49.982616+00	f	RafaelBarbosa	Rafael	Barbosa	rafaelbmac@hotmail.com	f	t	2016-06-13 17:38:03.552173+00
+9	!RJJLIuNfOrmdRzW1sYOZxqXcGdOmbmWoMk9CDz3Q	2016-08-16 18:12:51.851952+00	f	LuizFlávio	Luiz	Flávio	costadelima@gmail.com	f	t	2016-05-09 22:59:34.187708+00
+16	!ICVywQAoZXesHeyT3czKvvwOiDf8B9NTUjpkQ6mp	2016-08-16 12:37:06.200733+00	f	MarcoSousa	Marco	Sousa	mtdsousa@gmail.com	f	t	2016-05-09 23:05:01.416338+00
+15	!8yqn2fnWxl7lcYX0VbClBy0vipHnJx35feuD3jz0	2016-05-12 11:57:20.845876+00	f	JânioOtoni	Jânio	Otoni	janioprates@gmail.com	f	t	2016-05-09 23:02:11.647818+00
+68	!EP22G645StM44uW65V4O5qUwMMgEbIcHbuMVxrgZ	2016-09-16 13:27:57.184284+00	f	ViníciusMagalhães	Vinícius	Magalhães		f	t	2016-09-14 02:00:52.016663+00
+34	!hSHqPuwp0Ei3REkjwirMxVclCwVawPnwWaUu2AIf	2016-09-13 23:39:22.648669+00	f	LucasViana	Lucas	Viana	lucas_viana@live.com	f	t	2016-06-13 21:43:52.087104+00
+13	!khhBZ5ihChAMHGKZMWSFNbCLuzF1z7549YDpQsO2	2016-05-23 21:41:49.604292+00	f	EmanuelleFernanda	Emanuelle	Fernanda	emanuelle-f2011@hotmail.com	f	t	2016-05-09 23:00:56.890807+00
+23	!RuMmFPIbYQo5kOSb3J98sYinvKrh8mt5Z4Etq3nf	2016-05-23 23:29:13.751473+00	f	MatheusBrant	Matheus	Brant	matheussbrant@hotmail.com	f	t	2016-05-23 21:55:04.309314+00
+61	!CXgxzzGrWkRDKfrsaHOZTPZZ7Xet74SgtX9vF3Sn	2016-10-09 19:48:53.896302+00	f	BrunoDamacena	Bruno	Damacena	damacena.bruno@gmail.com	f	t	2016-08-16 12:31:02.684768+00
+67	!WLHHtFNMTJZoJD4519kbR7iQr32VoTMxOtTRtAKn	2016-10-03 10:33:34.762456+00	f	BielPires	Biel	Pires	gabrielpires1936@hotmail.com	f	t	2016-09-14 01:50:24.08064+00
+62	!sIc6p28H29wGBdc6jahgXQpJRFOPHXUafoDN9ZT8	2016-08-18 02:04:54.657959+00	f	MarcelaViana	Marcela	Viana	marcelavp@terra.com.br	f	t	2016-08-16 18:35:19.720486+00
+22	!DItWi4GSkHmILTs4EnGQq7ATtLM4CXoPEdyqunXX	2016-08-29 16:49:39.611837+00	f	MatheusMartins	Matheus	Martins	matheus.khorus@hotmail.com	f	t	2016-05-23 21:42:48.212826+00
+29	!kU6wFC0uDNHdz8L8neiES3S0P7ydVwktbYEbObsf	2016-08-23 10:27:07.073528+00	f	LauradeBella	Laura	de Bella	lauradebella@gmail.com	f	t	2016-05-30 22:21:43.782979+00
+5	!IOHg1zGMPe1gE8pyPysiFmnHpOK8d75PfPVOxAY6	2016-09-01 13:23:54.063972+00	f	LuisCarlos	Luis	Carlos Cardoso	luisccf@me.com	f	t	2016-05-09 22:55:46.848599+00
+14	!E6h45E85A0InG4gzi8nKGeWkpEIXzYDYxKIQsWyI	2016-10-09 02:58:42.687193+00	f	PedroLopes	Pedro	Lopes	pedrohlcastro@gmail.com	f	t	2016-05-09 23:01:10.704463+00
+3	!b7NPtdsJy9glKfeOnAGot6Hm8JFaC9kRGE6UbJXx	2016-10-20 12:10:15.073465+00	f	MauroFloriano	Mauro	Floriano	maurinho_mfs@hotmail.com	f	t	2016-05-09 21:10:05.022707+00
+64	!4iZSRTmtFI25SsEyvMANn8WohpuYQsI8BRVAiXRL	2017-02-09 11:38:52.200089+00	f	LeandroMarcolino	Leandro	Marcolino	leandromarcolino@gmail.com	f	t	2016-09-13 15:27:52.514222+00
+69	!zXIn0TMKsa0eVtga1YNKTsrAG4zQhQxkESxsTC2Z	2016-10-11 18:59:52.842738+00	f	RenanNascimento	Renan	Nascimento	renanmateusbernardonascimento@gmail.com	f	t	2016-09-14 02:11:13.007442+00
+71	!Y9lJ619OpKHVEJTuCRBQrd1vxb3ECVav7c68t8E6	2017-02-04 19:33:19.681716+00	f	SadiqSule	Sadiq	Sule	usassak42020@gmail.com	f	t	2016-12-16 10:56:05.969937+00
+74	!sRWZUoXvaIwLngay3UqcB2PDj1Ct47Sa18uMP3TW	2017-02-02 13:10:12.28198+00	f	DanielFonseca	Daniel	Fonseca	daniel0547@gmail.com	f	t	2017-02-02 13:10:12.197517+00
+75	!1i7zQ4gM04ehW1qdU9Yf9rcNfEO0peulu5SUJdGM	2017-02-10 19:27:01.942603+00	f	VitorRodarte	Vitor	Rodarte	vitorricoy@yahoo.com.br	f	t	2017-02-10 19:27:01.763521+00
+76	!l9C4WZ49z9IvruAbRF7xXxGoegkbqwk6kQlWatEr	2017-05-31 02:45:18.329849+00	f	RodrigoDias	Rodrigo	Dias	dezrodrigo@hotmail.com	f	t	2017-05-13 03:27:46.648086+00
+73	!S1VWWfGp0mTjAZTjO1Pr6BqNrgjx2bqIbWpKj074	2017-05-07 12:50:29.25511+00	f	UsuárioTeste	Usuário	Teste	usuario_qmhafcd_teste@tfbnw.net	f	t	2017-01-25 00:16:48.704232+00
+32	!zXtPLS24cpObYGOa2dmcUHZJIYM32ENskjX1NuOi	2017-03-22 15:05:51.805488+00	f	ThalesBacelar	Thales	Bacelar	thalesbacelar@gmail.com	f	t	2016-06-08 17:50:44.035346+00
+31	!4ukrRweo4f7tdGf13auKKyB03hptTKjbfavj8Cv8	2017-09-18 22:17:38.496451+00	f	MatheusAlmeida	Matheus	Rosa	matheus.ar11@hotmail.com	f	t	2016-06-08 17:27:29.700199+00
+60	!dMdHZjhhrdagODbJ0oIoGVlGuL1VpXE06EVloXTW	2017-04-08 22:09:19.642524+00	f	HigorFischer	Higor	Fischer	higor_fischer@hotmail.com	f	t	2016-08-13 19:21:39.053493+00
+28	!MzGM0ilyGH12PO5rX0rWQ9qcfLdVSS7WClkzJ4pl	2017-02-23 14:04:47.242101+00	f	JuanLopes	Juan	Lopes	juanlopes_ferreira@yahoo.com.br	f	t	2016-05-30 15:29:12.07048+00
+20	!vb2iOTF4XE3IKbjEzp8hfcOQsT55Evc7qGeykhE1	2017-09-12 12:48:32.794733+00	f	SandroRenatoDias	Sandro	Renato Dias	sandrord@gmail.com	f	t	2016-05-18 21:30:24.757141+00
+18	!uNesfh7ifSx9nnejngM8QRV7bkdETw92PwdsVBGo	2017-03-11 15:32:03.354093+00	f	ArleyRibeiro	Arley	Ribeiro	arleysantos-16@hotmail.com	f	t	2016-05-11 17:23:59.115593+00
+65	!pUVlkwwQXwZCHtWKxbv4vkQyF9Ipb5YDG1Uegc4R	2017-08-15 00:32:55.061385+00	f	MarcosJunio	Marcos	Junio	innformarcos@gmail.com	f	t	2016-09-14 01:46:23.227459+00
+66	!O3ihUefFd2MWfJRyNYaZdlwzkFBStg4c3onZN3Ql	2017-07-26 14:00:44.922276+00	f	HigorCoimbra	Higor	Coimbra	higor1308@gmail.com	f	t	2016-09-14 01:46:38.571035+00
+30	!uK5FDW7deajERpsvt28kgfmnSILjtYGPSg3Zpngc	2017-04-18 00:17:01.377755+00	f	RodrigoR.NovaesJúnior	Rodrigo	R. Novaes Júnior	rrnovaesjr@hotmail.com	f	t	2016-06-03 10:46:48.898531+00
+70	!uUU8Bz80OHXUk5q0oVS0IRE1dbQaJ5GJm2HdusVn	2017-08-02 16:41:32.49836+00	f	LarisseStefany	Larisse	Stefany	larisseamorim.mg@hotmail.com	f	t	2016-10-10 23:53:52.290378+00
+72	!W94AX6akP8TDYhva7yfNDhZTl7DKfa0xhiF3ruZI	2017-04-20 01:43:15.31362+00	f	IsabelaCarolina	Isabela	Carolina		f	t	2017-01-23 12:43:59.734664+00
+12	!ifl7rxtyFLzexO1lFxXdAFbQ7O91QtY9JmLvfOBf	2017-04-14 23:01:18.962701+00	f	SérgioOliveira	Sérgio	Junior	sergio.potter08@hotmail.com	f	t	2016-05-09 23:00:55.696687+00
+6	!foxIxA0Ap4B0rBFo979q4PodKjGS97NV3R9Y9Srt	2017-08-05 16:49:45.296383+00	f	TúlioAssis	Túlio	Assis	tulioassis@outlook.com	f	t	2016-05-09 22:57:33.139302+00
+10	!UwZLvl35KxZylPZxYKuDSCK5W7lpDO0fSVvLLlwO	2017-08-25 18:50:05.697512+00	f	GabrielaRamalho	Gabriela	Ramalho	gabizinharamalho@hotmail.com	f	t	2016-05-09 22:59:53.69796+00
+17	!9ZVYTZ7BugDKa5XhMTEeZZUz8zAXS7GJsNnK6oHR	2017-09-15 20:19:16.631135+00	f	FelipeDuarteDosReis	Felipe	Duarte Dos Reis	felipedr.icm@gmail.com	f	t	2016-05-10 21:40:07.759954+00
+21	!soDcgAKvJGujVHrkHcukLOtSIzREU7dXfwfIScoz	2017-05-20 14:29:15.387086+00	f	LucasCorrêa	Lucas	Corrêa	lucashuati@gmail.com	f	t	2016-05-23 19:29:40.665193+00
+8	!cm53FnMitAaQTAHsyOc6KNreE1HoP6GEg0wmA2Ih	2017-07-15 02:07:56.471769+00	f	YulliDias	Yulli	Dias	yulli.dias@hotmail.com	f	t	2016-05-09 22:59:25.315024+00
+1	pbkdf2_sha256$24000$NTCu9Ll3HMQZ$H29VGPIlQ8jrcZvBGsjFZP6qlr7k0EaJ2t1e8ai/aQQ=	2017-07-24 20:39:50.963725+00	t	admin			admin@email.com	t	t	2016-05-09 21:09:02.379385+00
+77	!Vvb2tCN1w09EPm89NvfH5Ienwt0m4NyKAcEDzE1X	2017-06-02 13:46:59.05992+00	f	AlainAndré	Alain	André	alainandreamaral@gmail.com	f	t	2017-06-02 13:46:58.984731+00
+2	!jOUHSPw9kLmYS5Cntr9w0FvvgLA0IOAWJrUhEi08	2017-09-17 17:02:33.723255+00	f	SauloAntunes	Saulo	Antunes	sauloantuness@gmail.com	f	t	2016-05-09 21:09:17.275556+00
+78	!CULzw2eeqN1ppFRd9hf4o3MUTi1HcSOKdnZzrQ64	2017-09-11 21:06:05.984811+00	f	LucasMarioza	Lucas	Marioza	lucasmarioza@gmail.com	f	t	2017-09-02 03:52:04.800677+00
+79	!mM3YQqjgKiCMLzkG1E2QyanrtirKFxvwdt37SGOW	2017-09-15 20:44:08.495885+00	f	MateusLucas	Mateus	Lucas	mateus.lucas97@yahoo.com.br	f	t	2017-09-15 20:44:08.416446+00
+80	!wVMzgyvk1SzdGPbz2c7liRPyRg95AnDsJbyQxOSN	2017-09-15 20:50:09.005341+00	f	SílviaFonseca	Sílvia	Fonseca	silviapituca@hotmail.com	f	t	2017-09-15 20:50:08.944247+00
+81	!lKen6lKVrSGpQ1PMG5SkAK0EitKxCrIyep3Ccq6C	2017-09-15 21:00:22.017847+00	f	GabrielArrighiSilva	Gabriel	Arrighi Silva	gasilva96@hotmail.com	f	t	2017-09-15 21:00:21.939715+00
+82	!s75lX6o12VysEG7adX68VXKWxxbDxo6ISNcVVUnA	2017-09-19 19:45:35.574457+00	f	LucasHaddad	Lucas	Haddad	lucas_haddad@yahoo.com	f	t	2017-09-19 19:45:35.496854+00
+\.
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('auth_user_id_seq', 82, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

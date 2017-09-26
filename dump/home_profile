@@ -1,0 +1,86 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: home_profile; Type: TABLE DATA; Schema: public; Owner: admin
+--
+
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (10, 'Samuel Cury', 'http://graph.facebook.com/1110696228988878/picture', '1110696228988878', '67860', '806407', '', 11);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (26, 'Luiza Dos Anjos', 'http://graph.facebook.com/1172869472763094/picture', '1172869472763094', '65362', '844396', '', 27);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (2, 'Mauro Floriano', 'http://graph.facebook.com/1109731059049070/picture', '1109731059049070', '49905', '715237', 'mauro_floriano', 3);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (8, 'Luiz Flávio', 'http://graph.facebook.com/1016101035138936/picture', '1016101035138936', '68878', '806419', '', 9);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (12, 'Emanuelle Fernanda', 'http://graph.facebook.com/1475781949203958/picture', '1475781949203958', '88719', '', '', 13);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (6, 'Gilmar Alcântara', 'http://graph.facebook.com/1000949316667926/picture', '1000949316667926', '48935', '706157', 'gilmar', 7);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (73, 'Daniel Fonseca', 'http://graph.facebook.com/1245526975534242/picture', '1245526975534242', '', '', '', 74);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (14, 'Jânio Otoni', 'http://graph.facebook.com/1047250991988683/picture', '1047250991988683', '', '', '', 15);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (70, 'Sadiq Sule', 'http://graph.facebook.com/1323320597698747/picture', '1323320597698747', '', '', '', 71);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (22, 'Matheus Brant', 'http://graph.facebook.com/1037946409625710/picture', '1037946409625710', '91508', '', '', 23);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (24, 'Tomaz Gomes', 'http://graph.facebook.com/1041133535954314/picture', '1041133535954314', '89477', '', '', 25);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (34, 'Jonathan Candido', 'http://graph.facebook.com/1429905723701862/picture', '1429905723701862', '88776', '', '', 35);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (13, 'Pedro Lopes', 'http://graph.facebook.com/1078748348834999/picture', '1078748348834999', '65269', '835795', 'pedrohlcastro', 14);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (23, 'Bárbara Poliana Jaber', 'http://graph.facebook.com/1139574662759327/picture', '1139574662759327', '92537', '', 'Magathrea', 24);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (33, 'Lucas Viana', 'http://graph.facebook.com/1144151102272668/picture', '1144151102272668', '67877', '793437', '', 34);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (35, 'Yuri Bruno Fernandes', 'http://graph.facebook.com/10207557979041522/picture', '10207557979041522', '110251', '850008', '', 36);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (15, 'Marco Sousa', 'http://graph.facebook.com/1036196289781898/picture', '1036196289781898', '25312', '615442', '', 16);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (32, 'Rafael Barbosa', 'http://graph.facebook.com/1128907807169190/picture', '1128907807169190', '74182', '806815', '', 33);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (28, 'Laura de Bella', 'http://graph.facebook.com/1131689243564183/picture', '1131689243564183', '49008', '713124', 'lauradebella', 29);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (25, 'Juliane Guedes', 'http://graph.facebook.com/1059401220819651/picture', '1059401220819651', '65213', '806890', 'julianegp', 26);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (21, 'Matheus Martins', 'http://graph.facebook.com/10204531990658542/picture', '10204531990658542', '31287', '615321', 'airak', 22);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (4, 'Luis Carlos Cardoso', 'http://graph.facebook.com/999585456794314/picture', '999585456794314', '', '806189', 'lccf', 5);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (62, 'Victor Hugo', 'http://graph.facebook.com/1027006740753237/picture', '1027006740753237', '117499', '858712', '', 63);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (61, 'Marcela Viana', 'http://graph.facebook.com/1169809959708984/picture', '1169809959708984', '66274', '', '', 62);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (67, 'Vinícius Magalhães', 'http://graph.facebook.com/1112776495471284/picture', '1112776495471284', '67866', '', '', 68);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (66, 'Biel Pires', 'http://graph.facebook.com/924951270943129/picture', '924951270943129', '67861', '864348', 'bielmagal', 67);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (60, 'Bruno Damacena', 'http://graph.facebook.com/922368017873440/picture', '922368017873440', '116091', '858637', 'brunodamacena', 61);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (68, 'Renan Nascimento', 'http://graph.facebook.com/1772551289653708/picture', '1772551289653708', '67881', '866416', 'renan_', 69);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (63, 'Leandro Marcolino', 'http://graph.facebook.com/10208444414042569/picture', '10208444414042569', '', '', '', 64);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (74, 'Vitor Rodarte', 'http://graph.facebook.com/593746444143380/picture', '593746444143380', '', '', '', 75);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (16, 'Felipe Duarte Dos Reis', 'http://graph.facebook.com/997214310356653/picture', '997214310356653', '28882', '605929', 'felipedreis', 17);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (78, 'Mateus Lucas', 'http://graph.facebook.com/1440595402713990/picture', '1440595402713990', '', '', '', 79);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (27, 'Juan Lopes', 'http://graph.facebook.com/1285876144775801/picture', '1285876144775801', '31284', '610383', 'jlf', 28);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (75, 'Rodrigo Dias', 'http://graph.facebook.com/1303534203015821/picture', '1303534203015821', '160043', '', 'zero_kun', 76);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (72, 'Usuário Teste', 'http://graph.facebook.com/108762999637682/picture', '108762999637682', '', '', '', 73);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (31, 'Thales Bacelar', 'http://graph.facebook.com/965943943527224/picture', '965943943527224', '58265', '847080', 'thalez', 32);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (9, 'Gabriela Ramalho', 'http://graph.facebook.com/1014893941938495/picture', '1014893941938495', '79090', '831563', 'gabiapple', 10);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (11, 'Sérgio Junior', 'http://graph.facebook.com/1165486596828924/picture', '1165486596828924', '88116', '830916', '', 12);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (7, 'Yulli Dias', 'http://graph.facebook.com/1005171576234059/picture', '1005171576234059', '66392', '782153', 'yulli', 8);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (17, 'Arley Ribeiro', 'http://graph.facebook.com/987736857948180/picture', '987736857948180', '46852', '690082', 'arley_ribeiro', 18);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (5, 'Túlio Assis', 'http://graph.facebook.com/1133131410081457/picture', '1133131410081457', '64759', '801194', 'tuliioassis', 6);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (29, 'Rodrigo R. Novaes Júnior', 'http://graph.facebook.com/1033790860037129/picture', '1033790860037129', '29735', '610385', '@rrnovaesjr', 30);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (77, 'Lucas Marioza', 'http://graph.facebook.com/1634698039895369/picture', '1634698039895369', '71085', '910189', 'lmarioza', 78);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (59, 'Higor Fischer', 'http://graph.facebook.com/1131900433565549/picture', '1131900433565549', '116217', '819063', 'higorfischer', 60);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (30, 'Matheus Rosa', 'http://graph.facebook.com/796771673757770/picture', '796771673757770', '52223', '847011', 'Tchola', 31);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (71, 'Isabela Carolina', 'http://graph.facebook.com/1087887181322628/picture', '1087887181322628', '', '', '', 72);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (65, 'Higor Coimbra', 'http://graph.facebook.com/1139460976129047/picture', '1139460976129047', '67863', '', '', 66);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (81, 'Lucas Haddad', 'http://graph.facebook.com/1480291615396659/picture', '1480291615396659', '', '', '', 82);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (64, 'Marcos Junio', 'http://graph.facebook.com/251733878560130/picture', '251733878560130', '16331', '764249', '', 65);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (20, 'Lucas Corrêa', 'http://graph.facebook.com/1153650851321709/picture', '1153650851321709', '50371', '787942', 'lucashuati', 21);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (76, 'Alain André', 'http://graph.facebook.com/1768537706495161/picture', '1768537706495161', '', '', '', 77);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (69, 'Larisse Stefany', 'http://graph.facebook.com/142357586226902/picture', '142357586226902', '124931', '865147', '', 70);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (19, 'Sandro Renato Dias', 'http://graph.facebook.com/486753151510617/picture', '486753151510617', '', '', '', 20);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (80, 'Gabriel Arrighi Silva', 'http://graph.facebook.com/1809023179108042/picture', '1809023179108042', '', '', '', 81);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (79, 'Sílvia Fonseca', 'http://graph.facebook.com/1354535098005332/picture', '1354535098005332', '164594', '', 'silviafon', 80);
+INSERT INTO home_profile (id, name, picture, "facebookId", "uriId", "uvaId", "spojId", user_id) VALUES (1, 'Saulo Antunes', 'http://graph.facebook.com/506927086152831/picture', '506927086152831', '39764', '703913', 'sauloantuness', 2);
+
+
+--
+-- Name: home_profile_id_seq; Type: SEQUENCE SET; Schema: public; Owner: admin
+--
+
+SELECT pg_catalog.setval('home_profile_id_seq', 81, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
