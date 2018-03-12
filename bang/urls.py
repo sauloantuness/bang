@@ -29,5 +29,6 @@ urlpatterns = [
     url(r'^api/',       include('api.urls')),
     url(r'^groups/',    include('groups.urls')),
     url(r'^uri/',       include('uri.urls')),
+    url(r'^trainning/', include('trainning.urls')),
     url(r'^aamas2017/', include('aamas.urls')),
 ]

@@ -14,35 +14,12 @@ class Institution(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=100)
     picture = models.CharField(max_length=500)
-    secret_key_user = models.CharField(max_length=100)
-    secret_key_coach = models.CharField(max_length=100, blank=True)
-    secret_key_visitor = models.CharField(max_length=100, blank=True)
+    password = models.CharField(max_length=100, blank=True)
     institution = models.ForeignKey(Institution, related_name='groups')
 
     def __str__(self):
         return self.name
 
-
-class Event(models.Model):
-    name = models.CharField(max_length=100)
-    date = models.DateField()
-
-    class Meta:
-        ordering = ['date']
-
-    @classmethod
-    def closest(cls):
-        now = datetime.now()
-        closest_event = cls.objects.filter(date__gte=now).order_by('date').first()
-
-        if not closest_event:
-            closest_event = cls.objects.order_by('date').first()
-
-        return closest_event
-
-
-    def __str__(self):
-        return self.name
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -53,8 +30,10 @@ class Profile(models.Model):
     uriId = models.CharField(max_length=50, blank=True)
     uvaId = models.CharField(max_length=50, blank=True)
     spojId = models.CharField(max_length=50, blank=True)
-    group = models.ForeignKey(Group, null=True, blank=True, related_name='profiles')
-    uri_authorization = models.NullBooleanField(default=False, blank=True, null=True)
+    uri_authorization = models.NullBooleanField(
+        default=False, blank=True, null=True)
+
+    current_group = models.ForeignKey(Group, null=True)
 
     role_choices = [
         ('user', 'User'),
@@ -62,7 +41,8 @@ class Profile(models.Model):
         ('visitor', 'Visitor'),
     ]
 
-    role = models.CharField(max_length=7, choices=role_choices, default='user', blank=True, null=True)
+    role = models.CharField(
+        max_length=7, choices=role_choices, default='user', blank=True, null=True)
 
     class Meta:
         ordering = ['name']
@@ -93,15 +73,24 @@ class Profile(models.Model):
 
     def getSkills(self):
         data = [
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="B"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="A"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="S"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="D"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="M"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="P"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="G"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="C"), 0),
-            reduce(lambda acc, s: s.problem.level + acc, self.solution_set.filter(problem__category="U"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="B"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="A"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="S"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="D"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="M"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="P"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="G"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="C"), 0),
+            reduce(lambda acc, s: s.problem.level + acc,
+                   self.solution_set.filter(problem__category="U"), 0),
         ]
 
         return {
@@ -109,6 +98,38 @@ class Profile(models.Model):
             'data': data,
             'pointPlacement': 'on',
         }
+
+
+class Membership(models.Model):
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    date_joined = models.DateField(auto_now_add=True)
+    is_admin = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.group.name + ' - ' + self.profile.name
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=100)
+    date = models.DateField()
+
+    class Meta:
+        ordering = ['date']
+
+    @classmethod
+    def closest(cls):
+        now = datetime.now()
+        closest_event = cls.objects.filter(date__gte=now).order_by('date').first()
+
+        if not closest_event:
+            closest_event = cls.objects.order_by('date').first()
+
+        return closest_event
+
+
+    def __str__(self):
+        return self.name
 
 
 class Problem(models.Model):

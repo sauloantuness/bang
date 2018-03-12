@@ -118,4 +118,4 @@ def getTrends():
 
 
 def group_check(user):
-    return user.profile.group
+    return user.profile.current_group

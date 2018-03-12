@@ -36,7 +36,7 @@ def home(request):
         'recentlySolved': getLastSolutions(),
         'histogram': {
             'type': 'group',
-            'type_id': request.user.profile.group_id,
+            'type_id': request.user.profile.current_group.id,
             'month': datetime.now().month - 1,
             'year': datetime.now().year,
             'date': datetime.now().strftime('%b/%y'),

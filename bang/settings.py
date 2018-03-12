@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'groups.apps.GroupsConfig',
     'uri.apps.UriConfig',
     'aamas.apps.AamasConfig',
+    'trainning.apps.TrainningConfig',
 ]
 
 MIDDLEWARE_CLASSES = [

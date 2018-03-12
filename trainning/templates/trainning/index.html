@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Trainning
+{% endblock title %}
+
+{% block container %}
+
+	<style type="text/css">
+
+		:root {
+			--math-begin: red;
+			--math-end: black;
+
+			--adhoc-begin
+		}
+
+		.trainning .tcard {
+			border: 1px solid #ccc;
+			padding: 15px;
+			margin-bottom: 15px;
+		}
+
+		.trainning .level {
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			border-radius: 50%;
+			text-align: center;
+			display: inline-block;
+			color: white;
+		}
+
+		.trainning .category {
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			font-weight: bold
+		}
+
+		.trainning .options {
+		}
+
+		.trainning .options i {
+			margin-left: 15px
+		}
+
+		.trainning .problem {
+			color: #AAA;
+			margin-top: 25px;
+			font-family: Roboto
+		}
+
+		.trainning .problem-name {
+
+		}
+
+		.trainning .icon {
+			margin-right: 15px;
+		}
+
+		div .trainning .complete {
+			
+
+			display: block;
+			height: 3px;
+			width: 100%;
+			margin: 20px;
+			line-height: 10px;
+			position: relative;
+			margin-left: 0;
+			overflow: visible;
+		}
+
+		div .trainning .complete::after {
+		    content: '';
+		    display: inline-block;
+		    position: absolute;
+		    top: -3.5px;
+		    right: -5px;
+		    width: 10px;
+		    height: 10px;
+		    border-radius: 100%;
+		}
+
+		:root {
+			--math-t: rgba(7, 179, 155, 0);
+			--math-b: rgba(7, 179, 155, 1);
+			--math-e: rgba(111, 186, 130, 1);
+
+			--geometry-t: rgba(80, 115, 184, 0);
+			--geometry-b: rgba(80, 115, 184, 1);
+			--geometry-e: rgba(16, 152, 173, 1);
+
+			--libraries-t: rgba(251, 14, 14, 0);
+			--libraries-b: rgba(251, 14, 14, 1);
+			--libraries-e: rgba(251, 14, 120, 1);
+			
+			--paradigms-t: rgba(234, 33, 169, 0);
+			--paradigms-b: rgba(234, 33, 169, 1);
+			--paradigms-e: rgba(151, 33, 234, 1);
+
+			--adhoc-t: rgba(247, 149, 51, 0);
+			--adhoc-b: rgba(247, 149, 51, 1);
+			--adhoc-e: rgba(243, 112, 85, 1);
+
+
+			--graph-t: rgba(239, 78, 123, 0);
+			--graph-b: rgba(239, 78, 123, 1);
+			--graph-e: rgba(161, 102, 171, 1);
+
+			--strings-t: rgba(82, 175, 24, 0);
+			--strings-b: rgba(82, 175, 24, 1);
+			--strings-e: rgba(186, 182, 0, 1);
+		}
+
+
+		/*adhoc*/
+
+		.adhoc-level, .adhoc-category {
+			background: linear-gradient(80deg, var(--adhoc-b), var(--adhoc-e));
+		}
+
+		.adhoc-complete {
+			background-image: linear-gradient(
+				to right,
+				var(--adhoc-t),
+				var(--adhoc-e)
+			);
+		}
+
+		.adhoc-complete::after {
+			background-color: var(--adhoc-e);
+		}
+
+
+		/*strings*/
+
+		.strings-level, .strings-category {
+			background: linear-gradient(80deg, var(--strings-b), var(--strings-e));
+		}
+
+		.strings-complete {
+			background-image: linear-gradient(
+				to right,
+				var(--strings-t),
+				var(--strings-e)
+			);
+		}
+
+		.strings-complete::after {
+			background-color: var(--strings-e);
+		}
+
+		/*libraries*/
+
+		.libraries-level, .libraries-category {
+			background: linear-gradient(80deg, var(--libraries-b), var(--libraries-e));
+		}
+
+		.libraries-complete {
+			background-image: linear-gradient(
+				to right,
+				var(--libraries-t),
+				var(--libraries-e)
+			);
+		}
+
+		.libraries-complete::after {
+			background-color: var(--libraries-e);
+		}
+
+
+		/*math*/
+
+		.math-level, .math-category {
+			background: linear-gradient(80deg, var(--math-b), var(--math-e));
+		}
+
+		.math-complete {
+			background-image: linear-gradient(
+				to right,
+				var(--math-t),
+				var(--math-e)
+			);
+		}
+
+		.math-complete::after {
+			background-color: var(--math-e);
+		}
+
+
+		/*paradigms*/
+
+		.paradigms-level, .paradigms-category {
+			background: linear-gradient(80deg, var(--paradigms-b), var(--paradigms-e));
+		}
+
+		.paradigms-complete {
+			background-image: linear-gradient(
+				to right,
+				var(--paradigms-t),
+				var(--paradigms-e)
+			);
+		}
+
+		.paradigms-complete::after {
+			background-color: var(--paradigms-e);
+		}
+
+
+		/*graph*/
+
+		.graph-level, .graph-category {
+			background: linear-gradient(80deg, var(--graph-b), var(--graph-e));
+		}
+
+		.graph-complete {
+			background-image: linear-gradient(
+				to right,
+				var(--graph-t),
+				var(--graph-e)
+			);
+		}
+
+		.graph-complete::after {
+			background-color: var(--graph-e);
+		}
+
+
+		/*geometry*/
+
+		.geometry-level, .geometry-category {
+			background: linear-gradient(80deg, var(--geometry-b), var(--geometry-e));
+		}
+
+		.geometry-complete {
+			background-image: linear-gradient(
+				to right,
+				var(--geometry-t),
+				var(--geometry-e)
+			);
+		}
+
+		.geometry-complete::after {
+			background-color: var(--geometry-e);
+		}
+
+
+
+
+	</style>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>Trainning</h5>
+					</div>
+					<div class="panel-body trainning">
+						<p>Here you can see the most recommended problems for you to solve on each category. You can see on what level you are by the number on the side of the category name, how close you are to get to the next level by the progress bar and the historic of problems solveds ( <i class="fa fa-history"></i> ). You can also control how much agressive you want to be on your trainning ( <i class="fa fa-ellipsis-v"></i> ).</p>
+							
+						<hr>				
+		
+						<div class="row">
+							<div class="col-xs-12 col-sm-6">
+								<div class="tcard">
+									<span class="level adhoc-level">1</span>
+									<span class="category adhoc-category">AD-HOC</span>
+									
+									<div class="options pull-right">
+										<i class="fa fa-history"></i>
+										<i class="fa fa-ellipsis-v"></i>
+									</div>
+
+									<h6 class="problem">URI 1103</h6>
+									<h4 class="problem-name">Alarm Clock</h4>
+									<div class="complete adhoc-complete">
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-6">
+								<div class="tcard">
+									<span class="level strings-level">2</span>
+									<span class="category strings-category">STRINGS</span>
+									
+									<div class="options pull-right">
+										<i class="fa fa-history"></i>
+										<i class="fa fa-ellipsis-v"></i>
+									</div>
+
+									<h6 class="problem">URI 1024</h6>
+									<h4 class="problem-name">Encryption</h4>
+									<div class="complete strings-complete">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-6">
+								<div class="tcard">
+									<span class="level libraries-level">3</span>
+									<span class="category libraries-category">LIBRARIES</span>
+									
+									<div class="options pull-right">
+										<i class="fa fa-history"></i>
+										<i class="fa fa-ellipsis-v"></i>
+									</div>
+
+									<h6 class="problem">URI 1023</h6>
+									<h4 class="problem-name">Drought</h4>
+									<div class="complete libraries-complete">
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-6">
+								<div class="tcard">
+									<span class="level math-level">4</span>
+									<span class="category math-category">MATH</span>
+									
+									<div class="options pull-right">
+										<i class="fa fa-history"></i>
+										<i class="fa fa-ellipsis-v"></i>
+									</div>
+
+									<h6 class="problem">URI 1219</h6>
+									<h4 class="problem-name">Colourful Flowers</h4>
+									<div class="complete math-complete">
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-6">
+								<div class="tcard">
+									<span class="level paradigms-level">5</span>
+									<span class="category paradigms-category">PARADIGMS</span>
+									
+									<div class="options pull-right">
+										<i class="fa fa-history"></i>
+										<i class="fa fa-ellipsis-v"></i>
+									</div>
+
+									<h6 class="problem">URI 1265</h6>
+									<h4 class="problem-name">Computer DJ</h4>
+									<div class="complete paradigms-complete">
+									</div>
+								</div>
+							</div>
+							
+							<div class="col-xs-12 col-sm-6">
+								<div class="tcard">
+									<span class="level graph-level">6</span>
+									<span class="category graph-category">GRAPH</span>
+									
+									<div class="options pull-right">
+										<i class="fa fa-history"></i>
+										<i class="fa fa-ellipsis-v"></i>
+									</div>
+
+									<h6 class="problem">URI 1207</h6>
+									<h4 class="problem-name">The Benefits of Vodka</h4>
+									<div class="complete graph-complete">
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-12 col-sm-6">
+								<div class="tcard">
+									<span class="level geometry-level">7</span>
+									<span class="category geometry-category">GEOMETRY</span>
+									
+									<div class="options pull-right">
+										<i class="fa fa-history"></i>
+										<i class="fa fa-ellipsis-v"></i>
+									</div>
+
+									<h6 class="problem">URI 1370</h6>
+									<h4 class="problem-name">Regatta of Scientists</h4>
+									<div class="complete geometry-complete">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>					
+				</div>
+			</div>
+	</div>
+{% endblock container %}
