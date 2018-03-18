@@ -15,10 +15,6 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 sudo apt-get update
 ```
-#### Install Git
-```
-sudo apt-get install git
-```
 
 #### Install Python
 ```
