@@ -15,18 +15,18 @@ These instructions will get you a copy of the project up and running on your loc
 ```
 sudo apt-get update
 ```
-- Install Git
+#### Install Git
 ```
 sudo apt-get install git
 ```
 
-- Install Python
+#### Install Python
 ```
 sudo apt-get python-pip python-dev python3-dev
 ```
 
 
-- Python Virtual Enviroment (recommended)
+#### Python Virtual Enviroment (recommended)
 ```
 pip install virtualenvwrapper
 ```
@@ -35,7 +35,7 @@ Note: Maybe will be necessary to add the follow line at the end of the .bashrc f
 source /usr/local/bin/virtualenvwrapper.sh
 ```
 
-- PostgreSQL
+#### PostgreSQL
 ```
 sudo apt-get install libpq-dev postgresql postgresql-contrib
 ```
