@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 - PostegreSQL
 
 ### Installation
-- Update your OS
+#### Update your OS
 ```
 sudo apt-get update
 ```
