@@ -69,6 +69,11 @@ python manage.py migrate
 python manage.py createsuperuser --username admin --email admin@email.com
 ```
 
+## Running the app
+```
+python manage.py runserver
+```
+
 ## Running the tests
 ```
 python manage.py test
