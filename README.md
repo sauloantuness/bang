@@ -75,5 +75,7 @@ python manage.py test
 ```
 
 ## Contributing
+It's easy, create an issue or comment on an already created: I will fix/
+develop this, fork the project and submits a pull request.
 
 Please read [CONTRIBUTING.md](contributing.md) for details on our code of conduct, and the process for submitting pull requests to us.
