@@ -73,3 +73,7 @@ python manage.py createsuperuser --username admin --email admin@email.com
 ```
 python manage.py test
 ```
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
