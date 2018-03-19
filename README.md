@@ -35,3 +35,37 @@ source /usr/local/bin/virtualenvwrapper.sh
 ```
 sudo apt-get install libpq-dev postgresql postgresql-contrib
 ```
+
+#### Install requirements
+```
+pip install -r ~/dev/projects/bang/requirements.txt
+```
+
+### Settings
+#### Create database and admin user
+```
+sudo su - postgres
+psql
+CREATE DATABASE bang;
+CREATE USER admin WITH PASSWORD 'admin';
+ALTER ROLE admin SET client_encoding TO 'utf8';
+ALTER ROLE admin SET default_transaction_isolation TO 'read committed';
+ALTER ROLE admin SET timezone TO 'UTC';
+ALTER USER admin CREATEDB;
+GRANT ALL PRIVILEGES ON DATABASE bang TO admin;
+
+\q
+exit
+```
+
+#### Run database migrations
+```
+python manage.py makemigrations home
+python manage.py migrate
+```
+
+#### Create a super user
+```
+python manage.py createsuperuser --username admin --email admin@email.com
+```
+
