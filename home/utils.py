@@ -71,7 +71,8 @@ def get_solution_for_judge(judge, groups=[]):
             .distinct('problem')\
             .count()
 
-    return Solution.objects.filter(problem__judge=judge).distinct('problem').count()
+    return Solution.objects.filter(problem__judge=judge)\
+        .distinct('problem').count()
 
 
 def get_solutions_amout(groups=[]):

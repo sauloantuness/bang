@@ -28,8 +28,9 @@ class Group(models.Model):
     def number_solved_problems(self):
         return reduce(
             lambda acc, judge_amount: acc + judge_amount,
-            get_solutions_amout([self]
-        ).values(), 0)
+            get_solutions_amout([self]).values(),
+            0
+        )
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
