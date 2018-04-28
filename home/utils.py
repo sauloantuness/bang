@@ -61,12 +61,14 @@ def getContests(orderBy='-date'):
 
     return contests
 
+
 def get_solution_for_judge(judge, groups=[]):
     from home.models import Solution
     if groups:
         ids_group = [x.pk for x in groups]
-        return Solution.objects.filter(profile__group__pk__in=ids_group).filter(problem__judge=judge).distinct('problem').count()      
+        return Solution.objects.filter(profile__group__pk__in=ids_group).filter(problem__judge=judge).distinct('problem').count()
     return  Solution.objects.filter(problem__judge=judge).distinct('problem').count()
+
 
 def get_solutions_amout(groups=[]):
     '''
@@ -77,6 +79,7 @@ def get_solutions_amout(groups=[]):
         'uva': get_solution_for_judge('uva', groups),
         'spoj': get_solution_for_judge('spoj', groups),
     }
+
 
 def getLastSolutions():
     from home.models import Solution
