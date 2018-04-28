@@ -1,6 +1,5 @@
 from django.db.models import Count
 from datetime import datetime, timedelta
-from home.models import *
 
 
 def email(backend, response):
@@ -11,7 +10,8 @@ def email(backend, response):
         return response['emails'][0]['value']
 
 
-def set_profile(backend, response, user, is_new=False, *args, **kwargs):    
+def set_profile(backend, response, user, is_new=False, *args, **kwargs):
+    from home.models import Profile    
     profile = Profile.objects.filter(email=email(backend, response)).first()
 
     if not profile:
@@ -43,6 +43,7 @@ def formatTime(minutes):
 
 
 def getContests(orderBy='-date'):
+    from home.models import Contest
     '''
     Return a list of contests order by the -date.
     '''
@@ -60,25 +61,25 @@ def getContests(orderBy='-date'):
 
     return contests
 
+def get_solution_for_judge(judge, groups=[]):
+    from home.models import Solution
+    if groups:
+        ids_group = [x.pk for x in groups]
+        return Solution.objects.filter(profile__group__pk__in=ids_group).filter(problem__judge=judge).distinct('problem').count()      
+    return  Solution.objects.filter(problem__judge=judge).distinct('problem').count()
 
-def getSolutionsAmount(profile=None, team=None):
+def get_solutions_amout(groups=[]):
     '''
-    Return the amount of distinct problems solved by group, team or user.
+    Return the amount of distinct problems solved by group.
     '''
     return {
-        'uri': Solution.objects.filter(problem__judge='uri')
-                               .distinct('problem')
-                               .count(),
-        'uva': Solution.objects.filter(problem__judge='uva')
-                               .distinct('problem')
-                               .count(),
-        'spoj': Solution.objects.filter(problem__judge='spoj')
-                               .distinct('problem')
-                               .count(),
+        'uri': get_solution_for_judge('uri', groups),
+        'uva': get_solution_for_judge('uva', groups),
+        'spoj': get_solution_for_judge('spoj', groups),
     }
 
-
 def getLastSolutions():
+    from home.models import Solution
     '''
     Return a list with the last solutions.
     '''
@@ -86,6 +87,7 @@ def getLastSolutions():
 
 
 def getHistoric():
+    from home.models import Solution
     '''
     Return a list of problems solved by day of the user, team or group.
     '''
@@ -107,6 +109,7 @@ def getHistoric():
 
 
 def getTrends():
+    from home.models import Profile
     '''
     Return a list of profiles with more solutions in the last 7 days.
     '''

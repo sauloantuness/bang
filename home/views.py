@@ -28,7 +28,7 @@ def home(request):
         return redirect('/')
 
     context = {
-        'group': getSolutionsAmount(),
+        'group': get_solutions_amout([request.user.profile.group]),
         'events': Event.objects.all(),
         'closest_event': Event.closest(),
         'trends': getTrends(),
