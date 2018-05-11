@@ -62,7 +62,7 @@ def getContests(orderBy='-date'):
     return contests
 
 
-def get_solution_for_judge(judge, groups=[]):
+def count_groups_solution_for_judge(judge, groups=[]):
     from home.models import Solution
     if groups:
         ids_group = [x.pk for x in groups]
@@ -75,14 +75,14 @@ def get_solution_for_judge(judge, groups=[]):
         .distinct('problem').count()
 
 
-def get_solutions_amout(groups=[]):
+def count_groups_solutions(groups=[]):
     '''
     Return the amount of distinct problems solved by group.
     '''
     return {
-        'uri': get_solution_for_judge('uri', groups),
-        'uva': get_solution_for_judge('uva', groups),
-        'spoj': get_solution_for_judge('spoj', groups),
+        'uri': count_groups_solution_for_judge('uri', groups),
+        'uva': count_groups_solution_for_judge('uva', groups),
+        'spoj': count_groups_solution_for_judge('spoj', groups),
     }
 
 
