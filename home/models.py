@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime, timedelta
 from functools import reduce
-
+from .utils import count_groups_solutions
 
 class Institution(models.Model):
     name = models.CharField(max_length=100)
@@ -22,6 +22,17 @@ class Group(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def count_users(self):
+        return self.profiles.count()
+    
+    @property
+    def count_solved_problems(self):
+        return reduce(
+            lambda acc, judge_amount: acc + judge_amount,
+            count_groups_solutions([self]).values(),
+            0
+        )
 
 class Event(models.Model):
     name = models.CharField(max_length=100)
