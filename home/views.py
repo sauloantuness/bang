@@ -14,6 +14,10 @@ def about(request):
     return render(request, 'home/about.html')
 
 
+def privacy(request):
+    return render(request, 'home/privacy.html')
+
+
 @login_required
 def logout(request):
     auth_logout(request)
